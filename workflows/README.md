@@ -5,6 +5,7 @@
 ## 目录结构
 
 - `examples/` - 工作流示例
+- `ui-prototype-restore-loop/` - 前端 UI 原型还原闭环工作流（入口：`WORKFLOW.md`）
 
 ## 工作流格式
 
