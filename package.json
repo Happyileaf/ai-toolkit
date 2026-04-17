@@ -1,0 +1,20 @@
+{
+  "name": "ai-toolkit",
+  "version": "1.0.0",
+  "description": "AI Toolkit - Rules, Skills & Workflows for Multimodal Models",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Happyileaf",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Happyileaf/ai-toolkit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Happyileaf/ai-toolkit/issues"
+  },
+  "homepage": "https://github.com/Happyileaf/ai-toolkit#readme"
+}
