@@ -5,6 +5,7 @@
 ## 目录结构
 
 - `examples/` - 技能示例
+- `export-bundle/` - 打包 rules/skills/workflows 的分发技能
 
 ## 技能格式
 
