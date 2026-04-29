@@ -1,4 +1,4 @@
-# Step 03: Page Zero-Anchor Plan
+# Step 04: Page Zero-Anchor Plan
 
 ## Goal
 
@@ -7,7 +7,7 @@
 ## Actions
 
 1. 按 `target_pages` 顺序选取 `current_page`。
-2. 基于 Step 02 蓝图产出页面级“Ground-Up 方案”：
+2. 基于 Step 03 蓝图产出页面级“Ground-Up 方案”：
    - 页面骨架与信息层级
    - 关键组件视觉体系
    - 视觉节奏（留白、密度、分组）
@@ -36,7 +36,7 @@
 ## Output Template
 
 ```text
-[Step03 Completed]
+[Step04 Completed]
 - current_page: ...
 - ground_up_plan:
   - layout: ...

@@ -28,14 +28,15 @@
 按顺序执行：
 
 1. `./steps/01-intake-and-functional-lock.md`
-2. `./steps/02-spec-deconstruction-and-blueprint.md`
-3. `./steps/03-page-zero-anchor-plan.md`
-4. `./steps/04-ground-up-refactor-loop.md`
-5. `./steps/05-acceptance-and-next-page.md`
+2. `./steps/02-spec-read-and-understanding.md`
+3. `./steps/03-spec-deconstruction-and-blueprint.md`
+4. `./steps/04-page-zero-anchor-plan.md`
+5. `./steps/05-ground-up-refactor-loop.md`
+6. `./steps/06-acceptance-and-next-page.md`
 
 ## Mandatory Rules
 
-1. 在任何代码改动前，必须完整读取并理解 `design_spec_path`。
+1. 在任何代码改动前，必须完成 Step 02，并完整读取和理解 `design_spec_path`。
 2. 必须按 `target_pages` 逐页执行，禁止一次性全项目重构。
 3. 每一页开始前，必须先产出“Spec-Only 页面蓝图”（不引用现有样式实现）。
 4. 每轮必须声明“本轮引用的规范章节”和“本轮要落地的蓝图条目”。

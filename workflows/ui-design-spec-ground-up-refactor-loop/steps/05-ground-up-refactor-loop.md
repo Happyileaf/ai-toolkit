@@ -1,4 +1,4 @@
-# Step 04: Ground-Up Refactor Loop
+# Step 05: Ground-Up Refactor Loop
 
 ## Goal
 
@@ -25,7 +25,7 @@
 4. 判定：
    - 若三者均通过，当前页面 `accepted`
    - 若未通过且仍有轮次，进入下一轮
-   - 若达到上限，输出残留差距并交由 Step 05 汇总
+   - 若达到上限，输出残留差距并交由 Step 06 汇总
 
 ## Allowed Changes
 

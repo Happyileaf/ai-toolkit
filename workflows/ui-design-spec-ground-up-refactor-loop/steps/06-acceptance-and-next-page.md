@@ -1,4 +1,4 @@
-# Step 05: Acceptance and Next Page
+# Step 06: Acceptance and Next Page
 
 ## Goal
 
@@ -14,7 +14,7 @@
    - `accepted`：规范、功能、boldness 全通过
    - `accepted_with_deviation`：轮次到上限，功能通过但存在可接受视觉偏差
    - `not_accepted`：功能或规范关键项未达标
-3. 若存在下一个页面，返回 Step 03。
+3. 若存在下一个页面，返回 Step 04。
 4. 所有页面完成后，输出全局报告。
 
 ## Final Report Template
