@@ -14,6 +14,7 @@
    - 当前页面与轮次
    - 本轮引用的规范章节
    - 本轮要落地的蓝图条目
+   - 当前页面蓝图模式（`template_driven` 或 `spec_only`）
    - 本轮计划执行的 `bold_transform` 项
 2. 执行 UI 重构（仅 UI 层）：
    - 优先改 token/样式体系，再改组件外观，再改页面布局表达
@@ -38,6 +39,7 @@
 - 业务逻辑、状态机、接口调用、数据转换
 - 权限、路由守卫、埋点逻辑
 - 当前页面范围外的无关改动
+- 对于 `template_driven` 页面，禁止绕过已选模板进行无依据视觉重定义
 
 ## Per-Round Output Template
 
@@ -49,6 +51,8 @@
   - [章节编号/标题] ...
 - blueprint_items_applied:
   - ...
+- blueprint_mode: template_driven | spec_only
+- template_reference: ... (if template_driven)
 - bold_transforms_executed:
   - ...
 - changed_files:

@@ -13,14 +13,19 @@
 
 1. 完整阅读 `design_spec_path` 全文，禁止跳读关键章节。
 2. 建立“规范章节索引”（章节标题、编号、路径或锚点）。
-3. 提取可执行规则并按优先级分类：
+3. 识别设计规范中的模板资产（页面模板、区块模板、组件模板）并建立模板清单。
+4. 针对每个 `target_page` 做“模板匹配判定”：
+   - 判断是否有符合当前页面设计目标和信息结构的模板
+   - 若有多个候选模板，给出优先级与选择理由
+   - 若无可用模板，明确记录“无匹配模板”
+5. 提取可执行规则并按优先级分类：
    - `P0`：必须满足
    - `P1`：强烈建议满足
    - `P2`：可延后优化
-4. 输出“规范理解摘要”：
+6. 输出“规范理解摘要”：
    - 不少于 12 条可执行规则
    - 每条规则必须附来源定位
-5. 识别规范冲突处理原则：
+7. 识别规范冲突处理原则：
    - 规范内部冲突时的优先级
    - 规范与现有实现冲突时以规范为准（功能边界除外）
 
@@ -33,6 +38,7 @@
 
 - 完成规范全文阅读
 - 规范章节索引完成
+- 模板清单与按页模板匹配判定完成
 - 可执行规则清单完成（不少于 12 条，含来源）
 - 规范理解摘要可被后续步骤直接消费
 
@@ -41,6 +47,15 @@
 ```text
 [Step02 Completed]
 - spec_sections_indexed: N
+- spec_templates_catalog:
+  - template_id: ...
+    type: page | section | component
+    source: ...
+- per_page_template_decision:
+  - page: ...
+    decision: use_template | no_matching_template
+    selected_template: ... (if use_template)
+    rationale: ...
 - executable_rules:
   - id: R1
     priority: P0 | P1 | P2
