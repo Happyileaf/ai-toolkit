@@ -4,8 +4,16 @@
 
 ## 目录结构
 
-- `examples/` - 技能示例
+- `index.md` - 技能统一索引
+- `agent-browser-0.2.0/` - 浏览器自动化技能
 - `export-bundle/` - 打包 rules/skills/workflows 的分发技能
+- `ui-gap-audit/` - UI 差距审计技能
+- `ui-restore-implementation/` - UI 还原实现技能
+- `ui-prototype-restore/` - UI 原型还原端到端技能
+
+## 技能索引
+
+详见 [`index.md`](./index.md)。
 
 ## 技能格式
 
