@@ -1,6 +1,31 @@
 ---
 name: ui-restore-implementation
 description: 基于 UI 差距清单实施前端代码修改，并通过 agent-browser 复验迭代，持续提升页面对原型的还原度。
+version: 1.0.0
+entry: SKILL.md
+status: active
+type: skill
+category: ui-implementation
+tags:
+  - ui
+  - implementation
+  - restore
+  - frontend
+dependencies:
+  - skills/agent-browser-0.2.0/SKILL.md
+inputs:
+  - gap_list
+  - prototype_page_url
+  - local_page_url
+  - codebase_root
+outputs:
+  - changed_files
+  - resolved_gaps
+  - partial_gaps
+  - blocked_gaps
+  - regressions
+requires_tools:
+  - agent-browser
 ---
 
 # UI Restore Implementation

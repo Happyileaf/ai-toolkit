@@ -1,6 +1,32 @@
 ---
 name: ui-prototype-restore
 description: 当需要将本地前端页面对齐到公网原型时使用；通过 agent-browser 对比“本地实现 vs 原型站点”，产出差距清单，并循环修改代码直到视觉和交互还原度显著提升。
+version: 1.0.0
+entry: SKILL.md
+status: active
+type: skill
+category: ui-restore
+tags:
+  - ui
+  - restore
+  - prototype
+  - frontend
+dependencies:
+  - skills/agent-browser-0.2.0/SKILL.md
+  - skills/ui-gap-audit/SKILL.md
+  - skills/ui-restore-implementation/SKILL.md
+inputs:
+  - prototype_url
+  - local_url
+  - route_mappings
+  - restore_goal
+  - constraints
+outputs:
+  - round_summaries
+  - restore_result
+  - remaining_gaps
+requires_tools:
+  - agent-browser
 ---
 
 # UI Prototype Restore

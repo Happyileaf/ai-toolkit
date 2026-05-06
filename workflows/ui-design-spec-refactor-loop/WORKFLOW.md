@@ -1,3 +1,38 @@
+---
+name: ui-design-spec-refactor-loop
+description: 在不影响功能的前提下，基于指定设计规范文件，对现有前端项目进行按页面、可循环、可收敛的 UI 重构。
+version: 1.0.0
+entry: WORKFLOW.md
+status: active
+type: workflow
+category: ui-refactor
+tags:
+  - ui
+  - design-spec
+  - refactor
+  - loop
+dependencies: []
+steps:
+  - steps/01-intake-and-spec-read.md
+  - steps/02-page-scope-and-baseline.md
+  - steps/03-refactor-loop.md
+  - steps/04-acceptance-and-next-page.md
+inputs:
+  - design_spec_path
+  - frontend_project_root
+  - target_pages
+  - max_rounds_per_page
+  - acceptance_threshold
+  - constraints
+outputs:
+  - current_page_round
+  - referenced_spec_sections
+  - changed_files
+  - spec_comparison_result
+  - next_round_decision
+requires_tools: []
+---
+
 # Workflow: UI Design Spec Refactor Loop
 
 ## Purpose

@@ -1,3 +1,43 @@
+---
+name: ui-prototype-restore-loop
+description: 将公网原型页面和本地前端实现进行持续对比，循环修复 UI 差距，直到达到可接受还原度。
+version: 1.0.0
+entry: WORKFLOW.md
+status: active
+type: workflow
+category: ui-restore
+tags:
+  - ui
+  - prototype
+  - restore
+  - loop
+dependencies:
+  - skills/agent-browser-0.2.0/SKILL.md
+  - skills/ui-gap-audit/SKILL.md
+  - skills/ui-restore-implementation/SKILL.md
+  - skills/ui-prototype-restore/SKILL.md
+steps:
+  - steps/01-bootstrap.md
+  - steps/02-audit.md
+  - steps/03-implement.md
+  - steps/04-loop-and-stop.md
+inputs:
+  - prototype_url
+  - local_project_root
+  - local_url
+  - route_mappings
+  - max_rounds
+  - viewport
+  - constraints
+outputs:
+  - gap_ids
+  - changed_files
+  - verification_result
+  - next_round_plan
+requires_tools:
+  - agent-browser
+---
+
 # Workflow: UI Prototype Restore Loop
 
 ## Purpose

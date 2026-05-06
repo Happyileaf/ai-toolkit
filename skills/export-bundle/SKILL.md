@@ -1,6 +1,28 @@
 ---
 name: export-bundle
 description: 将项目中的 rules、skills、workflows 按最小可分发原则打包为 zip，用于分享给其他人；支持只打包指定子目录，并在完成后清理中间目录。
+version: 1.0.0
+entry: SKILL.md
+status: active
+type: skill
+category: distribution
+tags:
+  - bundle
+  - export
+  - distribution
+dependencies: []
+inputs:
+  - project_root
+  - bundle_name
+  - rules_paths
+  - skills_paths
+  - workflows_paths
+  - include_readme
+  - cleanup_staging
+outputs:
+  - zip_archive
+  - validation_checklist
+requires_tools: []
 ---
 
 # Export Bundle

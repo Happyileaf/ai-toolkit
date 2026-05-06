@@ -1,6 +1,28 @@
 ---
 name: ui-gap-audit
 description: 使用 agent-browser 对比原型页与本地前端页面，输出结构化 UI 差距清单（含优先级）并给出可执行修复建议。
+version: 1.0.0
+entry: SKILL.md
+status: active
+type: skill
+category: ui-audit
+tags:
+  - ui
+  - audit
+  - prototype
+  - agent-browser
+dependencies:
+  - skills/agent-browser-0.2.0/SKILL.md
+inputs:
+  - prototype_page_url
+  - local_page_url
+  - viewport
+  - state_matrix
+outputs:
+  - gap_list
+  - fix_hints
+requires_tools:
+  - agent-browser
 ---
 
 # UI Gap Audit

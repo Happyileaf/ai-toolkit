@@ -1,3 +1,45 @@
+---
+name: ui-design-spec-ground-up-refactor-loop
+description: 在功能保持不变的前提下，以设计规范为唯一主驱动，对既有页面进行更大胆、更全面、更彻底的 UI 重构。
+version: 1.0.0
+entry: WORKFLOW.md
+status: active
+type: workflow
+category: ui-refactor
+tags:
+  - ui
+  - design-spec
+  - ground-up
+  - zero-anchor
+  - loop
+dependencies: []
+steps:
+  - steps/01-intake-and-functional-lock.md
+  - steps/02-spec-read-and-understanding.md
+  - steps/03-spec-deconstruction-and-blueprint.md
+  - steps/04-page-zero-anchor-plan.md
+  - steps/05-ground-up-refactor-loop.md
+  - steps/06-acceptance-and-next-page.md
+inputs:
+  - design_spec_path
+  - frontend_project_root
+  - target_pages
+  - max_rounds_per_page
+  - acceptance_threshold
+  - constraints
+outputs:
+  - current_page_round
+  - referenced_spec_sections
+  - blueprint_mode
+  - blueprint_items
+  - changed_files
+  - spec_coverage
+  - functional_parity
+  - boldness_gate
+  - next_round_decision
+requires_tools: []
+---
+
 # Workflow: UI Design Spec Ground-Up Refactor Loop
 
 ## Purpose
