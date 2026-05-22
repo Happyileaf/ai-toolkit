@@ -1,0 +1,244 @@
+{
+  "skill": "frontend-harness",
+  "channel": "stable",
+  "version": "2.6.4",
+  "min_compatible_version": "1.0.0",
+  "files": [
+    {
+      "path": "scripts/session_close.py",
+      "url": "https://raw.githubusercontent.com/Happyileaf/ai-toolkit/refs/heads/main/skills/frontend-harness/scripts/session_close.py",
+      "sha256": "ccc8e2e40ce208ec32391750771953f42ac02d3d0c1321ed2189e8f8242dfdfc"
+    },
+    {
+      "path": "scripts/quick_fix_classifier.py",
+      "url": "https://raw.githubusercontent.com/Happyileaf/ai-toolkit/refs/heads/main/skills/frontend-harness/scripts/quick_fix_classifier.py",
+      "sha256": "9902bc0a555caaf291a0ab590748a8ca988f11a88006f30fb11bc398a87963c2"
+    },
+    {
+      "path": "scripts/ensure_task_branch.py",
+      "url": "https://raw.githubusercontent.com/Happyileaf/ai-toolkit/refs/heads/main/skills/frontend-harness/scripts/ensure_task_branch.py",
+      "sha256": "8e2adaea6a61966e5c27ecbe2ebfdf2dc2ad6f472b52111f6851c78f6bb30c4d"
+    },
+    {
+      "path": "scripts/task_switch.py",
+      "url": "https://raw.githubusercontent.com/Happyileaf/ai-toolkit/refs/heads/main/skills/frontend-harness/scripts/task_switch.py",
+      "sha256": "9a5ffe136e93ac371428058b1d6599f246b780d3a3e4dbb68d9f113fb3f198e1"
+    },
+    {
+      "path": "scripts/task_store.py",
+      "url": "https://raw.githubusercontent.com/Happyileaf/ai-toolkit/refs/heads/main/skills/frontend-harness/scripts/task_store.py",
+      "sha256": "159e2c59dabeefc4ae6405929e38a5f22d099b04c32d9b882900e92c22142ea7"
+    },
+    {
+      "path": "scripts/update_runtime.py",
+      "url": "https://raw.githubusercontent.com/Happyileaf/ai-toolkit/refs/heads/main/skills/frontend-harness/scripts/update_runtime.py",
+      "sha256": "846613e1a94980cb3b985c1bebe28a0fd22319397a6ffa7f9bd02e9b1197b080"
+    },
+    {
+      "path": "scripts/agent_review.py",
+      "url": "https://raw.githubusercontent.com/Happyileaf/ai-toolkit/refs/heads/main/skills/frontend-harness/scripts/agent_review.py",
+      "sha256": "76e37180e894b88980067dc08a8a7ee15e7221a659584095ab2c48e4271acb51"
+    },
+    {
+      "path": "scripts/qa_runner.py",
+      "url": "https://raw.githubusercontent.com/Happyileaf/ai-toolkit/refs/heads/main/skills/frontend-harness/scripts/qa_runner.py",
+      "sha256": "d141409d5a4561c2c0500ab01e7a0b03733aad48cd6efec9356a92da7dba7a91"
+    },
+    {
+      "path": "scripts/qa_report.py",
+      "url": "https://raw.githubusercontent.com/Happyileaf/ai-toolkit/refs/heads/main/skills/frontend-harness/scripts/qa_report.py",
+      "sha256": "5fc761b4aefb8258197fa23249efeb8cce3cd1718706912f8178897e5a3bf3d8"
+    },
+    {
+      "path": "scripts/qa_gate.py",
+      "url": "https://raw.githubusercontent.com/Happyileaf/ai-toolkit/refs/heads/main/skills/frontend-harness/scripts/qa_gate.py",
+      "sha256": "fa2260305b61bbf5cf95d407f03ad3ab89274beff1cd93c4f2d5b6c9e18e3762"
+    },
+    {
+      "path": "scripts/testcontainers_doctor.py",
+      "url": "https://raw.githubusercontent.com/Happyileaf/ai-toolkit/refs/heads/main/skills/frontend-harness/scripts/testcontainers_doctor.py",
+      "sha256": "cbedd4f4322deae942cc8392ac8da5a60fae3b9cb177fab76ed89ffd892f8028"
+    },
+    {
+      "path": "scripts/init.sh",
+      "url": "https://raw.githubusercontent.com/Happyileaf/ai-toolkit/refs/heads/main/skills/frontend-harness/templates/task/init.sh",
+      "sha256": "6b53020351417978e532d6bba01ea89bca56095ce9acf4f927e386b1763d32c3"
+    },
+    {
+      "path": "scripts/upgrade_legacy_repo.py",
+      "url": "https://raw.githubusercontent.com/Happyileaf/ai-toolkit/refs/heads/main/skills/frontend-harness/scripts/upgrade_legacy_repo.py",
+      "sha256": "225aaf99d1da03b1393cc9bb62b091df557ddeeb4ed8bdb506afdeeb22a7a17a"
+    },
+    {
+      "path": "docs/TASK-HARNESS.md",
+      "url": "https://raw.githubusercontent.com/Happyileaf/ai-toolkit/refs/heads/main/skills/frontend-harness/templates/task/TASK-HARNESS.md",
+      "sha256": "2e93af8c3ce10bd0dd67a6ef1b44a795174ab05e8bac6a6bbf70fa0155b6cba3"
+    },
+    {
+      "path": "docs/architecture.md",
+      "url": "https://raw.githubusercontent.com/Happyileaf/ai-toolkit/refs/heads/main/skills/frontend-harness/templates/harness/docs/architecture.md",
+      "sha256": "2d499ba6c027b1e5fd428ac08da5b385b515701e9789e784612228f10e9e563b"
+    },
+    {
+      "path": "docs/golden-principles.md",
+      "url": "https://raw.githubusercontent.com/Happyileaf/ai-toolkit/refs/heads/main/skills/frontend-harness/templates/harness/docs/golden-principles.md",
+      "sha256": "a6b3ed097f99251bd0621a0a8159f53c78013be6210f2842c321d4428998a15b"
+    },
+    {
+      "path": "docs/sprint-workflow.md",
+      "url": "https://raw.githubusercontent.com/Happyileaf/ai-toolkit/refs/heads/main/skills/frontend-harness/templates/harness/docs/sprint-workflow.md",
+      "sha256": "ea3c65a8f15cf6592422bf83134cb0ef2f73ed48e9f1e88dfdf39e886762ad94"
+    },
+    {
+      "path": "docs/frontend-dev-conventions.md",
+      "url": "https://raw.githubusercontent.com/Happyileaf/ai-toolkit/refs/heads/main/skills/frontend-harness/templates/harness/docs/frontend-dev-conventions.md",
+      "sha256": "1e3df12b30e1eb063cb67fedb7c07584b68f2b5286195d73e3a7e6fec5ac75af"
+    },
+    {
+      "path": "docs/frontend/rules/00-core.md",
+      "url": "https://raw.githubusercontent.com/Happyileaf/ai-toolkit/refs/heads/main/skills/frontend-harness/templates/harness/docs/frontend/rules/00-core.md",
+      "sha256": "64834ea02f2109fcdca84b2328dac59263c1fc2bbaca6f0bfc351a85f0a1d7b2"
+    },
+    {
+      "path": "docs/frontend/rules/state-and-dataflow.md",
+      "url": "https://raw.githubusercontent.com/Happyileaf/ai-toolkit/refs/heads/main/skills/frontend-harness/templates/harness/docs/frontend/rules/state-and-dataflow.md",
+      "sha256": "80ef4e0ab4743d07fe51be914fc81c189732594aec744d99ed7475a423b9c86d"
+    },
+    {
+      "path": "docs/frontend/rules/ui-ux-a11y.md",
+      "url": "https://raw.githubusercontent.com/Happyileaf/ai-toolkit/refs/heads/main/skills/frontend-harness/templates/harness/docs/frontend/rules/ui-ux-a11y.md",
+      "sha256": "1aa0771c3040db68192d9a1127ea59d19c926a776b45308e98e3218a675d3e19"
+    },
+    {
+      "path": "docs/frontend/rules/network-and-security.md",
+      "url": "https://raw.githubusercontent.com/Happyileaf/ai-toolkit/refs/heads/main/skills/frontend-harness/templates/harness/docs/frontend/rules/network-and-security.md",
+      "sha256": "ce126a5e34cb4fb17bee36347048dbaf919b27f2a491cc8df9d2dc4f9600bc0a"
+    },
+    {
+      "path": "docs/frontend/rules/testing-and-release.md",
+      "url": "https://raw.githubusercontent.com/Happyileaf/ai-toolkit/refs/heads/main/skills/frontend-harness/templates/harness/docs/frontend/rules/testing-and-release.md",
+      "sha256": "25e0f1d94658dfa65475c9d1f96de5967b929848f32c3d6baffeea0e9f77f697"
+    },
+    {
+      "path": "docs/frontend/rules/performance-and-observability.md",
+      "url": "https://raw.githubusercontent.com/Happyileaf/ai-toolkit/refs/heads/main/skills/frontend-harness/templates/harness/docs/frontend/rules/performance-and-observability.md",
+      "sha256": "bb9870d152d1543eef5263959153df0974dd0b09e62ec2d55b3fe4af2565167f"
+    },
+    {
+      "path": "docs/contracts/TEMPLATE.md",
+      "url": "https://raw.githubusercontent.com/Happyileaf/ai-toolkit/refs/heads/main/skills/frontend-harness/templates/harness/docs/contracts/TEMPLATE.md",
+      "sha256": "eba4f8ee5e820aec2ef702b11707586d2e76ec6b2cabeefe4e591f6a394e9035"
+    },
+    {
+      "path": "root/AGENTS.md",
+      "url": "https://raw.githubusercontent.com/Happyileaf/ai-toolkit/refs/heads/main/skills/frontend-harness/templates/harness/AGENTS.md",
+      "sha256": "6f59b75e9f70ae148cf8d4c6cd9ee4ae4568f9e557c59899b9f1050345aef033",
+      "render_project_context": true,
+      "merge_strategy": "markdown_block"
+    },
+    {
+      "path": "root/CLAUDE.md",
+      "url": "https://raw.githubusercontent.com/Happyileaf/ai-toolkit/refs/heads/main/skills/frontend-harness/templates/harness/CLAUDE.md",
+      "sha256": "6f59b75e9f70ae148cf8d4c6cd9ee4ae4568f9e557c59899b9f1050345aef033",
+      "render_project_context": true,
+      "merge_strategy": "markdown_block"
+    },
+    {
+      "path": "root/.codex/config.toml",
+      "url": "https://raw.githubusercontent.com/Happyileaf/ai-toolkit/refs/heads/main/skills/frontend-harness/templates/harness/codex/config.toml",
+      "sha256": "a446958303a48791f4876ac3802bae9e3234644a519625ce063761da376a82ef"
+    },
+    {
+      "path": "root/.codex/hooks.json",
+      "url": "https://raw.githubusercontent.com/Happyileaf/ai-toolkit/refs/heads/main/skills/frontend-harness/templates/harness/codex/hooks.json",
+      "sha256": "c35d7392cf6ee90bb27fee1c5e5bdda9ec55350b2cb8a5e214e220fde75c2919",
+      "merge_strategy": "codex_hooks"
+    },
+    {
+      "path": "root/.codex/hooks/context-injector.py",
+      "url": "https://raw.githubusercontent.com/Happyileaf/ai-toolkit/refs/heads/main/skills/frontend-harness/templates/harness/codex/hooks/context-injector.py",
+      "sha256": "b390c49ba51551d0cb0049651f950117f3d9a6fb87247ae2338ce84a4b3046f5"
+    },
+    {
+      "path": "root/.codex/hooks/loop-detector.py",
+      "url": "https://raw.githubusercontent.com/Happyileaf/ai-toolkit/refs/heads/main/skills/frontend-harness/templates/harness/codex/hooks/loop-detector.py",
+      "sha256": "66de35db28b9cae76e1f45469dabb51e6d106a896be5cdcc3ec5ad6b4429152d"
+    },
+    {
+      "path": "root/.codex/hooks/pre-completion-check.py",
+      "url": "https://raw.githubusercontent.com/Happyileaf/ai-toolkit/refs/heads/main/skills/frontend-harness/templates/harness/codex/hooks/pre-completion-check.py",
+      "sha256": "f15092aa4435bed5b2b6b94fd7abf1a35e00a82f1d54d4f8b0d9579bbad1e480"
+    },
+    {
+      "path": "root/.codex/hooks/convention-check.py",
+      "url": "https://raw.githubusercontent.com/Happyileaf/ai-toolkit/refs/heads/main/skills/frontend-harness/templates/harness/codex/hooks/convention-check.py",
+      "sha256": "dd3ff76d5e15f52ab41fd226e851ac7196650a9d86dc9c87438b78ed018ce665"
+    },
+    {
+      "path": "root/.claude/settings.json",
+      "url": "https://raw.githubusercontent.com/Happyileaf/ai-toolkit/refs/heads/main/skills/frontend-harness/templates/harness/settings.json",
+      "sha256": "939d241ac76fa8184f43cea84a2e6caa3a4e3206b36a2b47dafb214cff2a789f",
+      "merge_strategy": "claude_settings"
+    },
+    {
+      "path": "root/.claude/hooks/context-injector.py",
+      "url": "https://raw.githubusercontent.com/Happyileaf/ai-toolkit/refs/heads/main/skills/frontend-harness/templates/harness/hooks/context-injector.py",
+      "sha256": "b390c49ba51551d0cb0049651f950117f3d9a6fb87247ae2338ce84a4b3046f5"
+    },
+    {
+      "path": "root/.claude/hooks/loop-detector.py",
+      "url": "https://raw.githubusercontent.com/Happyileaf/ai-toolkit/refs/heads/main/skills/frontend-harness/templates/harness/hooks/loop-detector.py",
+      "sha256": "f75ae7567623364b3a2a4b431e3d4bb230d8768b275fe7ef31d2f3c5b94fc621"
+    },
+    {
+      "path": "root/.claude/hooks/pre-completion-check.py",
+      "url": "https://raw.githubusercontent.com/Happyileaf/ai-toolkit/refs/heads/main/skills/frontend-harness/templates/harness/hooks/pre-completion-check.py",
+      "sha256": "f15092aa4435bed5b2b6b94fd7abf1a35e00a82f1d54d4f8b0d9579bbad1e480"
+    },
+    {
+      "path": "root/.claude/hooks/convention-check.py",
+      "url": "https://raw.githubusercontent.com/Happyileaf/ai-toolkit/refs/heads/main/skills/frontend-harness/templates/harness/hooks/convention-check.py",
+      "sha256": "dd3ff76d5e15f52ab41fd226e851ac7196650a9d86dc9c87438b78ed018ce665"
+    },
+    {
+      "path": "root/.claude/agents/planner.md",
+      "url": "https://raw.githubusercontent.com/Happyileaf/ai-toolkit/refs/heads/main/skills/frontend-harness/templates/harness/agents/planner.md",
+      "sha256": "f39e95ac46100b38240b68f68cfd10d77f045e05326deafe3999ef80ffa3a231"
+    },
+    {
+      "path": "root/.claude/agents/generator.md",
+      "url": "https://raw.githubusercontent.com/Happyileaf/ai-toolkit/refs/heads/main/skills/frontend-harness/templates/harness/agents/generator.md",
+      "sha256": "c75e53ac46ac5f2999b1f24529941a7afcc0e2f59193993e0f4ae5b0c49b34fd"
+    },
+    {
+      "path": "root/.claude/agents/evaluator.md",
+      "url": "https://raw.githubusercontent.com/Happyileaf/ai-toolkit/refs/heads/main/skills/frontend-harness/templates/harness/agents/evaluator.md",
+      "sha256": "3f9eb409b1bbc14ef131ff044071f9dd92f0660dfe9090a5f5f98681b9d0ea84"
+    },
+    {
+      "path": "root/.claude/agents/doc-gardener.md",
+      "url": "https://raw.githubusercontent.com/Happyileaf/ai-toolkit/refs/heads/main/skills/frontend-harness/templates/harness/agents/doc-gardener.md",
+      "sha256": "32496d9fc06d2eed247211af768eb3270082963e68eaa742ecb72ea2de4df999"
+    },
+    {
+      "path": "root/.claude/commands/plan.md",
+      "url": "https://raw.githubusercontent.com/Happyileaf/ai-toolkit/refs/heads/main/skills/frontend-harness/templates/harness/commands/plan.md",
+      "sha256": "2ad963f920f5d2f623785a8c311c8292f3dc8e9f56c69d2b6d74c6dc15113b91"
+    },
+    {
+      "path": "root/.claude/commands/build.md",
+      "url": "https://raw.githubusercontent.com/Happyileaf/ai-toolkit/refs/heads/main/skills/frontend-harness/templates/harness/commands/build.md",
+      "sha256": "476d44acff26905ed5345bd010a4773b750098479aca60901093d4943298bae2"
+    },
+    {
+      "path": "root/.claude/commands/qa.md",
+      "url": "https://raw.githubusercontent.com/Happyileaf/ai-toolkit/refs/heads/main/skills/frontend-harness/templates/harness/commands/qa.md",
+      "sha256": "03409124464832a5efa3da430014391053956b51a2d945b6296cb3f5e6794f49"
+    },
+    {
+      "path": "root/.claude/commands/sprint.md",
+      "url": "https://raw.githubusercontent.com/Happyileaf/ai-toolkit/refs/heads/main/skills/frontend-harness/templates/harness/commands/sprint.md",
+      "sha256": "912cfb8500cb62ab69ecdeba0de123fbe6cd05843a9823a207c601f63fa3d8f1"
+    }
+  ]
+}
