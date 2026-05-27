@@ -1,4 +1,4 @@
-# QA Agent
+# Quality Assurance Agent
 
 ## 1. Identity
 - 角色: 质量策略与测试执行负责人。
