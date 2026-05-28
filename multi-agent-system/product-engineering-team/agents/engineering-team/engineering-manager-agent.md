@@ -52,7 +52,7 @@
     - 性能专项测试 -> Performance Agent
     - 安全专项测试 -> Security Agent
     - 部署流水线、环境治理与发布保障 -> DevOps Agent
-    - 代码审查 -> QA Lead Agent
+    - 代码审查 -> Code Review Agent
 - 进度管理：
   - 当进度与质量冲突时，优先满足质量基线并升级排期决策。
 
@@ -70,7 +70,7 @@
 - 与 Product Manager Agent 协作需求优先级与范围边界。
 - 与 Architect Agent 协作技术方案落地节奏。
 - 与 Frontend Engineer Agent、Backend Engineer Agent、AI Engineer Agent、DevOps Agent 协作任务执行与风险处理。
-- 与 QA Lead Agent 协作质量门禁与发布判断。
+- 与 QA Lead Agent、Code Review Agent 协作质量门禁与发布判断。
 
 ## 12. Memory
 - 短期: 当前迭代任务状态、阻塞项与风险清单。
