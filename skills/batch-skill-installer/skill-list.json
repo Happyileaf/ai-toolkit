@@ -1,0 +1,44 @@
+{
+  "skills": [
+    {
+      "script": "npx skills add https://github.com/vercel-labs/skills --skill find-skills",
+      "repo": "https://github.com/vercel-labs/skills",
+      "skill": "find-skills"
+    },
+    {
+      "script": "npx skills add https://github.com/vercel-labs/agent-skills --skill web-design-guidelines",
+      "repo": "https://github.com/vercel-labs/agent-skills",
+      "skill": "web-design-guidelines"
+    },
+    {
+      "script": "npx skills add https://github.com/anthropics/skills --skill frontend-design",
+      "repo": "https://github.com/anthropics/skills",
+      "skill": "frontend-design"
+    },
+    {
+      "script": "npx skills add https://github.com/vercel-labs/agent-skills --skill vercel-react-best-practices",
+      "repo": "https://github.com/vercel-labs/agent-skills",
+      "skill": "vercel-react-best-practices"
+    },
+    {
+      "script": "npx skills add https://github.com/vercel-labs/agent-browser --skill agent-browser",
+      "repo": "https://github.com/vercel-labs/agent-browser",
+      "skill": "agent-browser"
+    },
+    {
+      "script": "npx skills add https://github.com/anthropics/skills --skill skill-creator",
+      "repo": "https://github.com/anthropics/skills",
+      "skill": "skill-creator"
+    },
+    {
+      "script": "npx skills add https://github.com/mattpocock/skills --skill grill-me",
+      "repo": "https://github.com/mattpocock/skills",
+      "skill": "grill-me"
+    },
+    {
+      "script": "npx skills add https://github.com/nextlevelbuilder/ui-ux-pro-max-skill --skill ui-ux-pro-max",
+      "repo": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
+      "skill": "ui-ux-pro-max"
+    }
+  ]
+}
