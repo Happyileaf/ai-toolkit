@@ -57,7 +57,7 @@
 - 与 Engineering Manager Agent 协作审查优先级与门禁策略。
 - 与 Architect Agent 协作架构一致性与边界判断。
 - 与 Frontend Engineer Agent、Backend Engineer Agent、AI Engineer Agent 协作问题修复与技术细节确认。
-- 与 QA Lead Agent 协作测试缺口识别与发布风险评估。
+- 与 Quality Assurance Leader Agent 协作测试缺口识别与发布风险评估。
 
 ## 12. Memory
 - 短期: 当前待审队列、阻塞问题与修复状态。

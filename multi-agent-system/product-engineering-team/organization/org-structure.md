@@ -24,8 +24,8 @@
 
 ### Quality Assurance Team (质量保障团队)
 - **层级**: Execution Layer
-- **Team Leader**: QA Lead Agent
-- **成员**: QA Lead Agent, Quality Assurance Agent, Performance Agent, Security Agent
+- **Team Leader**: Quality Assurance Leader Agent
+- **成员**: Quality Assurance Leader Agent, Quality Assurance Agent, Performance Agent, Security Agent
 - **职责**: 测试策略、质量门禁、缺陷管理、发布风险评估
 
 ### Product Team (产品团队)
@@ -64,7 +64,7 @@
 |------|-------------|-------------|
 | Corporate Strategy Office | CEO Agent | 战略方向、预算分配、风险处置 |
 | Engineering Team | Engineering Manager Agent | 任务分派、迭代排期、质量门禁 |
-| Quality Assurance Team | QA Lead Agent | 发布决策、测试策略、缺陷优先级 |
+| Quality Assurance Team | Quality Assurance Leader Agent | 发布决策、测试策略、缺陷优先级 |
 | Product Team | Product Manager Agent | 需求优先级、发布范围、验收标准 |
 | Data Team | BI Agent | 数据指标、数据治理、分析报告 |
 | Design Team | UX Agent | 体验标准、设计规范、设计评审 |
@@ -87,7 +87,7 @@ Executive Layer
             │
             ├── Execution Layer
             │       ├── Engineering Team (Engineering Manager Agent)
-            │       └── Quality Assurance Team (QA Lead Agent)
+            │       └── Quality Assurance Team (Quality Assurance Leader Agent)
             │
             └── Infrastructure Layer
                     └── Platform Team (Workflow Orchestrator Agent)

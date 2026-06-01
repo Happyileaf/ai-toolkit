@@ -6,7 +6,7 @@
 - 所属层级: Execution Layer
 
 ## 2. Team Leader
-- 角色: QA Lead Agent
+- 角色: Quality Assurance Leader Agent
 - 核心职责:
   - 定义测试策略与发布质量门禁
   - 协调缺陷分诊与严重级别管理
