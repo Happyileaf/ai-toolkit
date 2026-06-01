@@ -7,9 +7,18 @@ description: Quickly install a maintained list of skills with `npx skills add <r
 
 Maintain and install a predefined skill list from a JSON file.
 
+## Quick Start
+
+Choose the appropriate script for your platform:
+
+| Platform | Script | Command |
+|----------|--------|---------|
+| macOS / Linux | Bash/Zsh | `./scripts/install.sh` |
+| Windows | PowerShell | `.\scripts\install.ps1` |
+
 ## Maintained Skill List (JSON)
 
-Maintain list in `skill-list.json` in the same folder:
+Maintain list in `skill-list.json`:
 
 ```json
 {
@@ -18,7 +27,7 @@ Maintain list in `skill-list.json` in the same folder:
       "script": "npx skills add https://github.com/vercel-labs/skills --skill find-skills",
       "repo": "https://github.com/vercel-labs/skills",
       "skill": "find-skills"
-    },
+    }
   ]
 }
 ```
@@ -43,53 +52,16 @@ npx skills add <repo> --skill <skill>
 4. If one item still fails, continue installing the rest and report failures clearly.
 5. At the end, summarize installed and failed items.
 
-## PowerShell Batch Command Template (Read JSON)
+## Scripts
 
-Use this template for fast execution:
+Scripts are located in the `scripts/` folder:
 
-```powershell
-$skillListPath = Join-Path (Get-Location) "skill-list.json"
-$config = Get-Content -Raw -LiteralPath $skillListPath | ConvertFrom-Json
-$skillList = $config.skills
+- `install.sh` - Bash/Zsh script for macOS and Linux
+- `install.ps1` - PowerShell script for Windows
 
-$ok = @()
-$failed = @()
+Both scripts include:
 
-foreach ($item in $skillList) {
-  $itemId = if ($item.skill) { "$($item.repo)#$($item.skill)" } else { "$($item.script)" }
-  $installed = $false
-
-  if ($item.script) {
-    try {
-      Invoke-Expression $item.script
-      if ($LASTEXITCODE -eq 0) {
-        $ok += $itemId
-        $installed = $true
-      }
-    } catch {
-      # fallback below
-    }
-  }
-
-  if ($installed) { continue }
-
-  if (-not $item.repo -or -not $item.skill) {
-    $failed += $itemId
-    continue
-  }
-
-  try {
-    npx skills add $item.repo --skill $item.skill
-    if ($LASTEXITCODE -eq 0) {
-      $ok += $itemId
-    } else {
-      $failed += $itemId
-    }
-  } catch {
-    $failed += $itemId
-  }
-}
-
-Write-Host "Installed:" ($ok -join ", ")
-Write-Host "Failed:" ($failed -join ", ")
-```
+- Dependency checking (npx, jq)
+- Colored output
+- Detailed logging
+- Error handling with fallback
