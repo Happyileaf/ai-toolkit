@@ -65,7 +65,7 @@ function Install-Skill {
   
   if ($script) {
     try {
-      Invoke-Expression $script
+      Invoke-Expression "$script -g"
       if ($LASTEXITCODE -eq 0) {
         Write-Success $itemId
         return $true
@@ -77,7 +77,7 @@ function Install-Skill {
   
   if ($repo -and $skill) {
     try {
-      npx skills add $repo --skill $skill
+      npx skills add $repo --skill $skill -g
       if ($LASTEXITCODE -eq 0) {
         Write-Success $itemId
         return $true

@@ -95,7 +95,8 @@ install_skill() {
   info "Installing: $item_id"
   
   if [ -n "$script" ]; then
-    if eval "$script" 2>> "$LOG_FILE"; then
+    local global_script="${script} -g"
+    if eval "$global_script" 2>> "$LOG_FILE"; then
       success "$item_id"
       return 0
     else
@@ -104,7 +105,7 @@ install_skill() {
   fi
   
   if [ -n "$repo" ] && [ -n "$skill" ]; then
-    if npx skills add "$repo" --skill "$skill" 2>> "$LOG_FILE"; then
+    if npx skills add "$repo" --skill "$skill" -g 2>> "$LOG_FILE"; then
       success "$item_id"
       return 0
     else
