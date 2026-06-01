@@ -13,50 +13,66 @@
 ### Corporate Strategy Office (企业战略办公室)
 - **层级**: Executive Layer
 - **Team Leader**: CEO Agent
-- **成员**: CEO Agent, Orchestrator Agent
-- **职责**: 战略规划、资源分配、跨团队协调
+- **成员**:
+  - CEO Agent
+  - Orchestrator Agent
 
 ### Engineering Team (工程团队)
 - **层级**: Execution Layer
 - **Team Leader**: Engineering Manager Agent
-- **成员**: Engineering Manager Agent, Architect Agent, Frontend Engineer Agent, Backend Engineer Agent, AI Engineer Agent, DevOps Agent, Code Review Agent
-- **职责**: 技术实现、架构设计、代码开发、部署运维
+- **成员**:
+  - Engineering Manager Agent
+  - Architect Agent
+  - Frontend Engineer Agent
+  - Backend Engineer Agent
+  - AI Engineer Agent
+  - DevOps Agent
+  - Code Review Agent
 
 ### Quality Assurance Team (质量保障团队)
 - **层级**: Execution Layer
 - **Team Leader**: Quality Assurance Leader Agent
-- **成员**: Quality Assurance Leader Agent, Quality Assurance Agent, Performance Agent, Security Agent
-- **职责**: 测试策略、质量门禁、缺陷管理、发布风险评估
+- **成员**:
+  - Quality Assurance Leader Agent
+  - Quality Assurance Agent
+  - Performance Agent
+  - Security Agent
 
 ### Product Team (产品团队)
 - **层级**: Functional Layer
 - **Team Leader**: Product Manager Agent
-- **成员**: Product Manager Agent, Requirement Analyst Agent, User Research Agent
-- **职责**: 需求发现、产品规划、PRD编写、验收标准定义
+- **成员**:
+  - Product Manager Agent
+  - Requirement Analyst Agent
+  - User Research Agent
 
 ### Data Team (数据团队)
 - **层级**: Functional Layer
 - **Team Leader**: BI Agent
-- **成员**: BI Agent, Data Analyst Agent
-- **职责**: 数据分析、商业智能、数据治理
+- **成员**:
+  - BI Agent
+  - Data Analyst Agent
 
 ### Design Team (设计团队)
 - **层级**: Functional Layer
 - **Team Leader**: UX Agent
-- **成员**: UX Agent, UI Design Agent
-- **职责**: 用户体验设计、界面设计、设计规范
+- **成员**:
+  - UX Agent
+  - UI Design Agent
 
 ### Platform Team (平台团队)
 - **层级**: Infrastructure Layer
 - **Team Leader**: Workflow Orchestrator Agent
-- **成员**: Workflow Orchestrator Agent, Memory Manager Agent
-- **职责**: 基础设施、记忆管理、工作流编排
+- **成员**:
+  - Workflow Orchestrator Agent
+  - Memory Manager Agent
 
 ### Delivery Team (交付团队)
 - **层级**: Management Layer
 - **Team Leader**: Project Manager Agent
-- **成员**: Project Manager Agent, Release Manager Agent
-- **职责**: 项目管理、发布管理、交付协调
+- **成员**:
+  - Project Manager Agent
+  - Release Manager Agent
 
 ## Team Leader 汇总
 
