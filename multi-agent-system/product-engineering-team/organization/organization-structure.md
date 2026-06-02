@@ -74,6 +74,19 @@
   - Project Manager Agent
   - Release Manager Agent
 
+### Skills Team (技能团队)
+- **层级**: Infrastructure Layer
+- **Team Leader**: Librarian Agent
+- **成员**:
+  - Librarian Agent
+  - Skill Orchestrator Agent
+  - Discovery Agent
+  - Design Agent
+  - Generation Agent
+  - Review Agent
+  - Refactor Agent
+  - Evolution Agent
+
 ## Team Leader 汇总
 
 | 团队 | Team Leader | 核心决策权限 |
@@ -106,5 +119,6 @@ Executive Layer
             │       └── Quality Assurance Team (Quality Assurance Leader Agent)
             │
             └── Infrastructure Layer
-                    └── Platform Team (Workflow Orchestrator Agent)
+                    ├── Platform Team (Workflow Orchestrator Agent)
+                    └── Skills Team (Librarian Agent)
 ```
