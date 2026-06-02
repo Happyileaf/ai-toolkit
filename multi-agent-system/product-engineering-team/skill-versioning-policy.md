@@ -1,6 +1,8 @@
 # Skill 版本管理规范
 
-> Librarian Agent 版本发布与管理的依据
+> Skills Team - Librarian Agent 版本发布与管理的依据
+
+**Owner**: skills-team
 
 ## 语义化版本规范
 

@@ -85,11 +85,11 @@ Level 2: CEO Agent (Executive)
 ## 9. Supporting Documents
 | 文档 | 路径 | 用途 |
 |------|------|------|
-| 质量检查清单 | [`../quality-checklist.md`](../quality-checklist.md) | Review Agent 评分标准 |
-| 版本管理规范 | [`../versioning-policy.md`](../versioning-policy.md) | Librarian Agent 发布依据 |
-| Agent 通信协议 | [`../protocols/agent-communication.md`](../protocols/agent-communication.md) | Agent 间消息传递规范 |
-| 契约 Schema | [`../schemas/*.schema.json`](../schemas/) | 数据结构验证 |
-| Skill 模板库 | [`../templates/`](../templates/) | Generation Agent 产出模板 |
+| 质量检查清单 | [`skill-quality-checklist.md`](../../skill-quality-checklist.md) | Review Agent 评分标准 |
+| 版本管理规范 | [`skill-versioning-policy.md`](../../skill-versioning-policy.md) | Librarian Agent 发布依据 |
+| Agent 通信协议 | [`protocols/skill-agent-communication.md`](../../protocols/skill-agent-communication.md) | Agent 间消息传递规范 |
+| 契约 Schema | [`schemas/skill-*.schema.json`](../../schemas/) | 数据结构验证 |
+| Skill 模板库 | [`templates/skill-template.*`](../../templates/) | Generation Agent 产出模板 |
 
 ## 10. Metadata
 - Version: 1.0

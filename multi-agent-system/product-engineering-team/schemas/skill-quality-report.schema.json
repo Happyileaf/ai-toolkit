@@ -1,7 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "QualityReport",
-  "description": "Review Agent 产出的质量报告 Schema",
+  "title": "SkillQualityReport",
+  "description": "Skills Team - Review Agent 产出的质量报告 Schema",
+  "owner": "skills-team",
   "type": "object",
   "required": ["skill_id", "score", "issues", "decision"],
   "properties": {

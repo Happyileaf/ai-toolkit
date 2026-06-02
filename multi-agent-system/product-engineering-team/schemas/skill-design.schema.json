@@ -1,7 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "SkillDesign",
-  "description": "Design Agent 产出的 Skill 设计文档 Schema",
+  "description": "Skills Team - Design Agent 产出的 Skill 设计文档 Schema",
+  "owner": "skills-team",
   "type": "object",
   "required": ["skill_id", "title", "scope", "interface_contract", "dependencies"],
   "properties": {

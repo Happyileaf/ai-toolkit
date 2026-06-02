@@ -1,7 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "ReleaseRecord",
-  "description": "Librarian Agent 产出的发布记录 Schema",
+  "title": "SkillReleaseRecord",
+  "description": "Skills Team - Librarian Agent 产出的发布记录 Schema",
+  "owner": "skills-team",
   "type": "object",
   "required": ["skill_id", "version", "released_at", "status"],
   "properties": {

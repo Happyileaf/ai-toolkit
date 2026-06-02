@@ -1,6 +1,8 @@
 # Skill 质量检查清单
 
-> Review Agent 评分标准与检查项定义
+> Skills Team - Review Agent 评分标准与检查项定义
+
+**Owner**: skills-team
 
 ## 评分构成
 

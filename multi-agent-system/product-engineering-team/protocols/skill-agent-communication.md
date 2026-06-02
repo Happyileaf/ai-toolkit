@@ -1,6 +1,8 @@
-# Agent 通信协议
+# Skills Team Agent 通信协议
 
 > Skills Team 内部 Agent 间的消息传递规范
+
+**Owner**: skills-team
 
 ## 消息格式
 
@@ -138,11 +140,11 @@ publish_subscribe:
 
 | Payload 类型 | Schema |
 |--------------|--------|
-| skill_proposal | `skill-proposal.schema.json` |
-| skill_design | `skill-design.schema.json` |
-| skill_package | `skill-package.schema.json` |
-| quality_report | `quality-report.schema.json` |
-| release_record | `release-record.schema.json` |
+| skill_proposal | `schemas/skill-proposal.schema.json` |
+| skill_design | `schemas/skill-design.schema.json` |
+| skill_package | `schemas/skill-package.schema.json` |
+| skill_quality_report | `schemas/skill-quality-report.schema.json` |
+| skill_release_record | `schemas/skill-release-record.schema.json` |
 
 ### 必填字段检查
 

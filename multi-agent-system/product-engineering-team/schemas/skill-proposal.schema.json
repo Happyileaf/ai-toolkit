@@ -1,7 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "SkillProposal",
-  "description": "Discovery Agent 产出的 Skill 提案 Schema",
+  "description": "Skills Team - Discovery Agent 产出的 Skill 提案 Schema",
+  "owner": "skills-team",
   "type": "object",
   "required": ["id", "title", "scenario", "value_assessment", "priority", "data_sources"],
   "properties": {

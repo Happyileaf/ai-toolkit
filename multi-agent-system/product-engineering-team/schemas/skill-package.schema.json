@@ -1,7 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "SkillPackage",
-  "description": "Generation Agent 产出的 Skill 文件包 Schema",
+  "description": "Skills Team - Generation Agent 产出的 Skill 文件包 Schema",
+  "owner": "skills-team",
   "type": "object",
   "required": ["skill_id", "files", "metadata"],
   "properties": {
