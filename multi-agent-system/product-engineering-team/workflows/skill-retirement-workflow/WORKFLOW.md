@@ -103,7 +103,7 @@ request → dependency_check → announcement → execution → cleanup
 
 ```text
 请按 workflow 入口文件执行：
-/Users/apple/Desktop/project/ai-toolkit/multi-agent-system/product-engineering-team/workflows/skill-retirement-workflow/WORKFLOW.md
+./workflows/skill-retirement-workflow/WORKFLOW.md
 
 输入参数：
 - skill_id: SKILL-002

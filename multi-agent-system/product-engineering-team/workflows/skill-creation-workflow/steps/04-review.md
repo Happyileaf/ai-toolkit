@@ -21,7 +21,7 @@ failure_step: steps/03-generation.md
 
 ## Responsible Agent
 
-**Review Agent** - 参考: `/Users/apple/Desktop/project/ai-toolkit/multi-agent-system/product-engineering-team/agents/skills-team/review-agent.md`
+**Review Agent** - 参考: `../../agents/skills-team/review-agent.md`
 
 ## Input Requirements
 

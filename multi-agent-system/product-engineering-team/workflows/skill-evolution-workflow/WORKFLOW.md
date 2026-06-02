@@ -100,7 +100,7 @@ feedback_collection → analysis → proposal → review → release
 
 ```text
 请按 workflow 入口文件执行：
-/Users/apple/Desktop/project/ai-toolkit/multi-agent-system/product-engineering-team/workflows/skill-evolution-workflow/WORKFLOW.md
+./workflows/skill-evolution-workflow/WORKFLOW.md
 
 输入参数：
 - feedback_sources: [bug, user_feedback]

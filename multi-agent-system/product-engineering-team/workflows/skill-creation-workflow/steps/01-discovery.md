@@ -21,7 +21,7 @@ failure_step: null
 
 ## Responsible Agent
 
-**Discovery Agent** - 参考: `/Users/apple/Desktop/project/ai-toolkit/multi-agent-system/product-engineering-team/agents/skills-team/discovery-agent.md`
+**Discovery Agent** - 参考: `../../agents/skills-team/discovery-agent.md`
 
 ## Input Requirements
 

@@ -118,7 +118,7 @@ discovery → design → generation → review → registration → release
 
 ```text
 请按 workflow 入口文件执行：
-/Users/apple/Desktop/project/ai-toolkit/multi-agent-system/product-engineering-team/workflows/skill-creation-workflow/WORKFLOW.md
+./workflows/skill-creation-workflow/WORKFLOW.md
 
 输入参数：
 - source_type: user_request

@@ -20,7 +20,7 @@ failure_step: null
 
 ## Responsible Agent
 
-**Librarian Agent** - 参考: `/Users/apple/Desktop/project/ai-toolkit/multi-agent-system/product-engineering-team/agents/skills-team/librarian-agent.md`
+**Librarian Agent** - 参考: `../../agents/skills-team/librarian-agent.md`
 
 ## Input Requirements
 
