@@ -1,0 +1,91 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SkillProposal",
+  "description": "Discovery Agent 产出的 Skill 提案 Schema",
+  "type": "object",
+  "required": ["id", "title", "scenario", "value_assessment", "priority", "data_sources"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^PROP-[0-9]{4}$",
+      "description": "提案唯一标识"
+    },
+    "title": {
+      "type": "string",
+      "maxLength": 100,
+      "description": "Skill 名称"
+    },
+    "scenario": {
+      "type": "string",
+      "minLength": 50,
+      "description": "使用场景描述"
+    },
+    "value_assessment": {
+      "type": "object",
+      "required": ["frequency", "complexity", "reuse_potential"],
+      "properties": {
+        "frequency": {
+          "type": "string",
+          "enum": ["high", "medium", "low"],
+          "description": "使用频率"
+        },
+        "complexity": {
+          "type": "string",
+          "enum": ["high", "medium", "low"],
+          "description": "实现复杂度"
+        },
+        "reuse_potential": {
+          "type": "string",
+          "enum": ["cross-team", "single-team", "personal"],
+          "description": "复用潜力"
+        },
+        "estimated_value": {
+          "type": "string",
+          "enum": ["高", "中", "低"],
+          "description": "预估价值"
+        }
+      }
+    },
+    "priority": {
+      "type": "string",
+      "enum": ["P0", "P1", "P2"],
+      "description": "优先级"
+    },
+    "data_sources": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "description": "数据来源列表"
+    },
+    "success_metrics": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 2,
+      "description": "成功指标"
+    },
+    "constraints": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "约束条件"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "submitted", "accepted", "rejected", "observing"],
+      "description": "提案状态"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

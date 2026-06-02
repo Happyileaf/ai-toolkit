@@ -1,0 +1,72 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ReleaseRecord",
+  "description": "Librarian Agent 产出的发布记录 Schema",
+  "type": "object",
+  "required": ["skill_id", "version", "released_at", "status"],
+  "properties": {
+    "skill_id": {
+      "type": "string",
+      "pattern": "^SKILL-[0-9]{3}$"
+    },
+    "skill_name": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "released_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "release_type": {
+      "type": "string",
+      "enum": ["new", "patch", "minor", "major", "retired"]
+    },
+    "quality_score": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "dependencies": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "changelog": {
+      "type": "string",
+      "description": "变更日志摘要"
+    },
+    "announcement": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "content": {
+          "type": "string"
+        },
+        "channels": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": ["active", "beta", "retired"]
+    },
+    "registered_by": {
+      "type": "string",
+      "default": "Librarian Agent"
+    },
+    "rollback_plan": {
+      "type": "string",
+      "description": "回滚方案"
+    }
+  }
+}

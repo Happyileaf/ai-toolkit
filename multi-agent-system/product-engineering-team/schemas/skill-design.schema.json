@@ -1,0 +1,174 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SkillDesign",
+  "description": "Design Agent 产出的 Skill 设计文档 Schema",
+  "type": "object",
+  "required": ["skill_id", "title", "scope", "interface_contract", "dependencies"],
+  "properties": {
+    "skill_id": {
+      "type": "string",
+      "pattern": "^SKILL-[0-9]{3}$",
+      "description": "Skill ID"
+    },
+    "title": {
+      "type": "string",
+      "maxLength": 100,
+      "description": "Skill 名称"
+    },
+    "scope": {
+      "type": "object",
+      "required": ["includes", "excludes"],
+      "properties": {
+        "includes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "maxItems": 3,
+          "description": "职责列表（最多3项）"
+        },
+        "excludes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "不做的事项"
+        }
+      }
+    },
+    "interface_contract": {
+      "type": "object",
+      "required": ["inputs", "outputs", "triggers"],
+      "properties": {
+        "inputs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "type", "required"],
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string",
+                "enum": ["string", "object", "array", "boolean", "number"]
+              },
+              "required": {
+                "type": "boolean"
+              },
+              "default": {},
+              "description": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "outputs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "type", "description"],
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string",
+                "enum": ["string", "object", "array", "boolean", "number"]
+              },
+              "description": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "triggers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["condition"],
+            "properties": {
+              "condition": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "dependencies": {
+      "type": "object",
+      "required": ["required", "depth"],
+      "properties": {
+        "required": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^SKILL-[0-9]{3}$"
+          },
+          "description": "必需依赖"
+        },
+        "optional": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^SKILL-[0-9]{3}$"
+          },
+          "description": "可选依赖"
+        },
+        "depth": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3,
+          "description": "依赖深度（最多3层）"
+        }
+      }
+    },
+    "risk_assessment": {
+      "type": "object",
+      "properties": {
+        "technical_risks": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "dependency_risks": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "mitigation_strategies": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "naming_convention": {
+      "type": "object",
+      "required": ["skill_name", "category"],
+      "properties": {
+        "skill_name": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]*$",
+          "description": "Skill 名称（小写，用-分隔）"
+        },
+        "category": {
+          "type": "string",
+          "description": "分类"
+        }
+      }
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

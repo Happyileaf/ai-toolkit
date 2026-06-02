@@ -1,0 +1,131 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "QualityReport",
+  "description": "Review Agent 产出的质量报告 Schema",
+  "type": "object",
+  "required": ["skill_id", "score", "issues", "decision"],
+  "properties": {
+    "skill_id": {
+      "type": "string",
+      "pattern": "^SKILL-[0-9]{3}$"
+    },
+    "score": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "质量评分（0-100）"
+    },
+    "score_breakdown": {
+      "type": "object",
+      "properties": {
+        "compliance": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 30,
+          "description": "规范合规得分（30%）"
+        },
+        "documentation": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 25,
+          "description": "文档完整性得分（25%）"
+        },
+        "examples": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 25,
+          "description": "示例可执行性得分（25%）"
+        },
+        "dependencies": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 20,
+          "description": "依赖正确性得分（20%）"
+        }
+      }
+    },
+    "issues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "category", "severity", "description"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^ISSUE-[0-9]{3}$"
+          },
+          "category": {
+            "type": "string",
+            "enum": ["规范", "文档", "示例", "依赖", "安全"]
+          },
+          "severity": {
+            "type": "string",
+            "enum": ["blocking", "warning", "suggestion"],
+            "description": "blocking 必须修复"
+          },
+          "description": {
+            "type": "string"
+          },
+          "fix_suggestion": {
+            "type": "string"
+          },
+          "location": {
+            "type": "string",
+            "description": "问题位置（文件名或行号）"
+          }
+        }
+      }
+    },
+    "blocking_issues": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "阻塞问题列表（有阻塞问题必须修复）"
+    },
+    "passed_checks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "warning_checks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "decision": {
+      "type": "object",
+      "required": ["status", "reason", "next_action"],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": ["pass", "fail", "pending", "escalate"],
+          "description": "审核决策"
+        },
+        "reason": {
+          "type": "string",
+          "description": "决策理由"
+        },
+        "retry_count": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3
+        },
+        "next_action": {
+          "type": "string",
+          "enum": ["registration", "generation_retry", "manual_review", "arbitration"]
+        }
+      }
+    },
+    "reviewer": {
+      "type": "string",
+      "default": "Review Agent"
+    },
+    "check_time": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

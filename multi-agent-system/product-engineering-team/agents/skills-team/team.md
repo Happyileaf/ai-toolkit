@@ -48,7 +48,50 @@
 - 生成验证: Generation Agent 产出需通过自动化测试
 - 发布审批: Librarian Agent 确认所有检查通过后发布
 
-## 7. Metadata
+## 7. Arbitration Mechanism
+详见 [`arbitration-mechanism.md`](./arbitration-mechanism.md)
+
+### 仲裁层级
+```
+Level 1: Librarian Agent (Team Leader)
+    - 处理审核争议、依赖冲突、发布争议
+    
+Level 2: CEO Agent (Executive)
+    - 处理战略分歧、重大架构决策
+```
+
+### 仲裁触发场景
+| 场景 | 升级路径 |
+|------|----------|
+| Design vs Review 冲突 | Librarian Agent 仲裁 |
+| 连续审核失败 (3 次) | Librarian Agent 仲裁 |
+| 依赖冲突 | Librarian Agent 协调 |
+| 战略分歧 | CEO Agent 仲裁 |
+
+## 8. Emergency Release
+详见 [`../workflows/skill-emergency-release.md`](../workflows/skill-emergency-release.md)
+
+### 紧急发布条件
+| 类型 | 时间要求 |
+|------|----------|
+| 安全问题 | 24 小时内 |
+| 重大 Bug (>50% 用户) | 48 小时内 |
+
+### 紧急流程
+- 跳过 Discovery/Design 步骤
+- Review 仅检查阻塞项
+- 立即发布，无窗口限制
+
+## 9. Supporting Documents
+| 文档 | 路径 | 用途 |
+|------|------|------|
+| 质量检查清单 | [`../quality-checklist.md`](../quality-checklist.md) | Review Agent 评分标准 |
+| 版本管理规范 | [`../versioning-policy.md`](../versioning-policy.md) | Librarian Agent 发布依据 |
+| Agent 通信协议 | [`../protocols/agent-communication.md`](../protocols/agent-communication.md) | Agent 间消息传递规范 |
+| 契约 Schema | [`../schemas/*.schema.json`](../schemas/) | 数据结构验证 |
+| Skill 模板库 | [`../templates/`](../templates/) | Generation Agent 产出模板 |
+
+## 10. Metadata
 - Version: 1.0
 - Owner: Skills Team
 - Last Updated: 2026-06-02

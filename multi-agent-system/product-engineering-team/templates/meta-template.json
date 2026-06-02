@@ -1,0 +1,20 @@
+{
+  "name": "{{skill_name}}",
+  "description": "{{skill_description}}",
+  "version": "1.0.0",
+  "entry": "SKILL.md",
+  "status": "active",
+  "type": "skill",
+  "category": "{{category}}",
+  "tags": ["{{tag1}}", "{{tag2}}"],
+  "dependencies": ["{{dependency_list}}"],
+  "inputs": ["{{input_list}}"],
+  "outputs": ["{{output_list}}"],
+  "requires_tools": ["{{tool_list}}"],
+  "metadata": {
+    "quality_score": null,
+    "created_at": "{{date}}",
+    "updated_at": "{{date}}",
+    "owner": "Skills Team"
+  }
+}
