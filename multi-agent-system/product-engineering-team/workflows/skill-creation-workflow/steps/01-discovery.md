@@ -21,7 +21,7 @@ failure_step: null
 
 ## Responsible Agent
 
-**Discovery Agent** - 参考: `../../agents/skills-team/discovery-agent.md`
+**Discovery Agent** - 参考: `../../../agents/skills-team/discovery-agent.md`
 
 ## Input Requirements
 

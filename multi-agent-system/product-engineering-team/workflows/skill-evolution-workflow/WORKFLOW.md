@@ -12,11 +12,11 @@ tags:
   - improvement
   - feedback-loop
 dependencies:
-  - agents/skills-team/evolution-agent.md
-  - agents/skills-team/refactor-agent.md
-  - agents/skills-team/review-agent.md
-  - agents/skills-team/librarian-agent.md
-  - agents/skills-team/skill-orchestrator-agent.md
+  - ../../agents/skills-team/evolution-agent.md
+  - ../../agents/skills-team/refactor-agent.md
+  - ../../agents/skills-team/review-agent.md
+  - ../../agents/skills-team/librarian-agent.md
+  - ../../agents/skills-team/skill-orchestrator-agent.md
 steps:
   - steps/01-feedback-collection.md
   - steps/02-analysis.md

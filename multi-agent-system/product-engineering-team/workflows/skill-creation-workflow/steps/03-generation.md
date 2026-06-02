@@ -21,7 +21,7 @@ failure_step: steps/02-design.md
 
 ## Responsible Agent
 
-**Generation Agent** - 参考: `../../agents/skills-team/generation-agent.md`
+**Generation Agent** - 参考: `../../../agents/skills-team/generation-agent.md`
 
 ## Input Requirements
 
