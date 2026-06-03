@@ -1,0 +1,60 @@
+{
+  "name": "frontend-dev-env-bootstrap",
+  "description": "Bootstrap frontend development environment on macOS 13+ and Ubuntu/Debian with idempotent install flow and structured output contract.",
+  "version": "1.0.0",
+  "entry": "SKILL.md",
+  "status": "active",
+  "type": "skill",
+  "category": "environment-setup",
+  "tags": [
+    "frontend",
+    "bootstrap",
+    "environment",
+    "macos",
+    "linux",
+    "idempotent"
+  ],
+  "dependencies": [
+    "bash>=3.2",
+    "curl>=7.0",
+    "git>=2.0",
+    "powershell>=7.0 (optional for Windows boundary output)"
+  ],
+  "inputs": [
+    "target_components",
+    "node_version_policy",
+    "install_missing_brew",
+    "switch_default_shell",
+    "force_upgrade",
+    "dry_run",
+    "allow_sudo"
+  ],
+  "outputs": [
+    "result",
+    "platform",
+    "installed_components",
+    "skipped_components",
+    "step_results",
+    "error"
+  ],
+  "requires_tools": [],
+  "metadata": {
+    "quality_score": null,
+    "created_at": "2026-06-03",
+    "updated_at": "2026-06-03",
+    "owner": "Skills Team",
+    "supported_platforms": [
+      "macos-13+",
+      "ubuntu-22.04+",
+      "debian-12+"
+    ],
+    "error_codes": [
+      "E_PLATFORM_UNSUPPORTED",
+      "E_PKG_MANAGER_UNAVAILABLE",
+      "E_NETWORK_OFFLINE",
+      "E_NO_PRIVILEGE",
+      "E_INSTALL_FAILED",
+      "E_VERIFY_FAILED"
+    ]
+  }
+}
