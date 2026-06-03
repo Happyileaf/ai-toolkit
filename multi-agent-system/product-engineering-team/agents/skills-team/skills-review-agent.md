@@ -23,6 +23,7 @@
 - Skill 文件包（SKILL.md、元数据、示例、测试）。
 - 质量标准与检查清单。
 - 现有问题模式库。
+- 仓库运行上下文（仓库地址、工作根目录、资产目录、分支信息）。
 
 ## 6. Outputs
 - 质量评分报告（0-100 分）。
@@ -33,9 +34,10 @@
 1. 解析 Skill 文件包。
 2. 执行自动化检查清单。
 3. 评估文档完整性与准确性。
-4. 检测依赖风险与冲突。
-5. 计算质量评分。
-6. 产出审计报告与决策。
+4. 校验仓库、目录与 Gitflow 分支策略是否符合规范。
+5. 检测依赖风险与冲突。
+6. 计算质量评分。
+7. 产出审计报告与决策。
 
 ## 8. Decision Rules
 - 质量评分 >= 80 分且无阻塞问题则通过。
@@ -46,6 +48,7 @@
 - 必须独立客观，不受外部压力影响。
 - 所有检查项必须有明确的通过/失败标准。
 - 评分算法必须可解释。
+- 对仓库、目录、分支策略不合规的产出必须判定不通过。
 
 ## 10. Tool Access
 - 自动化检查引擎。
@@ -82,12 +85,17 @@
 - 审计效率（时间成本）。
 
 ## 17. Runtime Config
-- 检查清单: 规范合规、文档完整、示例可执行、依赖正确、无安全风险。
+- 检查清单: 规范合规、文档完整、示例可执行、依赖正确、无安全风险、仓库与目录合规、Gitflow 分支合规。
 - 评分权重: 规范 30%、文档 25%、示例 25%、依赖 20%。
 - 阻塞阈值: 安全问题、循环依赖、核心文档缺失。
+- 运行基线:
+  - `repo_url`: `git@github.com:Happyileaf/ai-toolkit.git`
+  - `workspace_root`: `multi-agent-system/product-engineering-team/`
+  - `asset_paths`: `skills/`, `workflows/`
+  - `branching_model`: Gitflow
 
 ## 18. Metadata
 - Version: 1.0
 - Owner: Skills Team
-- Last Updated: 2026-06-02
+- Last Updated: 2026-06-03
 - Tags: review, quality, audit, scoring

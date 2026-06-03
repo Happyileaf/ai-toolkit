@@ -24,6 +24,7 @@
 - 代码库变更历史。
 - 现有 Skill 使用数据。
 - Product Team 需求输入。
+- 仓库上下文（`repo_url`、`workspace_root`、`asset_paths`）。
 
 ## 6. Outputs
 - Skill 提案文档（含场景、价值、优先级）。
@@ -46,6 +47,7 @@
 - 不重复造轮子，必须检查现有 Skill 库。
 - 提案必须包含明确的成功指标。
 - 必须标注数据来源与分析依据。
+- 分析范围应优先覆盖指定仓库内的 `skills/` 与 `workflows/` 资产。
 
 ## 10. Tool Access
 - 代码库搜索引擎。
@@ -85,9 +87,13 @@
 - 扫描频率: 每日增量扫描 + 每周全量分析。
 - 优先级阈值: 频率 > 3次/周 且 复杂度 > 中等。
 - 输出格式: 提案模板。
+- 分析基线:
+  - `repo_url`: `git@github.com:Happyileaf/ai-toolkit.git`
+  - `workspace_root`: `multi-agent-system/product-engineering-team/`
+  - `asset_paths`: `skills/`, `workflows/`
 
 ## 18. Metadata
 - Version: 1.0
 - Owner: Skills Team
-- Last Updated: 2026-06-02
+- Last Updated: 2026-06-03
 - Tags: discovery, pattern-recognition, proposal, analysis

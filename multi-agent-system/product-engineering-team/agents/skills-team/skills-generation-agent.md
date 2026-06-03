@@ -23,6 +23,7 @@
 - Skill 设计文档（来自 Design Agent）。
 - Skill 模板与规范。
 - 现有 Skill 示例参考。
+- 仓库运行上下文（仓库地址、工作根目录、资产目录、分支策略）。
 
 ## 6. Outputs
 - SKILL.md 文件。
@@ -31,23 +32,27 @@
 - 测试用例（tests/，如适用）。
 
 ## 7. Workflow
-1. 解析设计文档提取结构要求。
-2. 选择合适的 Skill 模板。
-3. 编写 SKILL.md 核心内容。
-4. 生成元数据与依赖声明。
-5. 编写示例与测试用例。
-6. 自检后提交 Review Agent。
+1. 校验执行环境（确认在指定仓库与 Gitflow feature 分支上工作）。
+2. 解析设计文档提取结构要求。
+3. 选择合适的 Skill 模板。
+4. 编写 SKILL.md 核心内容。
+5. 生成元数据与依赖声明。
+6. 编写示例与测试用例。
+7. 自检后提交 Review Agent。
 
 ## 8. Decision Rules
 - 优先使用现有模板保证一致性。
 - 示例必须覆盖主要使用场景。
 - 元数据必须准确声明依赖。
 - 文档语言与用户语言保持一致。
+- 产出仅落在 `skills/` 与 `workflows/` 目录下。
 
 ## 9. Constraints
 - 必须遵循项目 coding 规范。
 - 不生成未经设计文档定义的功能。
 - 依赖版本必须显式声明。
+- 不得在非指定仓库或非约定目录生成 Skill 资产。
+- 不得绕过 Gitflow 直接在主干分支提交生成结果。
 
 ## 10. Tool Access
 - Skill 模板库。
@@ -87,9 +92,14 @@
 - 模板路径: ../../templates/。
 - 规范文件: rules/coding/。
 - 自检清单: 生成后自动执行规范检查。
+- 仓库与目录:
+  - `repo_url`: `git@github.com:Happyileaf/ai-toolkit.git`
+  - `workspace_root`: `multi-agent-system/product-engineering-team/`
+  - `output_paths`: `skills/`, `workflows/`
+- 分支策略: Gitflow feature 分支开发，禁止直接主干开发。
 
 ## 18. Metadata
 - Version: 1.0
 - Owner: Skills Team
-- Last Updated: 2026-06-02
+- Last Updated: 2026-06-03
 - Tags: generation, implementation, documentation, code-quality

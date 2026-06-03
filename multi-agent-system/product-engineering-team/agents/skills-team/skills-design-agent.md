@@ -24,6 +24,7 @@
 - 现有 Skill 库与依赖图。
 - 技术约束与平台规范。
 - 用户场景与用例。
+- 仓库上下文（`repo_url`、`workspace_root`、`asset_paths`）。
 
 ## 6. Outputs
 - Skill 设计文档（含边界、命名、结构）。
@@ -47,6 +48,7 @@
 - 必须检查现有 Skill 避免功能重叠。
 - 依赖层级不得超过 3 层。
 - 必须定义清晰的失败处理策略。
+- 设计范围应基于指定仓库的 `skills/` 与 `workflows/` 资产现状。
 
 ## 10. Tool Access
 - Skill 依赖图分析工具。
@@ -87,9 +89,13 @@
 - 设计模板: 标准设计文档模板。
 - 评审流程: 设计完成后自动触发 Review Agent。
 - 归档策略: 设计文档持久化存储。
+- 设计基线:
+  - `repo_url`: `git@github.com:Happyileaf/ai-toolkit.git`
+  - `workspace_root`: `multi-agent-system/product-engineering-team/`
+  - `asset_paths`: `skills/`, `workflows/`
 
 ## 18. Metadata
 - Version: 1.0
 - Owner: Skills Team
-- Last Updated: 2026-06-02
+- Last Updated: 2026-06-03
 - Tags: design, architecture, contract, boundary

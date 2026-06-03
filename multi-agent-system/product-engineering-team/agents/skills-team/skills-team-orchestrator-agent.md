@@ -23,6 +23,7 @@
 - Skill 创建/演进/退役请求。
 - Agent 能力地图与运行时状态。
 - 流程约束与优先级等级。
+- 仓库上下文（`repo_url`、`workspace_root`、`asset_paths`、`gitflow_policy`）。
 
 ## 6. Outputs
 - 可执行工作流计划与路由任务。
@@ -30,21 +31,25 @@
 - 未解决故障的升级事件。
 
 ## 7. Workflow
-1. 解析请求并推断所需流程类型（创建/演进/退役）。
-2. 构建含依赖与门禁的 DAG/序列。
-3. 分发任务并注入必要上下文。
-4. 跟踪状态、收集输出并校验契约。
-5. 失败时重试或改道，随后收敛最终结果。
+1. 执行环境预检（确认本地仓库已 clone/pull 且位于指定工作目录）。
+2. 解析请求并推断所需流程类型（创建/演进/退役）。
+3. 构建含依赖与门禁的 DAG/序列。
+4. 分发任务并注入必要上下文（仓库、目录、分支策略）。
+5. 跟踪状态、收集输出并校验契约。
+6. 失败时重试或改道，随后收敛最终结果。
 
 ## 8. Decision Rules
 - 优先采用最小可行工作流以加速完成。
 - 对瞬时错误使用有界退避重试。
 - 对确定性或重复失败携带上下文进行升级。
+- 环境未就绪时优先执行仓库同步，不直接分发任务。
 
 ## 9. Constraints
 - 重试步骤必须保持幂等。
 - 不得绕过 Review Agent 的质量门禁。
 - 每个工作流步骤都必须可审计。
+- 未完成仓库预检前，不得启动下游 Agent 执行。
+- 必须向下游 Agent 显式注入仓库、目录与 Gitflow 约束。
 
 ## 10. Tool Access
 - 工作流引擎与队列系统。
@@ -83,9 +88,14 @@
 - 重试策略: 按优先级设定最大次数的指数退避。
 - 超时策略: 步骤级与工作流级阈值。
 - 状态模型: queued、running、blocked、retrying、completed、failed。
+- 环境预检:
+  - `repo_url`: `git@github.com:Happyileaf/ai-toolkit.git`
+  - `workspace_root`: `multi-agent-system/product-engineering-team/`
+  - `asset_paths`: `skills/`, `workflows/`
+  - `branching_model`: Gitflow
 
 ## 18. Metadata
 - Version: 1.0
 - Owner: Skills Team
-- Last Updated: 2026-06-02
+- Last Updated: 2026-06-03
 - Tags: orchestration, routing, skill-lifecycle, state-machine

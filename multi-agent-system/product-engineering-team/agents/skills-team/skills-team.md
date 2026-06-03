@@ -91,8 +91,19 @@ Level 2: CEO Agent (Executive)
 | 契约 Schema | [`schemas/skill-*.schema.json`](../../schemas/) | 数据结构验证 |
 | Skill 模板库 | [`templates/skill-template.*`](../../templates/) | Generation Agent 产出模板 |
 
-## 10. Metadata
+## 10. Execution Context
+- 权威仓库: `git@github.com:Happyileaf/ai-toolkit.git`
+- 团队工作根目录: `multi-agent-system/product-engineering-team/`
+- Skills 资产目录: `skills/` 与 `workflows/`
+- 开工前置:
+  - 若本地不存在仓库，先 clone 到工作目录。
+  - 若本地已存在仓库，先 pull 最新默认分支。
+  - 后续任务仅在该仓库内执行。
+- 分支与发布治理: 统一遵循 Gitflow（feature/release/hotfix），禁止直接在主干分支开发。
+- 工作过程中如果默写路径找不到的文件都可以在仓库中进行查找作为兜底。
+
+## 11. Metadata
 - Version: 1.0
 - Owner: Skills Team
-- Last Updated: 2026-06-02
+- Last Updated: 2026-06-03
 - Tags: skills, asset-management, lifecycle, automation

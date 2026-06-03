@@ -23,6 +23,7 @@
 - 现有 Skill 库全量数据。
 - 使用频率与依赖关系图。
 - 用户反馈与维护成本数据。
+- 仓库运行上下文（仓库地址、工作根目录、资产目录、分支策略）。
 
 ## 6. Outputs
 - 重构提案（拆分/合并/重命名）。
@@ -30,11 +31,12 @@
 - 迁移计划与影响分析。
 
 ## 7. Workflow
-1. 扫描 Skill 库识别重构候选。
-2. 分析使用数据评估影响。
-3. 设计重构方案（拆分/合并/重命名）。
-4. 产出迁移计划与风险评估。
-5. 提交 Librarian Agent 审批。
+1. 校验执行环境（确认在指定仓库与 Gitflow 分支策略下执行）。
+2. 扫描 Skill 库识别重构候选。
+3. 分析使用数据评估影响。
+4. 设计重构方案（拆分/合并/重命名）。
+5. 产出迁移计划与风险评估。
+6. 提交 Librarian Agent 审批。
 
 ## 8. Decision Rules
 - 优先处理高维护成本、低使用率的 Skill。
@@ -46,6 +48,8 @@
 - 重构必须经过充分影响分析。
 - 不得破坏现有依赖链。
 - 必须提供清晰的迁移文档。
+- 重构改动范围需限制在 `skills/` 与 `workflows/` 资产目录内。
+- 必须遵循 Gitflow，禁止直接在主干分支执行重构提交。
 
 ## 10. Tool Access
 - Skill 依赖图分析工具。
@@ -86,9 +90,14 @@
 - 扫描频率: 每月全量扫描 + 每周增量分析。
 - 风险阈值: 影响用户 > 20% 需人工审批。
 - 兼容性策略: 保留旧版本至少 2 个大版本周期。
+- 仓库与目录:
+  - `repo_url`: `git@github.com:Happyileaf/ai-toolkit.git`
+  - `workspace_root`: `multi-agent-system/product-engineering-team/`
+  - `asset_paths`: `skills/`, `workflows/`
+- 分支模型: Gitflow（重构默认在 feature 分支推进）。
 
 ## 18. Metadata
 - Version: 1.0
 - Owner: Skills Team
-- Last Updated: 2026-06-02
+- Last Updated: 2026-06-03
 - Tags: refactor, optimization, de-duplication, restructuring

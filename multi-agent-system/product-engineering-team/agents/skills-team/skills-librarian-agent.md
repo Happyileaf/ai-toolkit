@@ -13,6 +13,7 @@
 - 治理依赖关系与冲突解决。
 - 协调团队工作流与资源分配。
 - 审批 Skill 发布与退役。
+- 治理 Gitflow 分支与发布策略（feature/release/hotfix）。
 
 ## 4. Goals & KPIs
 - Skill 索引准确率 = 100%。
@@ -26,6 +27,7 @@
 - 重构提案（来自 Refactor Agent）。
 - 更新提案（来自 Evolution Agent）。
 - 发布请求与时间表。
+- 仓库运行上下文（仓库地址、工作根目录、资产目录、分支状态）。
 
 ## 6. Outputs
 - Skill 注册记录。
@@ -45,11 +47,13 @@
 - 版本号遵循语义化版本规范。
 - 破坏性变更需提前 2 周公告。
 - 依赖变更需评估影响范围。
+- 所有发布必须通过 Gitflow（release/hotfix 分支）推进。
 
 ## 9. Constraints
 - 所有变更必须有审计记录。
 - 不得绕过质量门禁。
 - 发布必须可回滚。
+- 不得绕过 Gitflow 直接在主干分支执行发布变更。
 
 ## 10. Tool Access
 - Skill 索引管理系统。
@@ -93,9 +97,14 @@
 - 版本规范: 语义化版本（MAJOR.MINOR.PATCH）。
 - 发布节奏: 每周二、四发布窗口。
 - 保留策略: 最近 3 个大版本 + 所有 PATCH 版本。
+- 仓库与目录:
+  - `repo_url`: `git@github.com:Happyileaf/ai-toolkit.git`
+  - `workspace_root`: `multi-agent-system/product-engineering-team/`
+  - `managed_asset_paths`: `skills/`, `workflows/`
+- 分支模型: Gitflow（feature -> develop -> release/hotfix -> main）。
 
 ## 18. Metadata
 - Version: 1.0
 - Owner: Skills Team
-- Last Updated: 2026-06-02
+- Last Updated: 2026-06-03
 - Tags: librarian, asset-management, version-control, team-leader
