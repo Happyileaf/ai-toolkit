@@ -6,9 +6,13 @@ inputs:
   - skill_design_doc
   - skill_template
   - coding_standards
+  - integration_branch
+  - integration_base_sha
 outputs:
   - skill_files
   - self_check_report
+  - delivery_receipt
+  - integrated_head_sha
 next_step: steps/04-review.md
 failure_step: steps/02-design.md
 ---
@@ -30,6 +34,8 @@ failure_step: steps/02-design.md
 | `skill_design_doc` | Step 02 输出 | 设计文档 |
 | `skill_template` | `../../../templates/` | Skill 模板库 |
 | `coding_standards` | `rules/coding/` | 编码规范 |
+| `integration_branch` | Orchestrator 注入 | 本工作唯一集成分支 |
+| `integration_base_sha` | Orchestrator 注入 | 集成分支创建时基线引用 |
 
 ## Execution Steps
 
@@ -81,6 +87,11 @@ failure_step: steps/02-design.md
    - 模板完整性检查
    - 依赖声明检查
 
+6. **集成交付**
+   - 允许在 agent 私有分支实现（示例: `agent/skills-generation-agent/{workflow_id}`）
+   - 交付前必须将提交回灌到 `integration_branch`（merge/cherry-pick 均可）
+   - 记录 `integrated_head_sha` 作为下游唯一交付引用
+
 ## Output Contract
 
 ```json
@@ -120,6 +131,13 @@ failure_step: steps/02-design.md
       "version_specified": true
     },
     "overall_status": "ready_for_review"
+  },
+  "delivery_receipt": {
+    "integration_branch": "feature/skill-WF-001",
+    "integration_base_sha": "0f1e2d3c",
+    "integrated_head_sha": "a1b2c3d4",
+    "agent_commit_shas": ["f0e1d2c3"],
+    "status": "integrated"
   }
 }
 ```
@@ -154,6 +172,7 @@ skills/skill-name/
 | 语言一致 | 文档语言与用户语言一致 |
 | 不超范围 | 不生成设计文档未定义的功能 |
 | 版本声明 | 依赖版本必须显式 |
+| 集成交付 | 进入 Review 前必须完成回灌并产出 delivery_receipt |
 
 ## Failure Handling
 

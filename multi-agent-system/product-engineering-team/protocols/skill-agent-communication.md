@@ -18,7 +18,9 @@
   "context": {
     "workflow_id": "{workflow_id}",
     "step_id": "{step_id}",
-    "skill_id": "{skill_id}"
+    "skill_id": "{skill_id}",
+    "integration_branch": "{integration_branch}",
+    "delivery_ref": "{delivery_ref}"
   },
   "timestamp": "{ISO8601}",
   "priority": "{priority}"
@@ -35,6 +37,7 @@
 | `escalation` | 升级请求 | Review → Librarian: 冲突仲裁 |
 | `query` | 查询信息 | Discovery → Librarian: Skill 索引查询 |
 | `ack` | 确认收到 | Librarian → Review: 收到审核报告 |
+| `delivery_receipt` | 交付回执 | Generation → Review: 集成交付完成 |
 
 ---
 
@@ -64,7 +67,9 @@ sequenceDiagram
   },
   "context": {
     "workflow_id": "WF-001",
-    "step_id": "creation-02"
+    "step_id": "creation-02",
+    "integration_branch": "feature/skill-WF-001",
+    "delivery_ref": "a1b2c3d4"
   }
 }
 
@@ -80,7 +85,33 @@ sequenceDiagram
   },
   "context": {
     "workflow_id": "WF-001",
-    "step_id": "creation-02"
+    "step_id": "creation-02",
+    "integration_branch": "feature/skill-WF-001",
+    "delivery_ref": "a1b2c3d4"
+  }
+}
+```
+
+### 4. 交付回执模式
+
+**用于声明“已集成到公共分支”的可审计事实**
+
+```json
+{
+  "message_id": "MSG-20260602103001",
+  "source_agent": "Generation Agent",
+  "target_agent": "Review Agent",
+  "message_type": "delivery_receipt",
+  "payload": {
+    "integration_branch": "feature/skill-WF-001",
+    "integrated_head_sha": "a1b2c3d4",
+    "agent_commit_shas": ["f0e1d2c3"]
+  },
+  "context": {
+    "workflow_id": "WF-001",
+    "step_id": "creation-03",
+    "integration_branch": "feature/skill-WF-001",
+    "delivery_ref": "a1b2c3d4"
   }
 }
 ```
@@ -155,6 +186,16 @@ required_fields:
   - target_agent
   - message_type
   - timestamp
+```
+
+技能工作流额外必填上下文：
+
+```yaml
+required_context_for_skill_workflow:
+  - context.workflow_id
+  - context.step_id
+  - context.integration_branch
+  - context.delivery_ref
 ```
 
 ---
