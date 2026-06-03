@@ -9,3 +9,4 @@
 | SKILL-003 | UI Gap Audit | [`ui-gap-audit/SKILL.md`](./ui-gap-audit/SKILL.md) | active | SKILL-001 | 对比原型页与本地前端页，输出结构化 UI 差距清单 |
 | SKILL-004 | UI Restore Implementation | [`ui-restore-implementation/SKILL.md`](./ui-restore-implementation/SKILL.md) | active | SKILL-001 | 基于 UI 差距清单实施前端代码修改并复验 |
 | SKILL-005 | UI Prototype Restore | [`ui-prototype-restore/SKILL.md`](./ui-prototype-restore/SKILL.md) | active | SKILL-001、SKILL-003、SKILL-004 | 端到端驱动前端 UI 原型还原流程 |
+| SKILL-006 | Frontend Dev Env Bootstrap | [`frontend-dev-env-bootstrap/SKILL.md`](./frontend-dev-env-bootstrap/SKILL.md) | active | 无 | 一键搭建前端开发环境（macOS/Linux），支持幂等执行与结构化结果输出 |
