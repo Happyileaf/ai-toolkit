@@ -6,29 +6,29 @@
 - 所属层级: Infrastructure Layer
 
 ## 2. Team Leader
-- 角色: Librarian Agent
+- 角色: Skills Team Orchestrator Agent
 - 核心职责:
-  - Skill 资产注册与索引管理
-  - 版本控制与发布决策
-  - 依赖关系治理
-  - 团队协调与冲突解决
+  - 工作流调度与协调
+  - 任务路由与状态迁移
+  - 重试、降级与超时升级
+  - 团队协调与进度可视性
 - 决策权限:
-  - Skill 注册审批权
-  - 版本发布决策权
-  - 依赖变更审批权
-  - 资产退役决策权
+  - 工作流调度决策权
+  - 任务路由决策权
+  - 重试与升级决策权
+  - 资源分配决策权
 
 ## 3. Team Members
 | Agent | 职责 | 核心产出 |
 |-------|------|----------|
-| Skill Orchestrator Agent | 工作流调度与协调 | 执行计划、状态报告 |
-| Discovery Agent | 挖掘潜在 Skill 需求 | Skill 提案、需求分析 |
-| Design Agent | 决定 Skill 边界与结构 | 设计文档、接口契约 |
-| Generation Agent | 生成标准 Skill 文件 | SKILL.md、元数据、示例 |
-| Review Agent | 自动评分与质量审计 | 质量报告、问题清单 |
-| Refactor Agent | 去重、拆分、合并 Skill | 重构方案、优化报告 |
-| Evolution Agent | 持续学习与自动更新 | 更新提案、演进日志 |
-| Librarian Agent | 版本、索引、查询、发布 | 注册记录、变更日志 |
+| Skills Team Orchestrator Agent | 工作流调度与协调 | 执行计划、状态报告 |
+| Skills Librarian Agent | 版本、索引、查询、发布 | 注册记录、变更日志 |
+| Skills Discovery Agent | 挖掘潜在 Skill 需求 | Skill 提案、需求分析 |
+| Skills Design Agent | 决定 Skill 边界与结构 | 设计文档、接口契约 |
+| Skills Generation Agent | 生成标准 Skill 文件 | SKILL.md、元数据、示例 |
+| Skills Review Agent | 自动评分与质量审计 | 质量报告、问题清单 |
+| Skills Refactor Agent | 去重、拆分、合并 Skill | 重构方案、优化报告 |
+| Skills Evolution Agent | 持续学习与自动更新 | 更新提案、演进日志 |
 
 ## 4. Core Workflows
 - `skill-creation-workflow`: 新 Skill 从发现到发布

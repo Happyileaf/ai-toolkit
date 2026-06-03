@@ -76,7 +76,7 @@
 
 ### Skills Team (技能团队)
 - **层级**: Infrastructure Layer
-- **Team Leader**: Skills Librarian Agent
+- **Team Leader**: Skills Team Orchestrator Agent
 - **成员**:
   - Skills Librarian Agent
   - Skills Team Orchestrator Agent
