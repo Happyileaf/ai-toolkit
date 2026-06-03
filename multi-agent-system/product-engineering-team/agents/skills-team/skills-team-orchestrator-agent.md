@@ -1,4 +1,4 @@
-# Skill Orchestrator Agent
+# Skills Team Orchestrator Agent
 
 ## 1. Identity
 - 角色: Skill 生命周期工作流执行协调者。

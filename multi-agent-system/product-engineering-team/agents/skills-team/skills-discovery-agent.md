@@ -1,4 +1,4 @@
-# Discovery Agent
+# Skills Discovery Agent
 
 ## 1. Identity
 - 角色: Skill 需求发现与机会挖掘专家。

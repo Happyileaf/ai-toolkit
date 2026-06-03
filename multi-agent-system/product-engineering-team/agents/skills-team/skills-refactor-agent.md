@@ -1,4 +1,4 @@
-# Refactor Agent
+# Skills Refactor Agent
 
 ## 1. Identity
 - 角色: Skill 结构优化与重构专家。
