@@ -35,6 +35,8 @@ outputs:
   - skill_files
   - quality_score
   - release_record
+  - integration_branch
+  - released_ref
 requires_agents:
   - Discovery Agent
   - Design Agent
@@ -72,6 +74,13 @@ requires_agents:
 | `priority` | string | 否 | 优先级: `P0` / `P1` / `P2`，默认 `P1` |
 | `constraints` | array | 否 | 约束条件 |
 
+## Branching & Delivery Baseline
+
+- 每个 workflow 开始时由 Orchestrator 创建唯一 `integration_branch`（示例: `feature/skill-WF-001`）。
+- 各 Agent 可使用私有分支并行工作，但交付必须回灌到 `integration_branch`。
+- 所有审查、注册、发布结论必须绑定 `integration_branch` 的具体 commit 引用（`delivery_ref` / `reviewed_ref` / `released_ref`）。
+- 不允许使用多个 agent 分支并列作为最终审查依据。
+
 ## Execution Flow
 
 详细步骤见：
@@ -90,7 +99,8 @@ requires_agents:
 | 门禁 | 条件 | 失败处理 |
 |------|------|----------|
 | 设计评审 | Review Agent 签署通过 | 返回 Design Agent 修改 |
-| 生成验证 | 质量评分 >= 80 分 | 返回 Generation Agent 修复 |
+| 集成交付 | 产出已进入 `integration_branch` HEAD | 返回对应 Agent 完成集成后重试 |
+| 生成验证 | 质量评分 >= 80 分（且绑定集成引用） | 返回 Generation Agent 修复 |
 | 发布审批 | 无阻塞问题 + Librarian 签署 | 拒绝发布 |
 
 ## State Model
@@ -140,3 +150,5 @@ discovery → design → generation → review → registration → release
 2. `skill_files`: 文件清单（SKILL.md、_meta.json、examples/）
 3. `quality_score`: 质量评分（0-100）
 4. `release_record`: 发布记录（版本、时间、变更日志）
+5. `integration_branch`: 本次工作唯一集成分支
+6. `released_ref`: 发布绑定的 commit 引用

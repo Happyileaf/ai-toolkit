@@ -6,9 +6,13 @@ inputs:
   - skill_files
   - quality_report
   - decision
+  - integration_branch
+  - reviewed_ref
 outputs:
   - registration_record
   - index_update
+  - integration_branch
+  - reviewed_ref
 next_step: steps/06-release.md
 failure_step: null
 ---
@@ -30,6 +34,8 @@ failure_step: null
 | `skill_files` | Step 03 输出 | Skill 文件包 |
 | `quality_report` | Step 04 输出 | 质量报告 |
 | `decision` | Step 04 输出 | 审核决策（必须为 pass） |
+| `integration_branch` | Step 04 输出 | 唯一审查基准分支 |
+| `reviewed_ref` | Step 04 输出 | 已通过审查的 commit 引用 |
 
 ## Execution Steps
 
@@ -37,6 +43,7 @@ failure_step: null
    - 确认 decision.status = pass
    - 确认 quality_report.score >= 80
    - 确认无阻塞问题
+   - 确认 `reviewed_ref` 为 `integration_branch` 当前可追溯引用
 
 2. **Skill ID 分配**
    ```
@@ -71,7 +78,9 @@ failure_step: null
     "quality_score": 85,
     "dependencies": ["SKILL-001"],
     "status": "registered",
-    "registered_by": "Librarian Agent"
+    "registered_by": "Librarian Agent",
+    "integration_branch": "feature/skill-WF-001",
+    "source_ref": "a1b2c3d4"
   },
   "index_update": {
     "file": "skills/index.md",
@@ -103,6 +112,7 @@ failure_step: null
 | 场景 | 处理 |
 |------|------|
 | 决策非 pass | 拒绝注册，返回 Review |
+| 引用不一致（非集成分支） | 拒绝注册，返回 Review/Generation 修复交付链路 |
 | 依赖冲突 | 召集 Design Agent 协调 |
 | 索引写入失败 | 重试，最多 3 次 |
 
