@@ -22,7 +22,7 @@ failure_step: steps/01-discovery.md
 
 ## Responsible Agent
 
-**Design Agent** - 参考: `../../../agents/skills-team/design-agent.md`
+**Design Agent** - 参考: `../../../agents/skills-team/skills-design-agent.md`
 
 ## Input Requirements
 

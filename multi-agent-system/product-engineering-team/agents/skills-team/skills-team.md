@@ -49,7 +49,7 @@
 - 发布审批: Librarian Agent 确认所有检查通过后发布
 
 ## 7. Arbitration Mechanism
-详见 [`arbitration-mechanism.md`](./arbitration-mechanism.md)
+详见 [`skills-arbitration-mechanism.md`](./skills-arbitration-mechanism.md)
 
 ### 仲裁层级
 ```

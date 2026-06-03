@@ -12,12 +12,12 @@ tags:
   - lifecycle
   - quality-gate
 dependencies:
-  - ../../agents/skills-team/discovery-agent.md
-  - ../../agents/skills-team/design-agent.md
-  - ../../agents/skills-team/generation-agent.md
-  - ../../agents/skills-team/review-agent.md
-  - ../../agents/skills-team/librarian-agent.md
-  - ../../agents/skills-team/skill-orchestrator-agent.md
+  - ../../agents/skills-team/skills-discovery-agent.md
+  - ../../agents/skills-team/skills-design-agent.md
+  - ../../agents/skills-team/skills-generation-agent.md
+  - ../../agents/skills-team/skills-review-agent.md
+  - ../../agents/skills-team/skills-librarian-agent.md
+  - ../../agents/skills-team/skills-team-orchestrator-agent.md
 steps:
   - steps/01-discovery.md
   - steps/02-design.md

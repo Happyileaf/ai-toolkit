@@ -20,7 +20,7 @@ failure_step: null
 
 ## Responsible Agent
 
-**Librarian Agent** - 参考: `../../../agents/skills-team/librarian-agent.md`
+**Librarian Agent** - 参考: `../../../agents/skills-team/skills-librarian-agent.md`
 
 ## Input Requirements
 

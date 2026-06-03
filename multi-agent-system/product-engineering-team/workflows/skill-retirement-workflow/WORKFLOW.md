@@ -12,9 +12,9 @@ tags:
   - migration
   - cleanup
 dependencies:
-  - ../../agents/skills-team/librarian-agent.md
-  - ../../agents/skills-team/refactor-agent.md
-  - ../../agents/skills-team/skill-orchestrator-agent.md
+  - ../../agents/skills-team/skills-librarian-agent.md
+  - ../../agents/skills-team/skills-refactor-agent.md
+  - ../../agents/skills-team/skills-team-orchestrator-agent.md
 steps:
   - steps/01-request.md
   - steps/02-dependency-check.md
