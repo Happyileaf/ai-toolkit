@@ -1,0 +1,63 @@
+{
+  "success_case": {
+    "result": "success",
+    "platform": "macos",
+    "installed_components": [
+      "zsh",
+      "nvm",
+      "node_lts",
+      "pnpm",
+      "git"
+    ],
+    "skipped_components": [],
+    "step_results": [
+      {
+        "step": "detect_platform",
+        "status": "ok",
+        "message": "Detected platform: macos",
+        "time": "2026-06-03T09:00:00Z"
+      },
+      {
+        "step": "ensure_homebrew",
+        "status": "ok",
+        "message": "Installed Homebrew.",
+        "time": "2026-06-03T09:00:07Z"
+      },
+      {
+        "step": "post_verify",
+        "status": "ok",
+        "message": "All target components are available.",
+        "time": "2026-06-03T09:01:21Z"
+      }
+    ],
+    "error": null
+  },
+  "failure_case": {
+    "result": "failed",
+    "platform": "linux:ubuntu",
+    "installed_components": [],
+    "skipped_components": [],
+    "step_results": [
+      {
+        "step": "detect_platform",
+        "status": "ok",
+        "message": "Detected platform: linux:ubuntu",
+        "time": "2026-06-03T09:10:00Z"
+      },
+      {
+        "step": "preflight",
+        "status": "failed",
+        "message": "Network is offline but missing components require download.",
+        "time": "2026-06-03T09:10:01Z"
+      }
+    ],
+    "error": {
+      "code": "E_NETWORK_OFFLINE",
+      "code_value": 20,
+      "message": "Network is unavailable for downloading missing components.",
+      "failed_step": "preflight",
+      "root_cause": "Offline network with missing required components.",
+      "remediation": "Connect to the network and rerun, or preinstall required components first."
+    }
+  }
+}
