@@ -76,7 +76,7 @@ failure_step: steps/01-discovery.md
    ```
 
 6. **设计文档生成**
-   - Schema: `skills/schemas/skill-design.schema.json`
+   - Schema: `../../../schemas/skill-design.schema.json`
 
 ## Output Contract
 

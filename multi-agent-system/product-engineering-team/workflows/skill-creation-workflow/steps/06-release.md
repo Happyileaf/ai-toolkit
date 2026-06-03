@@ -40,7 +40,7 @@ failure_step: null
    version = "1.0.0"  # 首次发布
    ```
    - 遵循语义化版本规范
-   - 参考: `skills/versioning-policy.md`
+   - 参考: `../../../skill-versioning-policy.md`
 
 3. **变更日志生成**
    ```markdown

@@ -84,7 +84,7 @@
 - 可执行性（示例运行成功率）。
 
 ## 17. Runtime Config
-- 模板路径: skills/templates/。
+- 模板路径: ../../templates/。
 - 规范文件: rules/coding/。
 - 自检清单: 生成后自动执行规范检查。
 

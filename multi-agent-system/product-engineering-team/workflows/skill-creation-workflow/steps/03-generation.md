@@ -28,14 +28,14 @@ failure_step: steps/02-design.md
 | 参数 | 来源 | 说明 |
 |------|------|------|
 | `skill_design_doc` | Step 02 输出 | 设计文档 |
-| `skill_template` | `skills/templates/` | Skill 模板库 |
+| `skill_template` | `../../../templates/` | Skill 模板库 |
 | `coding_standards` | `rules/coding/` | 编码规范 |
 
 ## Execution Steps
 
 1. **模板选择**
    - 根据设计选择合适模板
-   - 模板路径: `skills/templates/skill-template.md`
+   - 模板路径: `../../../templates/skill-template.md`
 
 2. **SKILL.md 编写**
    ```markdown
@@ -69,7 +69,7 @@ failure_step: steps/02-design.md
 
 3. **元数据生成**
    - 生成 `_meta.json`
-   - Schema: `skills/schemas/skill-package.schema.json`
+   - Schema: `../../../schemas/skill-package.schema.json`
 
 4. **示例编写**
    - 至少 2 个使用示例

@@ -28,8 +28,8 @@ failure_step: steps/03-generation.md
 | 参数 | 来源 | 说明 |
 |------|------|------|
 | `skill_files` | Step 03 输出 | Skill 文件包 |
-| `quality_standards` | `skills/quality-checklist.md` | 质量标准 |
-| `checklist` | `skills/quality-checklist.md` | 检查清单 |
+| `quality_standards` | `../../../skill-quality-checklist.md` | 质量标准 |
+| `checklist` | `../../../skill-quality-checklist.md` | 检查清单 |
 
 ## Execution Steps
 
@@ -132,7 +132,7 @@ failure_step: steps/03-generation.md
 
 ## Quality Checklist Reference
 
-详细检查项见: `skills/quality-checklist.md`
+详细检查项见: `../../../skill-quality-checklist.md`
 
 ## Failure Handling
 

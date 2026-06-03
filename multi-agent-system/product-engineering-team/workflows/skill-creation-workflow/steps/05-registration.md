@@ -57,7 +57,7 @@ failure_step: null
    - 验证无循环
 
 5. **注册记录生成**
-   - Schema: `skills/schemas/release-record.schema.json`
+   - Schema: `../../../schemas/skill-release-record.schema.json`
 
 ## Output Contract
 

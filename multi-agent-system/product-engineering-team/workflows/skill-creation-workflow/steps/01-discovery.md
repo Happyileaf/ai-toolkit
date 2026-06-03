@@ -53,7 +53,7 @@ failure_step: null
 
 4. **提案生成**
    - 产出 Skill 提案文档
-   - Schema: `skills/schemas/skill-proposal.schema.json`
+   - Schema: `../../../schemas/skill-proposal.schema.json`
 
 5. **优先级排序**
    - 加入候选队列
