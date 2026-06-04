@@ -4,11 +4,14 @@ step_name: Review
 responsible_agent: Review Agent
 inputs:
   - skill_files
+  - delivery_receipt
   - quality_standards
   - checklist
 outputs:
   - quality_report
   - decision
+  - reviewed_ref
+  - integration_branch
 next_step: steps/05-registration.md
 failure_step: steps/03-generation.md
 ---
@@ -28,6 +31,7 @@ failure_step: steps/03-generation.md
 | 参数 | 来源 | 说明 |
 |------|------|------|
 | `skill_files` | Step 03 输出 | Skill 文件包 |
+| `delivery_receipt` | Step 03 输出 | 集成交付回执（含分支与 commit 引用） |
 | `quality_standards` | `../../../skill-quality-checklist.md` | 质量标准 |
 | `checklist` | `../../../skill-quality-checklist.md` | 检查清单 |
 
@@ -38,7 +42,15 @@ failure_step: steps/03-generation.md
    - 解析 _meta.json
    - 解析示例文件
 
-2. **规范合规检查 (30%)**
+2. **集成交付检查（前置门禁）**
+   ```yaml
+   integration_gate:
+     - integration_branch: unique_and_present
+     - integrated_head_sha: matches_branch_head
+     - private_branch_direct_review: forbidden
+   ```
+
+3. **规范合规检查 (30%)**
    ```yaml
    compliance_check:
      - naming_convention: NAMING-001
@@ -47,7 +59,7 @@ failure_step: steps/03-generation.md
      - enum_definition: ENUM-001 (如适用)
    ```
 
-3. **文档完整性检查 (25%)**
+4. **文档完整性检查 (25%)**
    ```yaml
    documentation_check:
      - required_fields: [name, description, version, inputs, outputs]
@@ -56,7 +68,7 @@ failure_step: steps/03-generation.md
      - examples: >= 2
    ```
 
-4. **示例可执行性检查 (25%)**
+5. **示例可执行性检查 (25%)**
    ```yaml
    example_check:
      - example_01: runnable
@@ -64,7 +76,7 @@ failure_step: steps/03-generation.md
      - coverage: main_scenarios
    ```
 
-5. **依赖正确性检查 (20%)**
+6. **依赖正确性检查 (20%)**
    ```yaml
    dependency_check:
      - declared: complete
@@ -73,7 +85,7 @@ failure_step: steps/03-generation.md
      - depth: <= 3
    ```
 
-6. **阻塞项检查**
+7. **阻塞项检查**
    ```yaml
    blocking_check:
      - security_issues: none
@@ -81,7 +93,7 @@ failure_step: steps/03-generation.md
      - core_documentation_missing: none
    ```
 
-7. **评分计算**
+8. **评分计算**
    ```
    score = compliance(30%) + documentation(25%) + examples(25%) + dependencies(20%)
    ```
@@ -117,7 +129,9 @@ failure_step: steps/03-generation.md
     "status": "pass",
     "reason": "评分 >= 80 且无阻塞问题",
     "retry_count": 0,
-    "next_action": "registration"
+    "next_action": "registration",
+    "reviewed_ref": "a1b2c3d4",
+    "integration_branch": "feature/skill-WF-001"
   }
 }
 ```
@@ -126,6 +140,7 @@ failure_step: steps/03-generation.md
 
 | 条件 | 决策 | 后续动作 |
 |------|------|----------|
+| 未通过集成交付门禁 | fail | 返回 Generation 完成回灌 |
 | score >= 80 且无阻塞 | pass | 转入 Registration |
 | score < 80 或有阻塞 | fail | 返回 Generation 修复 |
 | 连续 3 次 fail | escalate | 升级 Librarian 仲裁 |

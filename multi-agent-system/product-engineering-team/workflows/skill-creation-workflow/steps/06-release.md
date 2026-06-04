@@ -4,10 +4,13 @@ step_name: Release
 responsible_agent: Librarian Agent
 inputs:
   - registration_record
+  - integration_branch
+  - reviewed_ref
 outputs:
   - release_record
   - changelog
   - announcement
+  - released_ref
 next_step: null
 failure_step: null
 ---
@@ -27,6 +30,8 @@ failure_step: null
 | 参数 | 来源 | 说明 |
 |------|------|------|
 | `registration_record` | Step 05 输出 | 注册记录 |
+| `integration_branch` | Step 05 输出 | 唯一交付基准分支 |
+| `reviewed_ref` | Step 05 输出 | 已审查并注册的 commit 引用 |
 
 ## Execution Steps
 
@@ -34,6 +39,7 @@ failure_step: null
    - 确认发布窗口（周二/四）
    - 确认无依赖阻塞
    - 准备发布公告
+   - 确认发布基线仍为 `integration_branch` / `reviewed_ref`
 
 2. **版本号分配**
    ```
@@ -99,7 +105,9 @@ failure_step: null
     "quality_score": 85,
     "dependencies": ["SKILL-001"],
     "changelog": "CHANGELOG.md 新增条目",
-    "status": "active"
+    "status": "active",
+    "integration_branch": "feature/skill-WF-001",
+    "released_ref": "a1b2c3d4"
   },
   "changelog": {
     "file": "skills/CHANGELOG.md",
@@ -128,6 +136,7 @@ failure_step: null
 |------|------|
 | 发布失败 | 执行回滚，记录故障 |
 | 依赖阻塞 | 暂停发布，协调解决 |
+| 发布引用漂移（与 reviewed_ref 不一致） | 暂停发布并回到 Registration 校验 |
 
 ## Workflow Completion
 

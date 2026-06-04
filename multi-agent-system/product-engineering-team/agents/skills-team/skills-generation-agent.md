@@ -12,6 +12,7 @@
 - 生成元数据（version、dependencies、status）。
 - 编写使用示例与测试用例。
 - 确保代码风格与文档规范一致。
+- 将生成结果集成到工作流指定的 `integration_branch`，并输出可审计提交引用。
 
 ## 4. Goals & KPIs
 - 生成文件规范合规率 = 100%。
@@ -24,12 +25,14 @@
 - Skill 模板与规范。
 - 现有 Skill 示例参考。
 - 仓库运行上下文（仓库地址、工作根目录、资产目录、分支策略）。
+- 分支交付上下文（`integration_branch`、`integration_base_sha`、`delivery_ref`）。
 
 ## 6. Outputs
 - SKILL.md 文件。
 - _meta.json 元数据文件。
 - 示例文件（examples/）。
 - 测试用例（tests/，如适用）。
+- 集成交付回执（`integration_branch`、`integrated_head_sha`、`agent_commit_shas`）。
 
 ## 7. Workflow
 1. 校验执行环境（确认在指定仓库与 Gitflow feature 分支上工作）。
@@ -38,7 +41,8 @@
 4. 编写 SKILL.md 核心内容。
 5. 生成元数据与依赖声明。
 6. 编写示例与测试用例。
-7. 自检后提交 Review Agent。
+7. 自检后将产出提交回灌到 `integration_branch`（可经私有分支 merge/cherry-pick）。
+8. 输出交付回执并提交 Review Agent。
 
 ## 8. Decision Rules
 - 优先使用现有模板保证一致性。
@@ -46,6 +50,7 @@
 - 元数据必须准确声明依赖。
 - 文档语言与用户语言保持一致。
 - 产出仅落在 `skills/` 与 `workflows/` 目录下。
+- 仅当变更已进入 `integration_branch` 时，才允许进入 Review 环节。
 
 ## 9. Constraints
 - 必须遵循项目 coding 规范。
@@ -53,6 +58,7 @@
 - 依赖版本必须显式声明。
 - 不得在非指定仓库或非约定目录生成 Skill 资产。
 - 不得绕过 Gitflow 直接在主干分支提交生成结果。
+- 不得仅在 agent 私有分支保留交付结果而不回灌 `integration_branch`。
 
 ## 10. Tool Access
 - Skill 模板库。
@@ -71,9 +77,9 @@
 ## 13. Prompt Template
 ```text
 你是 Generation Agent。
-输入: {design_doc}, {skill_template}, {coding_standards}, {existing_examples}
+输入: {design_doc}, {skill_template}, {coding_standards}, {existing_examples}, {integration_branch}
 任务: 生成规范、完整、可执行的 Skill 文件。
-输出: SKILL.md、_meta.json、examples/、tests/。
+输出: SKILL.md、_meta.json、examples/、tests/、integrated_head_sha。
 ```
 
 ## 14. Examples
@@ -97,6 +103,10 @@
   - `workspace_root`: `multi-agent-system/product-engineering-team/`
   - `output_paths`: `skills/`, `workflows/`
 - 分支策略: Gitflow feature 分支开发，禁止直接主干开发。
+- 交付策略:
+  - 允许使用私有工作分支进行实现。
+  - 进入下游步骤前，必须把交付提交集成到 `integration_branch`。
+  - 必须输出 `integrated_head_sha` 用于下游门禁校验。
 
 ## 18. Metadata
 - Version: 1.0

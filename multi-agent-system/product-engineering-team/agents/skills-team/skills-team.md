@@ -47,6 +47,7 @@
 - 设计评审: Design Agent 产出需 Review Agent 签署
 - 生成验证: Generation Agent 产出需通过自动化测试
 - 发布审批: Librarian Agent 确认所有检查通过后发布
+- 集成交付门禁: 所有步骤产出必须先集成到同一 `integration_branch`，审查仅基于该分支 HEAD
 
 ## 7. Arbitration Mechanism
 详见 [`skills-arbitration-mechanism.md`](./skills-arbitration-mechanism.md)
@@ -100,6 +101,11 @@ Level 2: CEO Agent (Executive)
   - 若本地已存在仓库，先 pull 最新默认分支。
   - 后续任务仅在该仓库内执行。
 - 分支与发布治理: 统一遵循 Gitflow（feature/release/hotfix），禁止直接在主干分支开发。
+- 集成分支治理:
+  - 一个工作（workflow）必须且仅有一个集成分支（`integration_branch`）。
+  - Agent 可使用私有工作分支（如 `agent/{agent-name}/{workflow-id}`），但必须将交付提交回灌到 `integration_branch`。
+  - 审查、注册、发布均以 `integration_branch` 的 HEAD commit 为唯一依据。
+  - 不允许以多个 agent 分支并列作为最终交付物。
 - 工作过程中如果默写路径找不到的文件都可以在仓库中进行查找作为兜底。
 
 ## 11. Metadata
