@@ -1,0 +1,19 @@
+{
+  "name": "frontend-env-bootstrap",
+  "version": "1.0.0",
+  "status": "active",
+  "owner": "Skills Team",
+  "updated_at": "2026-06-04",
+  "dependencies": [],
+  "outputs": [
+    "execution_summary.json",
+    "verification_report.json",
+    "human_log.txt"
+  ],
+  "platforms": [
+    "windows",
+    "macos",
+    "linux"
+  ],
+  "error_codes_count": 16
+}

@@ -1,0 +1,17 @@
+{
+  "platform": "macos",
+  "dry_run": true,
+  "non_interactive": true,
+  "strict": false,
+  "node_lts_policy": "latest_lts",
+  "install_git": true,
+  "install_zsh": "auto",
+  "network_mode": "public",
+  "allow_elevation": false,
+  "idempotent_mode": "strict",
+  "stages": [{"stage":"detect","status":"ok","detail":"Stage completed."},{"stage":"preflight","status":"ok","detail":"Stage completed."},{"stage":"bootstrap_pm","status":"ok","detail":"Stage completed."},{"stage":"install_core","status":"ok","detail":"Stage completed."},{"stage":"configure_shell","status":"ok","detail":"Stage completed."},{"stage":"verify","status":"ok","detail":"verification_report.json generated."},{"stage":"finalize","status":"ok","detail":"All requested stages completed."}],
+  "fallback_chain": [],
+  "error": null,
+  "final_status": "success",
+  "idempotency_signature": "51dcc00fd4addf9145193e75fd696ab166142110b4eadd0d716b7ba1147c1e5c"
+}

@@ -10,6 +10,7 @@
 - `ui-gap-audit/` - UI 差距审计技能
 - `ui-restore-implementation/` - UI 还原实现技能
 - `ui-prototype-restore/` - UI 原型还原端到端技能
+- `frontend-env-bootstrap/` - 跨平台前端环境一键安装与验收技能
 
 ## 技能索引
 
