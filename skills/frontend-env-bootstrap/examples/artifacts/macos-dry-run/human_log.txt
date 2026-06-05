@@ -1,6 +1,6 @@
 [INFO] dry-run: would bootstrap package manager path via brew.
 [INFO] install_core: all required tools already available.
 [INFO] dry-run: would ensure shell marker in /Users/apple/.zshrc.
-[VERIFY] platform=macos strict=false non_interactive=true
+[VERIFY] platform=macos strict=false non_interactive=true skip_tool_checks=false
 [VERIFY] failed_checks=0
 [INFO] bootstrap finished successfully.

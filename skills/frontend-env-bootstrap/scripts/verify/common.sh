@@ -4,6 +4,27 @@ set -euo pipefail
 VERIFY_CHECKS=""
 VERIFY_FAIL_COUNT=0
 
+verify_all_error_codes() {
+  cat <<'EOF'
+FEB-PLATFORM-001
+FEB-PLATFORM-002
+FEB-PERM-001
+FEB-NET-001
+FEB-NET-002
+FEB-PM-001
+FEB-PM-002
+FEB-DL-001
+FEB-DL-002
+FEB-INSTALL-001
+FEB-INSTALL-002
+FEB-INSTALL-003
+FEB-INSTALL-004
+FEB-CONFIG-001
+FEB-VERIFY-001
+FEB-IDEMP-001
+EOF
+}
+
 verify_json_escape() {
   printf '%s' "$1" | tr '\n' ' ' | sed -e 's/\\/\\\\/g' -e 's/"/\\"/g'
 }
@@ -19,7 +40,7 @@ verify_add_check() {
   else
     VERIFY_CHECKS="$item"
   fi
-  if [ "$status" != "pass" ]; then
+  if [ "$status" = "fail" ]; then
     VERIFY_FAIL_COUNT=$((VERIFY_FAIL_COUNT + 1))
   fi
 }
@@ -88,12 +109,52 @@ verify_node_policy() {
 }
 
 verify_path_duplicates() {
+  local delimiter=":"
+  [ "${VERIFY_PLATFORM:-}" = "windows" ] && delimiter=";"
   local duplicate_count=0
-  duplicate_count="$(printf '%s' "${PATH}" | tr ':' '\n' | awk 'seen[$0]++ == 1 {count++} END {print count+0}')"
+  duplicate_count="$(printf '%s' "${PATH}" | tr "$delimiter" '\n' | awk 'seen[$0]++ == 1 {count++} END {print count+0}')"
   if [ "$duplicate_count" -eq 0 ]; then
     verify_add_check "path_duplicates" "pass" "PATH has no duplicate entries."
   else
     verify_add_check "path_duplicates" "warn" "PATH has ${duplicate_count} duplicate entries."
+  fi
+}
+
+verify_known_error_code() {
+  local code="$1"
+  verify_all_error_codes | grep -Fx "$code" >/dev/null 2>&1
+}
+
+verify_error_code_file() {
+  local error_file="$1"
+  local expected_code="$2"
+
+  if [ ! -f "$error_file" ]; then
+    verify_add_check "error_file_exists" "fail" "error file not found: $error_file"
+    return
+  fi
+
+  verify_add_check "error_file_exists" "pass" "error file detected: $error_file"
+  local code
+  code="$(sed -n 's/.*"code"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' "$error_file" | head -n 1)"
+  if [ -z "$code" ]; then
+    verify_add_check "error_code_parse" "fail" "failed to parse error code from $error_file"
+    return
+  fi
+
+  verify_add_check "error_code_parse" "pass" "parsed error code: $code"
+  if verify_known_error_code "$code"; then
+    verify_add_check "error_code_known" "pass" "$code is part of 16-code catalog."
+  else
+    verify_add_check "error_code_known" "fail" "$code is outside 16-code catalog."
+  fi
+
+  if [ -n "$expected_code" ]; then
+    if [ "$code" = "$expected_code" ]; then
+      verify_add_check "error_code_expected" "pass" "expected code matched: $expected_code"
+    else
+      verify_add_check "error_code_expected" "fail" "expected $expected_code but got $code"
+    fi
   fi
 }
 

@@ -7,12 +7,14 @@ SKILL_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 source "$SCRIPT_DIR/common.sh"
 
 FEB_PLATFORM="auto"
+FEB_TARGET_PLATFORMS="auto"
 FEB_DRY_RUN="false"
 FEB_NON_INTERACTIVE="false"
 FEB_STRICT="false"
 FEB_NODE_LTS_POLICY="latest_lts"
 FEB_INSTALL_GIT="true"
 FEB_INSTALL_ZSH="auto"
+FEB_SHELL_PREFERENCE="bash"
 FEB_NETWORK_MODE="public"
 FEB_ALLOW_ELEVATION="false"
 FEB_IDEMPOTENT_MODE="strict"
@@ -23,12 +25,14 @@ usage() {
   cat <<'EOF'
 Usage: run.sh [options]
   --platform <auto|linux|macos|windows>
+  --target-platforms <auto|linux|macos|windows|linux,macos,...>
   --dry-run
   --non-interactive
   --strict
   --node-lts-policy <latest_lts|fixed:x.y.z>
   --install-git <true|false>
   --install-zsh <auto|force|skip>
+  --shell-preference <powershell|bash|zsh>
   --network-mode <public|proxy>
   --allow-elevation <true|false>
   --idempotent-mode <strict|best_effort>
@@ -37,15 +41,24 @@ Usage: run.sh [options]
 EOF
 }
 
+normalize_bool() {
+  case "$1" in
+    true|false) printf '%s' "$1" ;;
+    *) return 1 ;;
+  esac
+}
+
 while [ "$#" -gt 0 ]; do
   case "$1" in
     --platform) FEB_PLATFORM="$2"; shift 2 ;;
+    --target-platforms) FEB_TARGET_PLATFORMS="$2"; shift 2 ;;
     --dry-run) FEB_DRY_RUN="true"; shift ;;
     --non-interactive) FEB_NON_INTERACTIVE="true"; shift ;;
     --strict) FEB_STRICT="true"; shift ;;
     --node-lts-policy) FEB_NODE_LTS_POLICY="$2"; shift 2 ;;
     --install-git) FEB_INSTALL_GIT="$2"; shift 2 ;;
     --install-zsh) FEB_INSTALL_ZSH="$2"; shift 2 ;;
+    --shell-preference) FEB_SHELL_PREFERENCE="$2"; shift 2 ;;
     --network-mode) FEB_NETWORK_MODE="$2"; shift 2 ;;
     --allow-elevation) FEB_ALLOW_ELEVATION="$2"; shift 2 ;;
     --idempotent-mode) FEB_IDEMPOTENT_MODE="$2"; shift 2 ;;
@@ -58,6 +71,56 @@ while [ "$#" -gt 0 ]; do
       ;;
   esac
 done
+
+if ! normalize_bool "$FEB_INSTALL_GIT" >/dev/null 2>&1 || ! normalize_bool "$FEB_ALLOW_ELEVATION" >/dev/null 2>&1; then
+  printf 'install-git and allow-elevation must be true|false\n' >&2
+  exit 2
+fi
+
+case "$FEB_INSTALL_ZSH" in
+  auto|force|skip) ;;
+  *)
+    printf 'install-zsh must be auto|force|skip\n' >&2
+    exit 2
+    ;;
+esac
+
+case "$FEB_SHELL_PREFERENCE" in
+  powershell|bash|zsh) ;;
+  *)
+    printf 'shell-preference must be powershell|bash|zsh\n' >&2
+    exit 2
+    ;;
+esac
+
+case "$FEB_NETWORK_MODE" in
+  public|proxy) ;;
+  *)
+    printf 'network-mode must be public|proxy\n' >&2
+    exit 2
+    ;;
+esac
+
+case "$FEB_IDEMPOTENT_MODE" in
+  strict|best_effort) ;;
+  *)
+    printf 'idempotent-mode must be strict|best_effort\n' >&2
+    exit 2
+    ;;
+esac
+
+if ! feb_validate_node_lts_policy "$FEB_NODE_LTS_POLICY"; then
+  printf 'node-lts-policy must be latest_lts or fixed:x.y.z\n' >&2
+  exit 2
+fi
+
+if [ "$FEB_TARGET_PLATFORMS" = "auto" ]; then
+  FEB_TARGET_PLATFORMS="$FEB_PLATFORM"
+fi
+
+if [ "$FEB_PLATFORM" = "auto" ]; then
+  FEB_PLATFORM="$(printf '%s' "$FEB_TARGET_PLATFORMS" | cut -d',' -f1)"
+fi
 
 if [ "$FEB_PLATFORM" = "auto" ]; then
   FEB_PLATFORM="$(feb_detect_platform)"
@@ -118,32 +181,43 @@ if [ "$STOP_PIPELINE" -eq 0 ]; then
   run_stage "configure_shell" feb_platform_configure_shell || true
 fi
 
-if [ "$STOP_PIPELINE" -eq 0 ]; then
-  VERIFY_SCRIPT="$SKILL_ROOT/scripts/verify/run.sh"
-  VERIFY_ARGS=(
-    --platform "$FEB_PLATFORM"
-    --node-lts-policy "$FEB_NODE_LTS_POLICY"
-    --output-dir "$FEB_OUTPUT_DIR"
-  )
-  [ "$FEB_NON_INTERACTIVE" = "true" ] && VERIFY_ARGS+=(--non-interactive)
-  if [ "$FEB_STRICT" = "true" ]; then
-    VERIFY_ARGS+=(--strict)
-  fi
+VERIFY_SCRIPT="$SKILL_ROOT/scripts/verify/run.sh"
+VERIFY_ARGS=(
+  --platform "$FEB_PLATFORM"
+  --node-lts-policy "$FEB_NODE_LTS_POLICY"
+  --output-dir "$FEB_OUTPUT_DIR"
+)
+[ "$FEB_NON_INTERACTIVE" = "true" ] && VERIFY_ARGS+=(--non-interactive)
+[ "$FEB_STRICT" = "true" ] && VERIFY_ARGS+=(--strict)
 
-  if "$VERIFY_SCRIPT" "${VERIFY_ARGS[@]}"; then
-    feb_record_stage "verify" "ok" "verification_report.json generated."
-  else
-    FAILED=1
-    feb_set_error "FEB-VERIFY-001" "Verification failed." "verify" "true" "Inspect verification_report.json and human_log.txt." ""
-    feb_emit_structured_error
-    feb_record_stage "verify" "failed" "${FEB_LAST_ERROR_CODE}: ${FEB_LAST_ERROR_MESSAGE}"
-  fi
-else
-  feb_record_stage "verify" "skipped" "Skipped due to prior stage failure."
+if [ -f "$FEB_LAST_ERROR_FILE" ]; then
+  VERIFY_ARGS+=(--error-file "$FEB_LAST_ERROR_FILE")
 fi
 
-if [ "$FAILED" -eq 1 ] && [ "$FEB_IDEMPOTENT_MODE" = "strict" ] && [ "$FEB_DRY_RUN" = "true" ]; then
-  feb_add_fallback "dry-run strict idempotent mode keeps artifact contract and exits with error mapping."
+if [ "$STOP_PIPELINE" -eq 1 ]; then
+  VERIFY_ARGS+=(--skip-tool-checks)
+fi
+
+if [ -n "$FEB_LAST_ERROR_CODE" ]; then
+  VERIFY_ARGS+=(--expect-error-code "$FEB_LAST_ERROR_CODE")
+fi
+
+if "$VERIFY_SCRIPT" "${VERIFY_ARGS[@]}"; then
+  feb_record_stage "verify" "ok" "verification_report.json generated."
+else
+  FAILED=1
+  if [ -z "$FEB_LAST_ERROR_CODE" ]; then
+    feb_set_error "FEB-VERIFY-001" "Verification failed." "verify" "true" "Inspect verification_report.json and human_log.txt." ""
+    feb_emit_structured_error
+  fi
+  feb_record_stage "verify" "failed" "${FEB_LAST_ERROR_CODE:-FEB-VERIFY-001}: ${FEB_LAST_ERROR_MESSAGE:-Verification failed.}"
+fi
+
+feb_ensure_verification_report_exists
+
+if [ "$FAILED" -eq 1 ] && [ "$FEB_IDEMPOTENT_MODE" = "strict" ] && [ "$FEB_DRY_RUN" = "true" ] && [ -z "$FEB_LAST_ERROR_CODE" ]; then
+  feb_set_error "FEB-IDEMP-001" "Strict idempotent mode failed but no explicit error code was produced." "finalize" "false" "Inspect execution_summary and verify logs." ""
+  feb_emit_structured_error
 fi
 
 if [ "$FAILED" -eq 0 ]; then
@@ -155,4 +229,4 @@ fi
 
 feb_record_stage "finalize" "failed" "One or more stages failed."
 feb_write_execution_summary "failed" "$FEB_STRICT"
-exit "$(feb_error_to_exit_code "$FEB_LAST_ERROR_CODE")"
+exit "$(feb_error_to_exit_code "${FEB_LAST_ERROR_CODE:-FEB-VERIFY-001}")"

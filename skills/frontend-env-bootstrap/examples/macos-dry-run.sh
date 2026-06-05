@@ -5,8 +5,10 @@ ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
 "$ROOT_DIR/scripts/bootstrap/run.sh" \
   --platform macos \
+  --target-platforms macos \
   --dry-run \
   --non-interactive \
+  --shell-preference zsh \
   --node-lts-policy latest_lts \
   --output-dir "$ROOT_DIR/out/macos-example"
 

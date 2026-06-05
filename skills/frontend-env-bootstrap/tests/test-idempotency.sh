@@ -25,8 +25,10 @@ for i in 1 2 3; do
   mkdir -p "$run_dir"
   "$BOOTSTRAP" \
     --platform "$detected_platform" \
+    --target-platforms "$detected_platform" \
     --dry-run \
     --non-interactive \
+    --shell-preference bash \
     --output-dir "$run_dir"
   sig="$(sed -n 's/.*"idempotency_signature": "\(.*\)".*/\1/p' "$run_dir/execution_summary.json")"
   if [ -z "$sig" ]; then

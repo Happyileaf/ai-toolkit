@@ -3,5 +3,5 @@
   "overall": "PASS",
   "strict": false,
   "failed_checks": 0,
-  "checks": [{"name":"git","status":"pass","detail":"git version 2.15.0"},{"name":"node","status":"pass","detail":"v16.20.2"},{"name":"pnpm","status":"pass","detail":"detected"},{"name":"nvm","status":"pass","detail":"nvm script exists at ~/.nvm/nvm.sh."},{"name":"node_policy","status":"pass","detail":"node 16.20.2 reports LTS."},{"name":"path_duplicates","status":"pass","detail":"PATH has no duplicate entries."}]
+  "checks": [{"name":"git","status":"pass","detail":"git version 2.15.0"},{"name":"node","status":"pass","detail":"v16.20.2"},{"name":"pnpm","status":"pass","detail":"detected"},{"name":"nvm","status":"pass","detail":"nvm detected via NVM_DIR."},{"name":"node_policy","status":"pass","detail":"node 16.20.2 reports LTS."},{"name":"path_duplicates","status":"warn","detail":"PATH has 3 duplicate entries."}]
 }

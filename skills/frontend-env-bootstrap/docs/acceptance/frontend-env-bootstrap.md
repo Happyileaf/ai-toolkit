@@ -14,7 +14,9 @@
 ./skills/frontend-env-bootstrap/scripts/bootstrap/run.sh \
   --dry-run \
   --non-interactive \
+  --target-platforms auto \
   --platform auto \
+  --shell-preference bash \
   --output-dir ./skills/frontend-env-bootstrap/out
 ```
 
@@ -32,13 +34,16 @@
 
 1. 统一入口与平台分发可执行。
 2. 16 类错误码完整可枚举，且失败时输出结构化 JSON 错误对象。
+3. 缺失的 8 类错误码（`PERM-001/NET-001/PM-002/DL-002/INSTALL-001/INSTALL-002/INSTALL-004/IDEMP-001`）具备触发路径与测试证据。
+4. verify 报告需包含错误码识别断言（已知错误码校验 + 期望错误码匹配）。
 3. 产物三件套齐全：
    - `execution_summary.json`
    - `verification_report.json`
    - `human_log.txt`
-4. `--dry-run` 与 `--non-interactive` 可组合执行。
-5. 连续 3 次 dry-run 复跑，`idempotency_signature` 一致。
-6. verify 报告包含 git/node/pnpm/nvm/PATH 检查结果。
+5. `--dry-run` 与 `--non-interactive` 可组合执行。
+6. 连续 3 次 dry-run 复跑，`idempotency_signature` 一致（Unix + Windows 入口）。
+7. verify 报告包含 git/node/pnpm/nvm/PATH 检查结果。
+8. 失败路径同样必须产出三件套，不允许缺失 `verification_report.json`。
 
 ## 4. 已知限制（首版）
 

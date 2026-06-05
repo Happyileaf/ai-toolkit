@@ -1,5 +1,7 @@
 {
   "platform": "macos",
+  "target_platforms": "macos",
+  "shell_preference": "zsh",
   "dry_run": true,
   "non_interactive": true,
   "strict": false,

@@ -1,7 +1,7 @@
 ---
 name: frontend-env-bootstrap
 description: 一键搭建 Windows/macOS/Linux 前端开发基础环境（git、nvm、Node LTS、pnpm、zsh），提供统一入口、结构化错误码、verify 验收与三件套产物。
-version: 1.0.0
+version: 1.1.0
 entry: SKILL.md
 status: active
 type: skill
@@ -70,6 +70,7 @@ skills/frontend-env-bootstrap/
     ├── test-cli.sh
     ├── test-error-codes.sh
     └── test-idempotency.sh
+    └── test-windows-entry.sh
 ```
 
 ## 快速执行
@@ -80,7 +81,9 @@ macOS / Linux:
 ./skills/frontend-env-bootstrap/scripts/bootstrap/run.sh \
   --dry-run \
   --non-interactive \
+  --target-platforms auto \
   --platform auto \
+  --shell-preference bash \
   --output-dir ./skills/frontend-env-bootstrap/out
 ```
 
@@ -90,7 +93,12 @@ Windows PowerShell:
 .\skills\frontend-env-bootstrap\scripts\bootstrap\run.ps1 `
   -DryRun `
   -NonInteractive `
+  -TargetPlatforms windows `
   -Platform auto `
+  -ShellPreference powershell `
+  -InstallGit true `
+  -InstallZsh skip `
+  -AllowElevation false `
   -OutputDir .\skills\frontend-env-bootstrap\out
 ```
 
@@ -98,12 +106,13 @@ Windows PowerShell:
 
 - 统一入口 + 平台分发（`run.(sh|ps1)`）
 - 16 类标准错误码 + 结构化 JSON 错误输出
-- verify 脚本（支持 `--format`、`--strict`、`--non-interactive`）
+- verify 脚本（支持 `--format`、`--strict`、`--non-interactive`、错误码识别断言）
 - 三件套产物：
   - `execution_summary.json`
   - `verification_report.json`
   - `human_log.txt`
 - 支持 `dry-run` 与幂等复跑（3 次一致）
+- 失败路径同样生成三件套产物，并在 `verification_report.json` 中校验错误码识别闭环
 
 ## 验收与测试
 

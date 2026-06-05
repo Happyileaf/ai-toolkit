@@ -7,6 +7,9 @@ param(
   [switch]$Strict,
   [switch]$NonInteractive,
   [string]$NodeLtsPolicy = "latest_lts",
+  [string]$ErrorFile = "",
+  [string]$ExpectErrorCode = "",
+  [switch]$SkipToolChecks,
   [string]$OutputDir = ""
 )
 
@@ -31,7 +34,19 @@ if ($Platform -ne "windows") {
 }
 
 . (Join-Path $ScriptDir "windows.ps1")
-$checks = Invoke-WindowsVerifyChecks -NodeLtsPolicy $NodeLtsPolicy
+
+$checks = @()
+if ($SkipToolChecks) {
+  $checks += @{
+    name = "tool_checks_skipped"
+    status = "pass"
+    detail = "Tool checks skipped due to bootstrap failure path."
+  }
+} else {
+  $checks += Invoke-WindowsVerifyChecks -NodeLtsPolicy $NodeLtsPolicy
+}
+
+$checks += Invoke-WindowsErrorCodeChecks -ErrorFile $ErrorFile -ExpectErrorCode $ExpectErrorCode
 $failedChecks = @($checks | Where-Object { $_.status -eq "fail" }).Count
 $overall = ($failedChecks -eq 0 ? "PASS" : "FAIL")
 
@@ -42,10 +57,10 @@ $report = @{
   failed_checks = $failedChecks
   checks = $checks
 }
-($report | ConvertTo-Json -Depth 8) | Set-Content -Path $ReportFile -Encoding utf8
+($report | ConvertTo-Json -Depth 10) | Set-Content -Path $ReportFile -Encoding utf8
 
 if ($Format -eq "text" -or $Format -eq "both") {
-  Add-Content -Path $HumanLog -Encoding utf8 -Value "[VERIFY] platform=windows strict=$($Strict.IsPresent) non_interactive=$($NonInteractive.IsPresent)"
+  Add-Content -Path $HumanLog -Encoding utf8 -Value "[VERIFY] platform=windows strict=$($Strict.IsPresent) non_interactive=$($NonInteractive.IsPresent) skip_tool_checks=$($SkipToolChecks.IsPresent)"
   Add-Content -Path $HumanLog -Encoding utf8 -Value "[VERIFY] failed_checks=$failedChecks"
 }
 
