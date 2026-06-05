@@ -32,8 +32,8 @@ pwsh -NoProfile -File "$BOOTSTRAP_PS1" \
 test -f "$TMP_BASE/main/execution_summary.json"
 test -f "$TMP_BASE/main/verification_report.json"
 test -f "$TMP_BASE/main/human_log.txt"
-grep -q '"non_interactive":  true' "$TMP_BASE/main/execution_summary.json"
-grep -q 'selected package manager path = winget' "$TMP_BASE/main/execution_summary.json"
+grep -Eq '"non_interactive"[[:space:]]*:[[:space:]]*true' "$TMP_BASE/main/execution_summary.json"
+grep -Eq 'selected package manager path = winget' "$TMP_BASE/main/execution_summary.json"
 
 # Case 2: fallback chain simulation + idempotent rerun(3x)
 signatures=""
@@ -68,6 +68,6 @@ if [ "$unique_count" -ne 1 ]; then
   exit 1
 fi
 
-grep -q 'official-installer' "$TMP_BASE/fallback-1/execution_summary.json"
+grep -Eq 'official-installer' "$TMP_BASE/fallback-1/execution_summary.json"
 
 echo "PASS test-windows-entry"

@@ -6,13 +6,16 @@ BOOTSTRAP="$ROOT_DIR/scripts/bootstrap/run.sh"
 TMP_DIR="$ROOT_DIR/tests/.tmp/test-cli"
 FAILURE_DIR="$ROOT_DIR/tests/.tmp/test-cli-failure"
 WINDOWS_FAILURE_DIR="$ROOT_DIR/tests/.tmp/test-cli-windows-failure"
+VERIFY_FAILURE_DIR="$ROOT_DIR/tests/.tmp/test-cli-verify-failure"
 
 rm -rf "$TMP_DIR"
 rm -rf "$FAILURE_DIR"
 rm -rf "$WINDOWS_FAILURE_DIR"
+rm -rf "$VERIFY_FAILURE_DIR"
 mkdir -p "$TMP_DIR"
 mkdir -p "$FAILURE_DIR"
 mkdir -p "$WINDOWS_FAILURE_DIR"
+mkdir -p "$VERIFY_FAILURE_DIR"
 
 detected_platform="$(uname -s)"
 case "$detected_platform" in
@@ -81,5 +84,29 @@ test -f "$WINDOWS_FAILURE_DIR/verification_report.json"
 test -f "$WINDOWS_FAILURE_DIR/human_log.txt"
 grep -q '"code":"FEB-PLATFORM-001"' "$WINDOWS_FAILURE_DIR/last_error.json"
 grep -q '"name":"error_code_expected","status":"pass"' "$WINDOWS_FAILURE_DIR/verification_report.json"
+
+# verify-stage failure must still produce FEB-VERIFY-001 recognition pass checks
+set +e
+"$BOOTSTRAP" \
+  --platform "$detected_platform" \
+  --target-platforms "$detected_platform" \
+  --dry-run \
+  --non-interactive \
+  --strict \
+  --node-lts-policy fixed:0.0.1 \
+  --output-dir "$VERIFY_FAILURE_DIR"
+status=$?
+set -e
+if [ "$status" -eq 0 ]; then
+  echo "Expected non-zero status for verify-stage failure."
+  exit 1
+fi
+
+test -f "$VERIFY_FAILURE_DIR/execution_summary.json"
+test -f "$VERIFY_FAILURE_DIR/verification_report.json"
+test -f "$VERIFY_FAILURE_DIR/human_log.txt"
+grep -q '"code":"FEB-VERIFY-001"' "$VERIFY_FAILURE_DIR/last_error.json"
+grep -q '"name":"error_code_known","status":"pass"' "$VERIFY_FAILURE_DIR/verification_report.json"
+grep -q '"name":"error_code_expected","status":"pass"' "$VERIFY_FAILURE_DIR/verification_report.json"
 
 echo "PASS test-cli"

@@ -209,6 +209,21 @@ else
   if [ -z "$FEB_LAST_ERROR_CODE" ]; then
     feb_set_error "FEB-VERIFY-001" "Verification failed." "verify" "true" "Inspect verification_report.json and human_log.txt." ""
     feb_emit_structured_error
+
+    # For FEB-VERIFY-001 we rerun verify in error-recognition mode so the report
+    # still contains deterministic error_code_known/error_code_expected assertions.
+    VERIFY_RECOVERY_ARGS=(
+      --platform "$FEB_PLATFORM"
+      --node-lts-policy "$FEB_NODE_LTS_POLICY"
+      --output-dir "$FEB_OUTPUT_DIR"
+      --non-interactive
+      --skip-tool-checks
+      --error-file "$FEB_LAST_ERROR_FILE"
+      --expect-error-code "$FEB_LAST_ERROR_CODE"
+    )
+    if ! "$VERIFY_SCRIPT" "${VERIFY_RECOVERY_ARGS[@]}"; then
+      feb_write_failure_verification_report_placeholder "verify recovery pass failed while asserting FEB-VERIFY-001 recognition."
+    fi
   fi
   feb_record_stage "verify" "failed" "${FEB_LAST_ERROR_CODE:-FEB-VERIFY-001}: ${FEB_LAST_ERROR_MESSAGE:-Verification failed.}"
 fi

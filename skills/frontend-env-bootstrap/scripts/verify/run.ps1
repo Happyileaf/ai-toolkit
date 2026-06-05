@@ -1,6 +1,3 @@
-Set-StrictMode -Version Latest
-$ErrorActionPreference = "Stop"
-
 param(
   [ValidateSet("auto", "windows")] [string]$Platform = "auto",
   [ValidateSet("json", "text", "both")] [string]$Format = "both",
@@ -12,6 +9,9 @@ param(
   [switch]$SkipToolChecks,
   [string]$OutputDir = ""
 )
+
+Set-StrictMode -Version Latest
+$ErrorActionPreference = "Stop"
 
 $ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 $SkillRoot = (Resolve-Path (Join-Path $ScriptDir "..")).Path

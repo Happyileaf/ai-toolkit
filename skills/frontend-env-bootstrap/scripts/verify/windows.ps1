@@ -86,7 +86,7 @@ function Invoke-WindowsVerifyChecks {
   }
 
   $pathEntries = ($env:Path -split ";") | Where-Object { $_ -ne "" }
-  $duplicateCount = ($pathEntries | Group-Object | Where-Object { $_.Count -gt 1 }).Count
+  $duplicateCount = @($pathEntries | Group-Object | Where-Object { $_.Count -gt 1 }).Count
   $checks += @{
     name = "path_duplicates"
     status = ($duplicateCount -eq 0 ? "pass" : "warn")

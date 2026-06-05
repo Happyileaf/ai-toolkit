@@ -1,6 +1,3 @@
-Set-StrictMode -Version Latest
-$ErrorActionPreference = "Stop"
-
 param(
   [ValidateSet("auto", "windows")] [string]$Platform = "auto",
   [string]$TargetPlatforms = "windows",
@@ -16,6 +13,9 @@ param(
   [ValidateSet("strict", "best_effort")] [string]$IdempotentMode = "strict",
   [string]$OutputDir = ""
 )
+
+Set-StrictMode -Version Latest
+$ErrorActionPreference = "Stop"
 
 function Test-NodePolicy {
   param([string]$Policy)
@@ -94,7 +94,7 @@ function Write-StructuredError {
 }
 
 function Add-Stage([System.Collections.Generic.List[object]]$StageList, [string]$Name, [string]$Status, [string]$Detail) {
-  $StageList.Add(@{ stage = $Name; status = $Status; detail = $Detail }) | Out-Null
+  $StageList.Add([ordered]@{ stage = $Name; status = $Status; detail = $Detail }) | Out-Null
 }
 
 . (Join-Path $ScriptDir "windows\adapter.ps1")
@@ -181,7 +181,11 @@ if (-not (Test-Path $VerificationReport)) {
 
 Add-Stage $stages "finalize" ($finalStatus -eq "success" ? "ok" : "failed") "Bootstrap finalized."
 
-$signatureInput = "windows|$TargetPlatforms|$ShellPreference|$($DryRun.IsPresent)|$($NonInteractive.IsPresent)|$NodeLtsPolicy|$InstallGit|$InstallZsh|$NetworkMode|$AllowElevation|$IdempotentMode|$(($stages | ConvertTo-Json -Depth 10 -Compress))|$(($fallbackChain | ConvertTo-Json -Depth 8 -Compress))|$($structuredError.code)"
+$errorCodeForSignature = ""
+if ($structuredError -and $structuredError.code) {
+  $errorCodeForSignature = $structuredError.code
+}
+$signatureInput = "windows|$TargetPlatforms|$ShellPreference|$($DryRun.IsPresent)|$($NonInteractive.IsPresent)|$NodeLtsPolicy|$InstallGit|$InstallZsh|$NetworkMode|$AllowElevation|$IdempotentMode|$(($stages | ConvertTo-Json -Depth 10 -Compress))|$(($fallbackChain | ConvertTo-Json -Depth 8 -Compress))|$errorCodeForSignature"
 $signatureBytes = [Text.Encoding]::UTF8.GetBytes($signatureInput)
 $sha = [System.Security.Cryptography.SHA256]::Create()
 $signature = [BitConverter]::ToString($sha.ComputeHash($signatureBytes)).Replace("-", "").ToLowerInvariant()
