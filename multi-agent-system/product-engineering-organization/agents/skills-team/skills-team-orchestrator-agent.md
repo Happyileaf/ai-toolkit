@@ -98,7 +98,7 @@
 - 状态模型: queued、running、blocked、retrying、completed、failed。
 - 环境预检:
   - `repo_url`: `git@github.com:Happyileaf/ai-toolkit.git`
-  - `workspace_root`: `multi-agent-system/product-engineering-team/`
+  - `workspace_root`: `multi-agent-system/product-engineering-organization/`
   - `asset_paths`: `skills/`, `workflows/`
   - `branching_model`: Gitflow
 - 分支治理:

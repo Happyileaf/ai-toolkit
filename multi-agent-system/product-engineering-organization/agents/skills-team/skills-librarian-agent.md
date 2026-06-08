@@ -104,7 +104,7 @@
 - 保留策略: 最近 3 个大版本 + 所有 PATCH 版本。
 - 仓库与目录:
   - `repo_url`: `git@github.com:Happyileaf/ai-toolkit.git`
-  - `workspace_root`: `multi-agent-system/product-engineering-team/`
+  - `workspace_root`: `multi-agent-system/product-engineering-organization/`
   - `managed_asset_paths`: `skills/`, `workflows/`
 - 分支模型: Gitflow（feature -> develop -> release/hotfix -> main）。
 - 集成分支基线:

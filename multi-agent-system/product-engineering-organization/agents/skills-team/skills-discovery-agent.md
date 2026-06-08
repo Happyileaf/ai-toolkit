@@ -89,7 +89,7 @@
 - 输出格式: 提案模板。
 - 分析基线:
   - `repo_url`: `git@github.com:Happyileaf/ai-toolkit.git`
-  - `workspace_root`: `multi-agent-system/product-engineering-team/`
+  - `workspace_root`: `multi-agent-system/product-engineering-organization/`
   - `asset_paths`: `skills/`, `workflows/`
 
 ## 18. Metadata

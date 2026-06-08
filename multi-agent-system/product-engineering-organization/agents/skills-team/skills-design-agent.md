@@ -91,7 +91,7 @@
 - 归档策略: 设计文档持久化存储。
 - 设计基线:
   - `repo_url`: `git@github.com:Happyileaf/ai-toolkit.git`
-  - `workspace_root`: `multi-agent-system/product-engineering-team/`
+  - `workspace_root`: `multi-agent-system/product-engineering-organization/`
   - `asset_paths`: `skills/`, `workflows/`
 
 ## 18. Metadata

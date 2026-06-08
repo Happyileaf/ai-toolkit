@@ -94,7 +94,7 @@ Level 2: CEO Agent (Executive)
 
 ## 10. Execution Context
 - 权威仓库: `git@github.com:Happyileaf/ai-toolkit.git`
-- 团队工作根目录: `multi-agent-system/product-engineering-team/`
+- 团队工作根目录: `multi-agent-system/product-engineering-organization/`
 - Skills 资产目录: `skills/` 与 `workflows/`
 - 开工前置:
   - 若本地不存在仓库，先 clone 到工作目录。

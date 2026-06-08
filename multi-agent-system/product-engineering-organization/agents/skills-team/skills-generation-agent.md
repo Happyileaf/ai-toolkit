@@ -100,7 +100,7 @@
 - 自检清单: 生成后自动执行规范检查。
 - 仓库与目录:
   - `repo_url`: `git@github.com:Happyileaf/ai-toolkit.git`
-  - `workspace_root`: `multi-agent-system/product-engineering-team/`
+  - `workspace_root`: `multi-agent-system/product-engineering-organization/`
   - `output_paths`: `skills/`, `workflows/`
 - 分支策略: Gitflow feature 分支开发，禁止直接主干开发。
 - 交付策略:

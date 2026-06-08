@@ -94,7 +94,7 @@
 - 自动更新范围: 文档修复、示例补充、小 Bug 修复。
 - 仓库与目录:
   - `repo_url`: `git@github.com:Happyileaf/ai-toolkit.git`
-  - `workspace_root`: `multi-agent-system/product-engineering-team/`
+  - `workspace_root`: `multi-agent-system/product-engineering-organization/`
   - `asset_paths`: `skills/`, `workflows/`
 - 分支模型: Gitflow（feature/release/hotfix）。
 

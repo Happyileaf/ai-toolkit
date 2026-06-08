@@ -95,7 +95,7 @@
 - 阻塞阈值: 安全问题、循环依赖、核心文档缺失。
 - 运行基线:
   - `repo_url`: `git@github.com:Happyileaf/ai-toolkit.git`
-  - `workspace_root`: `multi-agent-system/product-engineering-team/`
+  - `workspace_root`: `multi-agent-system/product-engineering-organization/`
   - `asset_paths`: `skills/`, `workflows/`
   - `branching_model`: Gitflow
 - 集成交付门禁:

@@ -92,7 +92,7 @@
 - 兼容性策略: 保留旧版本至少 2 个大版本周期。
 - 仓库与目录:
   - `repo_url`: `git@github.com:Happyileaf/ai-toolkit.git`
-  - `workspace_root`: `multi-agent-system/product-engineering-team/`
+  - `workspace_root`: `multi-agent-system/product-engineering-organization/`
   - `asset_paths`: `skills/`, `workflows/`
 - 分支模型: Gitflow（重构默认在 feature 分支推进）。
 

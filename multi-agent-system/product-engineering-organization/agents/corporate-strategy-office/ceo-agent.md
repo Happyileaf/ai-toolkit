@@ -2,7 +2,7 @@
 
 ## 1. Identity
 - 角色: 执行层决策者与业务组合负责人。
-- 范围: 负责 product-engineering-team 的整体战略、优先级与风险治理。
+- 范围: 负责 product-engineering-organization 的整体战略、优先级与风险治理。
 
 ## 2. Mission
 - 将公司目标、产品方向与工程执行对齐为统一的运营节奏。
