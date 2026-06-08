@@ -19,9 +19,9 @@
 
 ### Engineering Team (工程团队)
 - **层级**: Execution Layer
-- **Team Leader**: Engineering Manager Agent
+- **Team Leader**: Engineering Team Leader Agent
 - **成员**:
-  - Engineering Manager Agent
+  - Engineering Team Leader Agent
   - Architect Agent
   - Frontend Engineer Agent
   - Backend Engineer Agent
@@ -31,9 +31,9 @@
 
 ### Quality Assurance Team (质量保障团队)
 - **层级**: Execution Layer
-- **Team Leader**: Quality Assurance Leader Agent
+- **Team Leader**: Quality Assurance Team Leader Agent
 - **成员**:
-  - Quality Assurance Leader Agent
+  - Quality Assurance Team Leader Agent
   - Quality Assurance Agent
   - Performance Agent
   - Security Agent
@@ -76,10 +76,10 @@
 
 ### Skills Team (技能团队)
 - **层级**: Infrastructure Layer
-- **Team Leader**: Skills Team Orchestrator Agent
+- **Team Leader**: Skills Team Leader Agent
 - **成员**:
   - Skills Librarian Agent
-  - Skills Team Orchestrator Agent
+  - Skills Team Leader Agent
   - Skills Discovery Agent
   - Skills Design Agent
   - Skills Generation Agent
@@ -92,8 +92,8 @@
 | 团队 | Team Leader | 核心决策权限 |
 |------|-------------|-------------|
 | Corporate Strategy Office | CEO Agent | 战略方向、预算分配、风险处置 |
-| Engineering Team | Engineering Manager Agent | 任务分派、迭代排期、质量门禁 |
-| Quality Assurance Team | Quality Assurance Leader Agent | 发布决策、测试策略、缺陷优先级 |
+| Engineering Team | Engineering Team Leader Agent | 任务分派、迭代排期、质量门禁 |
+| Quality Assurance Team | Quality Assurance Team Leader Agent | 发布决策、测试策略、缺陷优先级 |
 | Product Team | Product Manager Agent | 需求优先级、发布范围、验收标准 |
 | Data Team | BI Agent | 数据指标、数据治理、分析报告 |
 | Design Team | UX Agent | 体验标准、设计规范、设计评审 |
@@ -115,8 +115,8 @@ Executive Layer
             │       └── Design Team (UX Agent)
             │
             ├── Execution Layer
-            │       ├── Engineering Team (Engineering Manager Agent)
-            │       └── Quality Assurance Team (Quality Assurance Leader Agent)
+            │       ├── Engineering Team (Engineering Team Leader Agent)
+            │       └── Quality Assurance Team (Quality Assurance Team Leader Agent)
             │
             └── Infrastructure Layer
                     ├── Platform Team (Workflow Orchestrator Agent)

@@ -6,7 +6,7 @@
 - 所属层级: Infrastructure Layer
 
 ## 2. Team Leader
-- 角色: Skills Team Orchestrator Agent
+- 角色: Skills Team Leader Agent
 - 核心职责:
   - 工作流调度与协调
   - 任务路由与状态迁移
@@ -21,7 +21,7 @@
 ## 3. Team Members
 | Agent | 职责 | 核心产出 |
 |-------|------|----------|
-| Skills Team Orchestrator Agent | 工作流调度与协调 | 执行计划、状态报告 |
+| Skills Team Leader Agent | 工作流调度与协调 | 执行计划、状态报告 |
 | Skills Librarian Agent | 版本、索引、查询、发布 | 注册记录、变更日志 |
 | Skills Discovery Agent | 挖掘潜在 Skill 需求 | Skill 提案、需求分析 |
 | Skills Design Agent | 决定 Skill 边界与结构 | 设计文档、接口契约 |

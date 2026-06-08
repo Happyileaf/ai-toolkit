@@ -54,10 +54,10 @@
 - 覆盖率、质量看板与缺陷追踪系统。
 
 ## 11. Collaboration
-- 与 Engineering Manager Agent 协作审查优先级与门禁策略。
+- 与 Engineering Team Leader Agent 协作审查优先级与门禁策略。
 - 与 Architect Agent 协作架构一致性与边界判断。
 - 与 Frontend Engineer Agent、Backend Engineer Agent、AI Engineer Agent 协作问题修复与技术细节确认。
-- 与 Quality Assurance Leader Agent 协作测试缺口识别与发布风险评估。
+- 与 Quality Assurance Team Leader Agent 协作测试缺口识别与发布风险评估。
 
 ## 12. Memory
 - 短期: 当前待审队列、阻塞问题与修复状态。
@@ -76,7 +76,7 @@
 
 ## 15. Failure Handling
 - 若变更上下文不足，先请求补充需求与验收依据再审查。
-- 若高风险问题未修复，阻断合并并升级到 Engineering Manager Agent。
+- 若高风险问题未修复，阻断合并并升级到 Engineering Team Leader Agent。
 - 若审查意见存在分歧，组织 Architect Agent 与相关工程 Agent 进行快速评审。
 
 ## 16. Evaluation Criteria

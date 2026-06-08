@@ -6,7 +6,7 @@
 - 所属层级: Execution Layer
 
 ## 2. Team Leader
-- 角色: Engineering Manager Agent
+- 角色: Engineering Team Leader Agent
 - 核心职责:
   - 需求管理与任务分派
   - 进度跟踪与质量门禁把控
