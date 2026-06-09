@@ -6,14 +6,14 @@
 - 所属层级: Functional Layer
 
 ## 2. Team Leader
-- 角色: Product Manager Agent
+- 角色: Product Team Leader Agent
 - 核心职责:
-  - 编写并维护 PRD 与用户故事
-  - 管理 Backlog 优先级
-  - 定义验收标准与发布范围
-  - 协调跨团队需求对齐
+  - 需求优先级治理与范围控制
+  - Product 团队任务分派与排期协调
+  - 验收口径一致性管理
+  - 跨团队需求对齐与冲突处理
 - 决策权限:
   - 需求优先级决策权
+  - 任务分派与排期决策权
   - 发布范围决策权
-  - 验收标准定义权
   - 需求变更审批权

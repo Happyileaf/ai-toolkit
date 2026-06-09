@@ -12,8 +12,9 @@
 
 ### Corporate Strategy Office (企业战略办公室)
 - **层级**: Executive Layer
-- **Team Leader**: CEO Agent
+- **Team Leader**: Corporate Strategy Office Leader Agent
 - **成员**:
+  - Corporate Strategy Office Leader Agent
   - CEO Agent
   - Orchestrator Agent
 
@@ -40,37 +41,42 @@
 
 ### Product Team (产品团队)
 - **层级**: Functional Layer
-- **Team Leader**: Product Manager Agent
+- **Team Leader**: Product Team Leader Agent
 - **成员**:
+  - Product Team Leader Agent
   - Product Manager Agent
   - Requirement Analyst Agent
   - User Research Agent
 
 ### Data Team (数据团队)
 - **层级**: Functional Layer
-- **Team Leader**: BI Agent
+- **Team Leader**: Data Team Leader Agent
 - **成员**:
+  - Data Team Leader Agent
   - BI Agent
   - Data Analyst Agent
 
 ### Design Team (设计团队)
 - **层级**: Functional Layer
-- **Team Leader**: UX Agent
+- **Team Leader**: Design Team Leader Agent
 - **成员**:
+  - Design Team Leader Agent
   - UX Agent
   - UI Design Agent
 
 ### Platform Team (平台团队)
 - **层级**: Infrastructure Layer
-- **Team Leader**: Workflow Orchestrator Agent
+- **Team Leader**: Platform Team Leader Agent
 - **成员**:
+  - Platform Team Leader Agent
   - Workflow Orchestrator Agent
   - Memory Manager Agent
 
 ### Delivery Team (交付团队)
 - **层级**: Management Layer
-- **Team Leader**: Project Manager Agent
+- **Team Leader**: Delivery Team Leader Agent
 - **成员**:
+  - Delivery Team Leader Agent
   - Project Manager Agent
   - Release Manager Agent
 
@@ -91,34 +97,34 @@
 
 | 团队 | Team Leader | 核心决策权限 |
 |------|-------------|-------------|
-| Corporate Strategy Office | CEO Agent | 战略方向、预算分配、风险处置 |
+| Corporate Strategy Office | Corporate Strategy Office Leader Agent | 战略议题治理、升级路径、执行纠偏 |
 | Engineering Team | Engineering Team Leader Agent | 任务分派、迭代排期、质量门禁 |
 | Quality Assurance Team | Quality Assurance Team Leader Agent | 发布决策、测试策略、缺陷优先级 |
-| Product Team | Product Manager Agent | 需求优先级、发布范围、验收标准 |
-| Data Team | BI Agent | 数据指标、数据治理、分析报告 |
-| Design Team | UX Agent | 体验标准、设计规范、设计评审 |
-| Platform Team | Workflow Orchestrator Agent | 工作流调度、资源分配、平台架构 |
-| Delivery Team | Project Manager Agent | 项目排期、资源协调、发布窗口 |
+| Product Team | Product Team Leader Agent | 需求优先级、分派排期、范围治理 |
+| Data Team | Data Team Leader Agent | 数据优先级、口径治理、分析发布 |
+| Design Team | Design Team Leader Agent | 体验标准、设计门禁、评审放行 |
+| Platform Team | Platform Team Leader Agent | 平台优先级、容量治理、架构演进 |
+| Delivery Team | Delivery Team Leader Agent | 交付节奏、风险升级、发布窗口 |
 
 ## 层级关系
 
 ```
 Executive Layer
-    └── Corporate Strategy Office (CEO Agent)
+    └── Corporate Strategy Office (Corporate Strategy Office Leader Agent)
             │
             ├── Management Layer
-            │       └── Delivery Team (Project Manager Agent)
+            │       └── Delivery Team (Delivery Team Leader Agent)
             │
             ├── Functional Layer
-            │       ├── Product Team (Product Manager Agent)
-            │       ├── Data Team (BI Agent)
-            │       └── Design Team (UX Agent)
+            │       ├── Product Team (Product Team Leader Agent)
+            │       ├── Data Team (Data Team Leader Agent)
+            │       └── Design Team (Design Team Leader Agent)
             │
             ├── Execution Layer
             │       ├── Engineering Team (Engineering Team Leader Agent)
             │       └── Quality Assurance Team (Quality Assurance Team Leader Agent)
             │
             └── Infrastructure Layer
-                    ├── Platform Team (Workflow Orchestrator Agent)
-                    └── Skills Team (Librarian Agent)
+                    ├── Platform Team (Platform Team Leader Agent)
+                    └── Skills Team (Skills Team Leader Agent)
 ```
