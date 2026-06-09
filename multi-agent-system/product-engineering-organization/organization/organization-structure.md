@@ -12,9 +12,8 @@
 
 ### Corporate Strategy Office (企业战略办公室)
 - **层级**: Executive Layer
-- **Team Leader**: Corporate Strategy Office Leader Agent
+- **Team Leader**: CEO Agent
 - **成员**:
-  - Corporate Strategy Office Leader Agent
   - CEO Agent
   - Orchestrator Agent
 
@@ -97,7 +96,7 @@
 
 | 团队 | Team Leader | 核心决策权限 |
 |------|-------------|-------------|
-| Corporate Strategy Office | Corporate Strategy Office Leader Agent | 战略议题治理、升级路径、执行纠偏 |
+| Corporate Strategy Office | CEO Agent | 战略议题治理、升级路径、执行纠偏 |
 | Engineering Team | Engineering Team Leader Agent | 任务分派、迭代排期、质量门禁 |
 | Quality Assurance Team | Quality Assurance Team Leader Agent | 发布决策、测试策略、缺陷优先级 |
 | Product Team | Product Team Leader Agent | 需求优先级、分派排期、范围治理 |
@@ -110,7 +109,7 @@
 
 ```
 Executive Layer
-    └── Corporate Strategy Office (Corporate Strategy Office Leader Agent)
+    └── Corporate Strategy Office (CEO Agent)
             │
             ├── Management Layer
             │       └── Delivery Team (Delivery Team Leader Agent)
