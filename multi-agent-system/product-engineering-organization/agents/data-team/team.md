@@ -83,12 +83,11 @@ Level 2: CEO Agent (Corporate Strategy Office)
 | 契约 Schema | [`schemas/schema-registry.json`](../../schemas/schema-registry.json) | 组织级 schema 索引与数据结构验证 |
 
 ## 10. Execution Context
-- 权威仓库: `git@github.com:Happyileaf/ai-toolkit.git`
+- 组织运作知识库: 由 Orchestrator Agent 维护，本地路径参见 `prompts/organization-knowledge-base.md`
 - 团队工作根目录: `multi-agent-system/product-engineering-organization/`
 - 开工前置:
-  - 若本地不存在仓库，先 clone 到工作目录。
-  - 若本地已存在仓库，先 pull 最新默认分支。
-  - 后续任务仅在该仓库内执行。
+  - 直接读取 Orchestrator Agent 维护在本地的组织运作知识库，无需自行 clone/pull 仓库。
+  - 若本地知识库路径不存在或内容缺失，向 Orchestrator Agent 反馈并等待同步完成。
 - 分支与发布治理: 统一遵循 Gitflow（feature/release/hotfix），禁止直接在主干分支开发。
 - 集成分支治理:
   - 一个工作（workflow）必须且仅有一个集成分支（`integration_branch`）。
