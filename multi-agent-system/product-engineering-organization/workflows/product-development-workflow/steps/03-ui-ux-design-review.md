@@ -62,6 +62,11 @@ failure_step: steps/02-discovery-specification.md
 
 ## Output Contract
 
+机器可判定 schema：
+
+- `../../../schemas/workflows/product-development/product-development-step-artifact.schema.json`
+- `artifact_type`: `pd-03-ui-ux-output`
+
 ```json
 {
   "ui_ux_design_package": {

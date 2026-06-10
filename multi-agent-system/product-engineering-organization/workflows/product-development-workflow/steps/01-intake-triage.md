@@ -64,6 +64,11 @@ failure_step: null
 
 ## Output Contract
 
+机器可判定 schema：
+
+- `../../../schemas/workflows/product-development/product-development-step-artifact.schema.json`
+- `artifact_type`: `pd-01-intake-output`
+
 ```json
 {
   "workflow_id": "WF-PD-2026-001",

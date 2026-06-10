@@ -60,6 +60,11 @@ failure_step: steps/10-production-release.md
 
 ## Output Contract
 
+机器可判定 schema：
+
+- `../../../schemas/workflows/product-development/product-development-step-artifact.schema.json`
+- `artifact_type`: `pd-11-retrospective-output`
+
 ```json
 {
   "post_release_report": {

@@ -167,15 +167,18 @@ publish_subscribe:
 
 ### Schema 验证
 
-每条消息必须符合对应 Schema：
+每条消息必须符合对应 Schema（先过组织级 envelope，再过 payload schema）：
 
 | Payload 类型 | Schema |
 |--------------|--------|
-| skill_proposal | `schemas/skill-proposal.schema.json` |
-| skill_design | `schemas/skill-design.schema.json` |
-| skill_package | `schemas/skill-package.schema.json` |
-| skill_quality_report | `schemas/skill-quality-report.schema.json` |
-| skill_release_record | `schemas/skill-release-record.schema.json` |
+| envelope | `schemas/organization/artifact-envelope.schema.json` |
+| skill_proposal | `schemas/workflows/skill-creation/skill-proposal.schema.json` |
+| skill_design | `schemas/workflows/skill-creation/skill-design.schema.json` |
+| skill_package | `schemas/workflows/skill-creation/skill-package.schema.json` |
+| skill_quality_report | `schemas/workflows/skill-creation/skill-quality-report.schema.json` |
+| skill_release_record | `schemas/workflows/skill-creation/skill-release-record.schema.json` |
+
+schema 路径以 `schemas/schema-registry.json` 为准。
 
 ### 必填字段检查
 

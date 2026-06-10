@@ -1,7 +1,7 @@
 ---
 name: product-development-workflow
 description: 面向生产环境的端到端产品研发工作流，覆盖需求治理、设计、开发、测试、发布与复盘。
-version: 2.2.0
+version: 2.3.0
 entry: WORKFLOW.md
 status: active
 type: workflow
@@ -236,3 +236,28 @@ intake
 9. `release_record`: 发布记录与 `released_ref`
 10. `post_release_report`: 指标验证与用户反馈总结
 11. `retrospective_action_log`: 复盘改进项（owner + due_date）
+
+## Machine-Readable Schema Contract
+
+- 组织级封装标准：`../../schemas/organization/artifact-envelope.schema.json`
+- 工作流步骤产物标准：`../../schemas/workflows/product-development/product-development-step-artifact.schema.json`
+- 组织级 schema 索引：`../../schemas/schema-registry.json`
+- 规范文档：`../../governance/machine-readable-artifact-standard.md`
+
+所有 Step 产物在跨 Agent 交接时，必须使用统一 envelope 结构：
+
+```json
+{
+  "artifact_type": "pd-01-intake-output",
+  "artifact_meta": {
+    "schema_id": "workflow.product-development.step-artifact",
+    "schema_version": "v1",
+    "workflow_id": "WF-PD-2026-001",
+    "step_id": "pd-01",
+    "generated_at": "2026-06-10T09:00:00Z",
+    "generated_by": "Product Team Leader Agent",
+    "source_ref": "a1b2c3d4"
+  },
+  "data": {}
+}
+```

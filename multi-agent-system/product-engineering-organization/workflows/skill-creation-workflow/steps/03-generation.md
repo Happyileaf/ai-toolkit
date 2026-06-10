@@ -75,7 +75,7 @@ failure_step: steps/02-design.md
 
 3. **元数据生成**
    - 生成 `_meta.json`
-   - Schema: `../../../schemas/skill-package.schema.json`
+   - Schema: `../../../schemas/workflows/skill-creation/skill-package.schema.json`
 
 4. **示例编写**
    - 至少 2 个使用示例

@@ -1,0 +1,74 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "OrganizationArtifactEnvelope",
+  "description": "组织级机器可判定产物统一封装结构",
+  "type": "object",
+  "required": ["artifact_type", "artifact_meta", "data"],
+  "properties": {
+    "artifact_type": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-\\.]*$",
+      "description": "产物类型标识（如 pd-01-intake-output）"
+    },
+    "artifact_meta": {
+      "type": "object",
+      "required": [
+        "schema_id",
+        "schema_version",
+        "workflow_id",
+        "step_id",
+        "generated_at",
+        "generated_by"
+      ],
+      "properties": {
+        "schema_id": {
+          "type": "string",
+          "description": "schema 注册 ID（见 schema-registry）"
+        },
+        "schema_version": {
+          "type": "string",
+          "pattern": "^v[0-9]+$",
+          "description": "schema 主版本"
+        },
+        "workflow_id": {
+          "type": "string",
+          "minLength": 1,
+          "description": "流程实例 ID"
+        },
+        "step_id": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$",
+          "description": "步骤 ID"
+        },
+        "generated_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "产物生成时间（ISO8601）"
+        },
+        "generated_by": {
+          "type": "string",
+          "minLength": 1,
+          "description": "产物生成者（Agent/系统）"
+        },
+        "source_ref": {
+          "type": ["string", "null"],
+          "description": "源代码或数据引用（commit/tag/run id）"
+        },
+        "integration_branch": {
+          "type": ["string", "null"],
+          "description": "集成分支（如适用）"
+        },
+        "trace_id": {
+          "type": ["string", "null"],
+          "description": "跨系统追踪 ID"
+        }
+      },
+      "additionalProperties": true
+    },
+    "data": {
+      "type": "object",
+      "description": "业务负载（由具体 schema 限定）"
+    }
+  },
+  "additionalProperties": false
+}

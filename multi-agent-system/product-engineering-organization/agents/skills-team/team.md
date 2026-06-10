@@ -89,7 +89,7 @@ Level 2: CEO Agent (Executive)
 | 质量检查清单 | [`skill-quality-checklist.md`](../../skill-quality-checklist.md) | Review Agent 评分标准 |
 | 版本管理规范 | [`skill-versioning-policy.md`](../../skill-versioning-policy.md) | Librarian Agent 发布依据 |
 | Agent 通信协议 | [`protocols/skill-agent-communication.md`](../../protocols/skill-agent-communication.md) | Agent 间消息传递规范 |
-| 契约 Schema | [`schemas/skill-*.schema.json`](../../schemas/) | 数据结构验证 |
+| 契约 Schema | [`schemas/schema-registry.json`](../../schemas/schema-registry.json) | 组织级 schema 索引与数据结构验证 |
 | Skill 模板库 | [`templates/skill-template.*`](../../templates/) | Generation Agent 产出模板 |
 
 ## 10. Execution Context

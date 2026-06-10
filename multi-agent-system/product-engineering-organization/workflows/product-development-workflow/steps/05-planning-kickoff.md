@@ -64,6 +64,11 @@ failure_step: steps/04-technical-solution-design.md
 
 ## Output Contract
 
+机器可判定 schema：
+
+- `../../../schemas/workflows/product-development/product-development-step-artifact.schema.json`
+- `artifact_type`: `pd-05-planning-output`
+
 ```json
 {
   "delivery_plan": {

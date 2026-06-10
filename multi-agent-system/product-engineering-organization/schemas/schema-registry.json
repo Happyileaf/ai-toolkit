@@ -1,0 +1,62 @@
+{
+  "registry_version": "v1",
+  "owner": "platform-team",
+  "description": "组织级机器可判定产物 schema 注册表",
+  "schemas": [
+    {
+      "schema_id": "org.artifact-envelope",
+      "version": "v1",
+      "path": "schemas/organization/artifact-envelope.schema.json",
+      "scope": "organization",
+      "status": "active"
+    },
+    {
+      "schema_id": "workflow.product-development.step-artifact",
+      "version": "v1",
+      "path": "schemas/workflows/product-development/product-development-step-artifact.schema.json",
+      "scope": "workflow",
+      "workflow": "product-development-workflow",
+      "status": "active"
+    },
+    {
+      "schema_id": "workflow.skill-creation.skill-proposal",
+      "version": "v1",
+      "path": "schemas/workflows/skill-creation/skill-proposal.schema.json",
+      "scope": "workflow",
+      "workflow": "skill-creation-workflow",
+      "status": "active"
+    },
+    {
+      "schema_id": "workflow.skill-creation.skill-design",
+      "version": "v1",
+      "path": "schemas/workflows/skill-creation/skill-design.schema.json",
+      "scope": "workflow",
+      "workflow": "skill-creation-workflow",
+      "status": "active"
+    },
+    {
+      "schema_id": "workflow.skill-creation.skill-package",
+      "version": "v1",
+      "path": "schemas/workflows/skill-creation/skill-package.schema.json",
+      "scope": "workflow",
+      "workflow": "skill-creation-workflow",
+      "status": "active"
+    },
+    {
+      "schema_id": "workflow.skill-creation.skill-quality-report",
+      "version": "v1",
+      "path": "schemas/workflows/skill-creation/skill-quality-report.schema.json",
+      "scope": "workflow",
+      "workflow": "skill-creation-workflow",
+      "status": "active"
+    },
+    {
+      "schema_id": "workflow.skill-creation.skill-release-record",
+      "version": "v1",
+      "path": "schemas/workflows/skill-creation/skill-release-record.schema.json",
+      "scope": "workflow",
+      "workflow": "skill-creation-workflow",
+      "status": "active"
+    }
+  ]
+}

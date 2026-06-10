@@ -59,6 +59,11 @@ failure_step: steps/03-ui-ux-design-review.md
 
 ## Output Contract
 
+机器可判定 schema：
+
+- `../../../schemas/workflows/product-development/product-development-step-artifact.schema.json`
+- `artifact_type`: `pd-04-technical-design-output`
+
 ```json
 {
   "solution_design_package": {

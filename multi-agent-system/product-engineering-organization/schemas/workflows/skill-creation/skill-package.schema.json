@@ -1,0 +1,121 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SkillCreationSkillPackage",
+  "description": "Skill Creation Workflow - Step 03 产物包 payload schema（组织级标准路径）",
+  "owner": "skills-team",
+  "type": "object",
+  "required": ["skill_id", "files", "metadata"],
+  "properties": {
+    "skill_id": {
+      "type": "string",
+      "pattern": "^SKILL-[0-9]{3}$"
+    },
+    "files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["path", "type"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "description": "文件路径"
+          },
+          "type": {
+            "type": "string",
+            "enum": ["main", "metadata", "example", "test"],
+            "description": "文件类型"
+          },
+          "size": {
+            "type": "string",
+            "description": "文件大小"
+          }
+        }
+      },
+      "minItems": 2,
+      "description": "必须包含 SKILL.md 和 _meta.json"
+    },
+    "metadata": {
+      "type": "object",
+      "required": ["name", "version", "status", "dependencies"],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "entry": {
+          "type": "string",
+          "default": "SKILL.md"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["active", "beta", "retired", "draft"]
+        },
+        "type": {
+          "type": "string",
+          "default": "skill"
+        },
+        "category": {
+          "type": "string"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "dependencies": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "inputs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "outputs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "requires_tools": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "total_files": {
+      "type": "integer",
+      "minimum": 2
+    },
+    "self_check_report": {
+      "type": "object",
+      "properties": {
+        "compliance_check": {
+          "type": "object"
+        },
+        "template_check": {
+          "type": "object"
+        },
+        "dependency_check": {
+          "type": "object"
+        },
+        "overall_status": {
+          "type": "string",
+          "enum": ["ready_for_review", "needs_fix"]
+        }
+      }
+    }
+  }
+}

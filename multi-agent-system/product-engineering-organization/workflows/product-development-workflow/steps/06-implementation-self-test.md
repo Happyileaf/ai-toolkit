@@ -60,6 +60,11 @@ failure_step: steps/05-planning-kickoff.md
 
 ## Output Contract
 
+机器可判定 schema：
+
+- `../../../schemas/workflows/product-development/product-development-step-artifact.schema.json`
+- `artifact_type`: `pd-06-implementation-output`
+
 ```json
 {
   "engineering_delivery": {

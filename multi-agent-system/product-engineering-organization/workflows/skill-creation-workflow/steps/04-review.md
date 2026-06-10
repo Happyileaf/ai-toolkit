@@ -98,6 +98,9 @@ failure_step: steps/03-generation.md
    score = compliance(30%) + documentation(25%) + examples(25%) + dependencies(20%)
    ```
 
+9. **机器可判定产物 Schema 校验**
+   - Schema: `../../../schemas/workflows/skill-creation/skill-quality-report.schema.json`
+
 ## Output Contract
 
 ```json

@@ -1,0 +1,300 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ProductDevelopmentStepArtifact",
+  "description": "Product Development Workflow 各步骤机器可判定产物 schema（组织级标准）",
+  "allOf": [
+    {
+      "$ref": "../../organization/artifact-envelope.schema.json"
+    },
+    {
+      "oneOf": [
+        {
+          "properties": {
+            "artifact_type": { "const": "pd-01-intake-output" },
+            "artifact_meta": {
+              "type": "object",
+              "properties": { "step_id": { "const": "pd-01" } },
+              "required": ["step_id"]
+            },
+            "data": { "$ref": "#/$defs/pd01" }
+          }
+        },
+        {
+          "properties": {
+            "artifact_type": { "const": "pd-02-discovery-output" },
+            "artifact_meta": {
+              "type": "object",
+              "properties": { "step_id": { "const": "pd-02" } },
+              "required": ["step_id"]
+            },
+            "data": { "$ref": "#/$defs/pd02" }
+          }
+        },
+        {
+          "properties": {
+            "artifact_type": { "const": "pd-03-ui-ux-output" },
+            "artifact_meta": {
+              "type": "object",
+              "properties": { "step_id": { "const": "pd-03" } },
+              "required": ["step_id"]
+            },
+            "data": { "$ref": "#/$defs/pd03" }
+          }
+        },
+        {
+          "properties": {
+            "artifact_type": { "const": "pd-04-technical-design-output" },
+            "artifact_meta": {
+              "type": "object",
+              "properties": { "step_id": { "const": "pd-04" } },
+              "required": ["step_id"]
+            },
+            "data": { "$ref": "#/$defs/pd04" }
+          }
+        },
+        {
+          "properties": {
+            "artifact_type": { "const": "pd-05-planning-output" },
+            "artifact_meta": {
+              "type": "object",
+              "properties": { "step_id": { "const": "pd-05" } },
+              "required": ["step_id"]
+            },
+            "data": { "$ref": "#/$defs/pd05" }
+          }
+        },
+        {
+          "properties": {
+            "artifact_type": { "const": "pd-06-implementation-output" },
+            "artifact_meta": {
+              "type": "object",
+              "properties": { "step_id": { "const": "pd-06" } },
+              "required": ["step_id"]
+            },
+            "data": { "$ref": "#/$defs/pd06" }
+          }
+        },
+        {
+          "properties": {
+            "artifact_type": { "const": "pd-07-review-output" },
+            "artifact_meta": {
+              "type": "object",
+              "properties": { "step_id": { "const": "pd-07" } },
+              "required": ["step_id"]
+            },
+            "data": { "$ref": "#/$defs/pd07" }
+          }
+        },
+        {
+          "properties": {
+            "artifact_type": { "const": "pd-08-verification-output" },
+            "artifact_meta": {
+              "type": "object",
+              "properties": { "step_id": { "const": "pd-08" } },
+              "required": ["step_id"]
+            },
+            "data": { "$ref": "#/$defs/pd08" }
+          }
+        },
+        {
+          "properties": {
+            "artifact_type": { "const": "pd-09-release-readiness-output" },
+            "artifact_meta": {
+              "type": "object",
+              "properties": { "step_id": { "const": "pd-09" } },
+              "required": ["step_id"]
+            },
+            "data": { "$ref": "#/$defs/pd09" }
+          }
+        },
+        {
+          "properties": {
+            "artifact_type": { "const": "pd-10-production-release-output" },
+            "artifact_meta": {
+              "type": "object",
+              "properties": { "step_id": { "const": "pd-10" } },
+              "required": ["step_id"]
+            },
+            "data": { "$ref": "#/$defs/pd10" }
+          }
+        },
+        {
+          "properties": {
+            "artifact_type": { "const": "pd-11-retrospective-output" },
+            "artifact_meta": {
+              "type": "object",
+              "properties": { "step_id": { "const": "pd-11" } },
+              "required": ["step_id"]
+            },
+            "data": { "$ref": "#/$defs/pd11" }
+          }
+        }
+      ]
+    }
+  ],
+  "$defs": {
+    "pd01": {
+      "type": "object",
+      "required": [
+        "workflow_id",
+        "intake_record",
+        "risk_register",
+        "metric_baseline",
+        "integration_branch",
+        "integration_base_sha"
+      ],
+      "properties": {
+        "workflow_id": { "type": "string" },
+        "intake_record": { "type": "object" },
+        "risk_register": { "type": "object" },
+        "metric_baseline": { "type": "array" },
+        "integration_branch": { "type": "string" },
+        "integration_base_sha": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "pd02": {
+      "type": "object",
+      "required": [
+        "prd_package",
+        "requirement_traceability_matrix",
+        "acceptance_criteria",
+        "scope_freeze_record"
+      ],
+      "properties": {
+        "prd_package": { "type": "object" },
+        "requirement_traceability_matrix": { "type": "array" },
+        "acceptance_criteria": { "type": "array" },
+        "scope_freeze_record": { "type": "object" }
+      },
+      "additionalProperties": true
+    },
+    "pd03": {
+      "type": "object",
+      "required": [
+        "ui_ux_design_package",
+        "ux_review_report",
+        "ui_review_report",
+        "ux_ui_gate_decision"
+      ],
+      "properties": {
+        "ui_ux_design_package": { "type": "object" },
+        "ux_review_report": { "type": "object" },
+        "ui_review_report": { "type": "object" },
+        "ux_ui_gate_decision": { "type": "object" }
+      },
+      "additionalProperties": true
+    },
+    "pd04": {
+      "type": "object",
+      "required": [
+        "solution_design_package",
+        "architecture_decision_record",
+        "interface_contracts",
+        "technical_design_gate_decision"
+      ],
+      "properties": {
+        "solution_design_package": { "type": "object" },
+        "architecture_decision_record": { "type": "object" },
+        "interface_contracts": { "type": "object" },
+        "technical_design_gate_decision": { "type": "object" }
+      },
+      "additionalProperties": true
+    },
+    "pd05": {
+      "type": "object",
+      "required": ["delivery_plan", "sprint_backlog", "dependency_map", "kickoff_record"],
+      "properties": {
+        "delivery_plan": { "type": "object" },
+        "sprint_backlog": { "type": "array" },
+        "dependency_map": { "type": "object" },
+        "kickoff_record": { "type": "object" }
+      },
+      "additionalProperties": true
+    },
+    "pd06": {
+      "type": "object",
+      "required": [
+        "engineering_delivery",
+        "unit_test_report",
+        "self_test_report",
+        "delivery_receipt",
+        "integrated_head_sha"
+      ],
+      "properties": {
+        "engineering_delivery": { "type": "object" },
+        "unit_test_report": { "type": "object" },
+        "self_test_report": { "type": "object" },
+        "delivery_receipt": { "type": "object" },
+        "integrated_head_sha": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "pd07": {
+      "type": "object",
+      "required": ["review_report", "review_decision", "reviewed_ref"],
+      "properties": {
+        "review_report": { "type": "object" },
+        "review_decision": { "type": "object" },
+        "reviewed_ref": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "pd08": {
+      "type": "object",
+      "required": [
+        "qa_report",
+        "security_report",
+        "performance_report",
+        "defect_summary",
+        "qa_verdict"
+      ],
+      "properties": {
+        "qa_report": { "type": "object" },
+        "security_report": { "type": "object" },
+        "performance_report": { "type": "object" },
+        "defect_summary": { "type": "object" },
+        "qa_verdict": { "type": "object" }
+      },
+      "additionalProperties": true
+    },
+    "pd09": {
+      "type": "object",
+      "required": ["release_decision", "release_checklist", "rollback_plan", "communication_plan"],
+      "properties": {
+        "release_decision": { "type": "object" },
+        "release_checklist": { "type": "object" },
+        "rollback_plan": { "type": "object" },
+        "communication_plan": { "type": "object" }
+      },
+      "additionalProperties": true
+    },
+    "pd10": {
+      "type": "object",
+      "required": ["release_record", "production_health_report", "released_ref", "incident_ticket"],
+      "properties": {
+        "release_record": { "type": "object" },
+        "production_health_report": { "type": "object" },
+        "released_ref": { "type": "string" },
+        "incident_ticket": {}
+      },
+      "additionalProperties": true
+    },
+    "pd11": {
+      "type": "object",
+      "required": [
+        "post_release_report",
+        "retrospective_action_log",
+        "memory_update_record",
+        "workflow_result"
+      ],
+      "properties": {
+        "post_release_report": { "type": "object" },
+        "retrospective_action_log": { "type": "array" },
+        "memory_update_record": { "type": "object" },
+        "workflow_result": { "type": "object" }
+      },
+      "additionalProperties": true
+    }
+  }
+}

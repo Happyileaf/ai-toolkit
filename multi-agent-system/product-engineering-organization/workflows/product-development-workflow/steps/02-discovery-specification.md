@@ -59,6 +59,11 @@ failure_step: steps/01-intake-triage.md
 
 ## Output Contract
 
+机器可判定 schema：
+
+- `../../../schemas/workflows/product-development/product-development-step-artifact.schema.json`
+- `artifact_type`: `pd-02-discovery-output`
+
 ```json
 {
   "prd_package": {

@@ -93,6 +93,9 @@ failure_step: null
    - 更新 SKILL.md status: active
    - 更新 index.md status: active
 
+6. **机器可判定产物 Schema 校验**
+   - Schema: `../../../schemas/workflows/skill-creation/skill-release-record.schema.json`
+
 ## Output Contract
 
 ```json

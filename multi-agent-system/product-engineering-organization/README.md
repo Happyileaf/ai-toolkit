@@ -21,3 +21,9 @@
 - governance/
 - infra/
 - examples/
+
+## 组织级 Schema 标准
+
+- 规范文档: `governance/machine-readable-artifact-standard.md`
+- Schema 注册表: `schemas/schema-registry.json`
+- 通用封装: `schemas/organization/artifact-envelope.schema.json`
