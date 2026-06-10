@@ -57,6 +57,14 @@
       "scope": "workflow",
       "workflow": "skill-creation-workflow",
       "status": "active"
+    },
+    {
+      "schema_id": "workflow.code-review.step-artifact",
+      "version": "v1",
+      "path": "schemas/workflows/code-review/code-review-step-artifact.schema.json",
+      "scope": "workflow",
+      "workflow": "code-review-workflow",
+      "status": "active"
     }
   ]
 }

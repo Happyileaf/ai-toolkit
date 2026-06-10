@@ -1,0 +1,352 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CodeReviewStepArtifact",
+  "description": "Code Review Workflow 各步骤机器可判定产物 schema",
+  "allOf": [
+    {
+      "$ref": "../../organization/artifact-envelope.schema.json"
+    },
+    {
+      "oneOf": [
+        {
+          "properties": {
+            "artifact_type": { "const": "cr-01-scope-output" },
+            "artifact_meta": {
+              "type": "object",
+              "properties": { "step_id": { "const": "cr-01" } },
+              "required": ["step_id"]
+            },
+            "data": { "$ref": "#/$defs/cr01" }
+          }
+        },
+        {
+          "properties": {
+            "artifact_type": { "const": "cr-02-understanding-output" },
+            "artifact_meta": {
+              "type": "object",
+              "properties": { "step_id": { "const": "cr-02" } },
+              "required": ["step_id"]
+            },
+            "data": { "$ref": "#/$defs/cr02" }
+          }
+        },
+        {
+          "properties": {
+            "artifact_type": { "const": "cr-03-logic-output" },
+            "artifact_meta": {
+              "type": "object",
+              "properties": { "step_id": { "const": "cr-03" } },
+              "required": ["step_id"]
+            },
+            "data": { "$ref": "#/$defs/cr03" }
+          }
+        },
+        {
+          "properties": {
+            "artifact_type": { "const": "cr-04-quality-output" },
+            "artifact_meta": {
+              "type": "object",
+              "properties": { "step_id": { "const": "cr-04" } },
+              "required": ["step_id"]
+            },
+            "data": { "$ref": "#/$defs/cr04" }
+          }
+        },
+        {
+          "properties": {
+            "artifact_type": { "const": "cr-05-architecture-output" },
+            "artifact_meta": {
+              "type": "object",
+              "properties": { "step_id": { "const": "cr-05" } },
+              "required": ["step_id"]
+            },
+            "data": { "$ref": "#/$defs/cr05" }
+          }
+        },
+        {
+          "properties": {
+            "artifact_type": { "const": "cr-06-report-output" },
+            "artifact_meta": {
+              "type": "object",
+              "properties": { "step_id": { "const": "cr-06" } },
+              "required": ["step_id"]
+            },
+            "data": { "$ref": "#/$defs/cr06" }
+          }
+        }
+      ]
+    }
+  ],
+  "$defs": {
+    "cr01": {
+      "type": "object",
+      "required": ["review_scope", "scope_manifest"],
+      "properties": {
+        "review_scope": {
+          "type": "object",
+          "required": ["execution_date", "mode", "day_of_week"],
+          "properties": {
+            "execution_date": { "type": "string", "format": "date" },
+            "mode": { "type": "string", "enum": ["daily", "weekly", "feature_branch"] },
+            "day_of_week": { "type": "string" }
+          }
+        },
+        "scope_manifest": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["repo_name", "branch", "mode", "scope_type", "status"],
+            "properties": {
+              "repo_name": { "type": "string" },
+              "branch": { "type": "string" },
+              "mode": { "type": "string", "enum": ["daily", "weekly", "feature_branch"] },
+              "scope_type": { "type": "string", "enum": ["incremental", "full", "diff"] },
+              "since": { "type": "string", "format": "date-time" },
+              "status": { "type": "string", "enum": ["accessible", "unreachable", "branch_not_found", "base_branch_not_found"] },
+              "head_sha": { "type": "string" },
+              "base_branch": { "type": "string" },
+              "base_sha": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "cr02": {
+      "type": "object",
+      "required": ["project_analysis", "change_summary"],
+      "properties": {
+        "project_analysis": {
+          "type": "object",
+          "required": ["repo_name", "branch", "reviewed_ref", "language"],
+          "properties": {
+            "repo_name": { "type": "string" },
+            "branch": { "type": "string" },
+            "base_branch": { "type": "string" },
+            "reviewed_ref": { "type": "string" },
+            "base_sha": { "type": "string" },
+            "head_sha": { "type": "string" },
+            "language": { "type": "string" },
+            "framework": { "type": "string" },
+            "core_modules": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": { "type": "string" },
+                  "path": { "type": "string" },
+                  "description": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "change_summary": {
+          "type": "object",
+          "properties": {
+            "mode": { "type": "string", "enum": ["daily", "weekly", "feature_branch"] },
+            "commit_count": { "type": "integer", "minimum": 0 },
+            "files_changed": { "type": "integer", "minimum": 0 },
+            "high_risk_files": { "type": "array", "items": { "type": "string" } }
+          }
+        }
+      }
+    },
+    "cr03": {
+      "type": "object",
+      "required": ["logic_issues", "correctness_verdict"],
+      "properties": {
+        "logic_issues": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "repo_name", "severity", "category", "description"],
+            "properties": {
+              "id": { "type": "string" },
+              "repo_name": { "type": "string" },
+              "file": { "type": "string" },
+              "line": { "type": "integer" },
+              "severity": { "type": "string", "enum": ["critical", "major", "minor"] },
+              "category": { "type": "string" },
+              "description": { "type": "string" },
+              "suggestion": { "type": "string" }
+            }
+          }
+        },
+        "correctness_verdict": {
+          "type": "object",
+          "required": ["critical_count", "major_count", "has_blocking"],
+          "properties": {
+            "critical_count": { "type": "integer", "minimum": 0 },
+            "major_count": { "type": "integer", "minimum": 0 },
+            "minor_count": { "type": "integer", "minimum": 0 },
+            "has_blocking": { "type": "boolean" },
+            "summary": { "type": "string" }
+          }
+        }
+      }
+    },
+    "cr04": {
+      "type": "object",
+      "required": ["quality_issues", "standards_issues", "quality_verdict"],
+      "properties": {
+        "quality_issues": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "severity", "category", "description"],
+            "properties": {
+              "id": { "type": "string" },
+              "repo_name": { "type": "string" },
+              "file": { "type": "string" },
+              "line": { "type": "integer" },
+              "severity": { "type": "string", "enum": ["major", "minor"] },
+              "category": { "type": "string" },
+              "description": { "type": "string" },
+              "suggestion": { "type": "string" }
+            }
+          }
+        },
+        "standards_issues": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "severity", "category", "description"],
+            "properties": {
+              "id": { "type": "string" },
+              "repo_name": { "type": "string" },
+              "file": { "type": "string" },
+              "line": { "type": "integer" },
+              "severity": { "type": "string", "enum": ["major", "minor"] },
+              "category": { "type": "string" },
+              "description": { "type": "string" },
+              "suggestion": { "type": "string" }
+            }
+          }
+        },
+        "quality_verdict": {
+          "type": "object",
+          "required": ["major_count"],
+          "properties": {
+            "major_count": { "type": "integer", "minimum": 0 },
+            "minor_count": { "type": "integer", "minimum": 0 },
+            "positive_practices": { "type": "array", "items": { "type": "string" } },
+            "summary": { "type": "string" }
+          }
+        }
+      }
+    },
+    "cr05": {
+      "type": "object",
+      "required": ["performance_issues", "architecture_issues", "architecture_verdict"],
+      "properties": {
+        "performance_issues": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "severity", "category", "description"],
+            "properties": {
+              "id": { "type": "string" },
+              "repo_name": { "type": "string" },
+              "file": { "type": "string" },
+              "line": { "type": "integer" },
+              "severity": { "type": "string", "enum": ["major", "minor"] },
+              "category": { "type": "string" },
+              "description": { "type": "string" },
+              "suggestion": { "type": "string" }
+            }
+          }
+        },
+        "architecture_issues": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "severity", "category", "description"],
+            "properties": {
+              "id": { "type": "string" },
+              "repo_name": { "type": "string" },
+              "file": { "type": "string" },
+              "line": { "type": "integer" },
+              "severity": { "type": "string", "enum": ["major", "minor"] },
+              "category": { "type": "string" },
+              "description": { "type": "string" },
+              "suggestion": { "type": "string" }
+            }
+          }
+        },
+        "architecture_verdict": {
+          "type": "object",
+          "required": ["high_impact_change", "architect_review_required", "major_count"],
+          "properties": {
+            "high_impact_change": { "type": "boolean" },
+            "architect_review_required": { "type": "boolean" },
+            "major_count": { "type": "integer", "minimum": 0 },
+            "minor_count": { "type": "integer", "minimum": 0 },
+            "summary": { "type": "string" }
+          }
+        }
+      }
+    },
+    "cr06": {
+      "type": "object",
+      "required": ["per_repo_reports", "summary_report", "review_log"],
+      "properties": {
+        "per_repo_reports": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["repo_name", "file_path", "summary"],
+            "properties": {
+              "repo_name": { "type": "string" },
+              "file_path": { "type": "string" },
+              "summary": { "type": "string" }
+            }
+          }
+        },
+        "summary_report": {
+          "type": "object",
+          "required": ["total_repos", "reviewed_repos", "total_critical", "total_major"],
+          "properties": {
+            "total_repos": { "type": "integer" },
+            "reviewed_repos": { "type": "integer" },
+            "total_critical": { "type": "integer" },
+            "total_major": { "type": "integer" },
+            "total_minor": { "type": "integer" },
+            "total_positive": { "type": "integer" },
+            "cross_repo_findings": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "review_log": {
+          "type": "object",
+          "required": ["execution_date", "mode", "total_repos", "reviewed_repos"],
+          "properties": {
+            "execution_date": { "type": "string" },
+            "mode": { "type": "string", "enum": ["daily", "weekly", "feature_branch"] },
+            "duration_minutes": { "type": "integer" },
+            "total_repos": { "type": "integer" },
+            "reviewed_repos": { "type": "integer" },
+            "skipped_repos": { "type": "integer" },
+            "total_issues": {
+              "type": "object",
+              "properties": {
+                "critical": { "type": "integer" },
+                "major": { "type": "integer" },
+                "minor": { "type": "integer" },
+                "positive": { "type": "integer" }
+              }
+            },
+            "cross_repo_patterns": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "description": { "type": "string" },
+                  "affected_repos": { "type": "array", "items": { "type": "string" } }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
