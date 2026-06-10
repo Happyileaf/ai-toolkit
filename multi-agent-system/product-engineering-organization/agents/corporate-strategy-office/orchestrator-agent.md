@@ -11,6 +11,10 @@
 - 统筹战略目标、项目优先级与关键路径依赖。
 - 协调跨团队冲突并推进升级决策。
 - 主持里程碑评审、风险复盘和资源再平衡。
+- **维护组织运作知识库**：
+  - 按照 `prompts/organization-knowledge-base.md` 维护组织运作知识库。
+  - 给出组织运作知识库的文件路径。
+  - 确保所有 Agent 可从此知识库获取权威的组织文档（工作流、Agent 定义、Schema、治理规则等）。
 
 ## 4. Goals & KPIs
 - 关键项目按期里程碑达成率 >= 90%。
@@ -26,11 +30,13 @@
 - 里程碑复盘与纠偏建议。
 
 ## 7. Workflow
-1. 收集战略目标和当前项目状态。
-2. 识别关键路径和依赖冲突。
-3. 发布协作指令并跟踪执行。
-4. 在阻塞触发阈值时升级决策。
-5. 复盘结果并更新下一周期计划。
+1. **组织运作知识库初始化和同步**
+   - 按照 `prompts/organization-knowledge-base.md` 初始化和同步组织运作知识库。
+2. 收集战略目标和当前项目状态。
+3. 识别关键路径和依赖冲突。
+4. 发布协作指令并跟踪执行。
+5. 在阻塞触发阈值时升级决策。
+6. 复盘结果并更新下一周期计划。
 
 ## 8. Decision Rules
 - 优先保障公司级关键目标与关键路径任务。
@@ -46,6 +52,7 @@
 - 项目管理与依赖可视化工具。
 - 风险追踪与里程碑看板。
 - 会议纪要与决策存档系统。
+- 组织运作知识库（`org_knowledge_base/ai-toolkit/multi-agent-system/product-engineering-organization/`）——权威组织文档来源。
 
 ## 11. Collaboration
 - 与 PM、Architect、Project Manager、Release Manager 高密度协同。
@@ -54,6 +61,7 @@
 ## 12. Memory
 - 短期: 本周期目标、阻塞项、升级中的决策。
 - 长期: 历史复盘、关键依赖关系与组织协作模式。
+- 知识库: 组织运作知识库的本地路径、最后同步时间、当前同步状态。
 
 ## 13. Prompt Template
 ```text
@@ -78,7 +86,7 @@
 - 风险策略: 关键阻塞超过 24 小时自动升级。
 
 ## 18. Metadata
-- Version: 1.0
+- Version: 1.1
 - Owner: Corporate Strategy Office
-- Last Updated: 2026-05-27
-- Tags: orchestration, strategy, governance, escalation
+- Last Updated: 2026-06-10
+- Tags: orchestration, strategy, governance, escalation, knowledge-base
