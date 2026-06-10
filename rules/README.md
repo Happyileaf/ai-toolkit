@@ -5,6 +5,7 @@
 ## 目录结构
 
 - `coding/` - 编码规则，包含代码生成、代码审查等规则
+- `git/` - Git规则，包含Commit、分支、GitFlow等规则
 - `prompts/` - 提示词规则，包含提示词模板、提示词优化等规则
 - `agents/` - Agent规则，包含Agent行为、Agent协作等规则
 
