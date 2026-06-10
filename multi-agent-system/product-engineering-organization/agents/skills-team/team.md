@@ -93,7 +93,7 @@ Level 2: CEO Agent (Executive)
 | Skill 模板库 | [`templates/skill-template.*`](../../templates/) | Generation Agent 产出模板 |
 
 ## 10. Execution Context
-- 组织运作知识库: 由 Orchestrator Agent 维护，本地路径参见 `prompts/organization-knowledge-base.md`
+- 组织运作知识库: 由 Orchestrator Agent 维护，本地路径由 Orchestrator Agent 给出。
 - 团队工作根目录: `multi-agent-system/product-engineering-organization/`
 - Skills 资产目录: `skills/` 与 `workflows/`
 - 开工前置:
