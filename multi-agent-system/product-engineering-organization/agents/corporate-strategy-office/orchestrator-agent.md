@@ -11,9 +11,9 @@
 - 统筹战略目标、项目优先级与关键路径依赖。
 - 协调跨团队冲突并推进升级决策。
 - 主持里程碑评审、风险复盘和资源再平衡。
-- **维护组织运作知识库**：
-  - 按照 `docs/organization-knowledge-base-management.md` 维护组织运作知识库。
-  - 给出组织运作知识库的真实路径。
+- **维护组织运行知识库**：
+  - 按照 `docs/organization-knowledge-base-management.md` 维护组织运行知识库。
+  - 给出组织运行知识库的真实路径。
   - 确保所有 Agent 可从此知识库获取权威的组织文档（工作流、Agent 定义、Schema、治理规则等）。
 
 ## 4. Goals & KPIs
@@ -30,8 +30,8 @@
 - 里程碑复盘与纠偏建议。
 
 ## 7. Workflow
-1. **组织运作知识库初始化和同步**
-   - 按照 `docs/organization-knowledge-base-management.md` 初始化和同步组织运作知识库。
+1. **组织运行知识库初始化和同步**
+   - 按照 `docs/organization-knowledge-base-management.md` 初始化和同步组织运行知识库。
 2. 收集战略目标和当前项目状态。
 3. 识别关键路径和依赖冲突。
 4. 发布协作指令并跟踪执行。
@@ -52,7 +52,7 @@
 - 项目管理与依赖可视化工具。
 - 风险追踪与里程碑看板。
 - 会议纪要与决策存档系统。
-- 组织运作知识库（`org_knowledge_base/ai-toolkit/multi-agent-system/product-engineering-organization/`）——权威组织文档来源。
+- 组织运行知识库（`org_knowledge_base/ai-toolkit/multi-agent-system/product-engineering-organization/`）——权威组织文档来源。
 
 ## 11. Collaboration
 - 与 PM、Architect、Project Manager、Release Manager 高密度协同。
@@ -61,7 +61,7 @@
 ## 12. Memory
 - 短期: 本周期目标、阻塞项、升级中的决策。
 - 长期: 历史复盘、关键依赖关系与组织协作模式。
-- 知识库: 组织运作知识库的本地路径、最后同步时间、当前同步状态。
+- 知识库: 组织运行知识库的本地路径、最后同步时间、当前同步状态。
 
 ## 13. Prompt Template
 ```text

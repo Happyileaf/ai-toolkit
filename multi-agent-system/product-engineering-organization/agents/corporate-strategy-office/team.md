@@ -2,7 +2,7 @@
 
 ## 1. Team Identity
 - 团队名称: Corporate Strategy Office (企业战略办公室)
-- 团队职责范围: 战略规划、资源分配、跨团队协调、决策升级处理、组织运作知识库维护
+- 团队职责范围: 战略规划、资源分配、跨团队协调、决策升级处理、组织运行知识库维护
 - 所属层级: Executive Layer
 
 ## 2. Team Leader
@@ -21,7 +21,7 @@
 | Agent | 职责 | 核心产出 |
 |-------|------|----------|
 | CEO Agent | 战略方向定义、优先级裁决与风险治理 | 战略备忘录、优先级决策、风险登记册 |
-| Orchestrator Agent | 跨团队协同编排、升级决策与组织知识库维护 | 执行计划、升级决策记录、协作节奏安排 |
+| Orchestrator Agent | 跨团队协同编排、升级决策与组织运行知识库维护 | 执行计划、升级决策记录、协作节奏安排 |
 
 ## 4. Core Workflows
 - `product-development-workflow`: 端到端产品开发流程（参与 intake 与 release 节点）
@@ -39,7 +39,7 @@
 ## 6. Quality Gates
 - 战略决策: 所有优先级决策必须附带依据与风险动作
 - 跨团队协调: 关键阻塞超过 24 小时自动升级
-- 知识库维护: 组织运作知识库必须保持最新同步状态
+- 知识库维护: 组织运行知识库必须保持最新同步状态
 
 ## 7. Arbitration Mechanism
 
@@ -78,16 +78,16 @@ Level 2: 外部升级（Human-in-the-Loop）
 | 文档 | 路径 | 用途 |
 |------|------|------|
 | 组织架构 | [`organization/organization-structure.md`](../../organization/organization-structure.md) | 组织层级与团队关系参考 |
-| 组织知识库管理 | [`docs/organization-knowledge-base-management.md`](../../docs/organization-knowledge-base-management.md) | Orchestrator Agent 知识库维护依据 |
+| 组织运行知识库管理 | [`docs/organization-knowledge-base-management.md`](../../docs/organization-knowledge-base-management.md) | Orchestrator Agent 知识库维护依据 |
 | 事故响应工作流 | [`workflows/incident-response-workflow.md`](../../workflows/incident-response-workflow.md) | 事故升级与响应规范 |
 | 人工介入策略 | [`governance/human-in-the-loop.md`](../../governance/human-in-the-loop.md) | 合规与风险升级规则 |
 
 ## 10. Execution Context
-- 组织运作知识库: 由 Orchestrator Agent 维护，本地路径由 Orchestrator Agent 给出
+- 组织运行知识库: 由 Orchestrator Agent 维护，本地路径由 Orchestrator Agent 给出
   - 目录: `org_knowledge_base/ai-toolkit/multi-agent-system/product-engineering-organization/`
   - 工作过程中如果某些路径找不到的文件都可以在知识库中进行查找作为兜底。
 - 开工前置:
-  - 直接读取 Orchestrator Agent 维护在本地的组织运作知识库。
+  - 直接读取 Orchestrator Agent 维护在本地的组织运行知识库。
   - 若本地知识库路径不存在或内容缺失，向 Orchestrator Agent 反馈并等待同步完成。
 - 分支与发布治理: 统一遵循 Gitflow（feature/release/hotfix），禁止直接在主干分支开发。
 - 集成分支治理:
