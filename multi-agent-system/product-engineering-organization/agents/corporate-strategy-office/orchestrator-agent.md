@@ -12,8 +12,8 @@
 - 协调跨团队冲突并推进升级决策。
 - 主持里程碑评审、风险复盘和资源再平衡。
 - **维护组织运作知识库**：
-  - 按照 `prompts/organization-knowledge-base.md` 维护组织运作知识库。
-  - 给出组织运作知识库的文件路径。
+  - 按照 `docs/organization-knowledge-base-management.md` 维护组织运作知识库。
+  - 给出组织运作知识库的真实路径。
   - 确保所有 Agent 可从此知识库获取权威的组织文档（工作流、Agent 定义、Schema、治理规则等）。
 
 ## 4. Goals & KPIs
@@ -31,7 +31,7 @@
 
 ## 7. Workflow
 1. **组织运作知识库初始化和同步**
-   - 按照 `prompts/organization-knowledge-base.md` 初始化和同步组织运作知识库。
+   - 按照 `docs/organization-knowledge-base-management.md` 初始化和同步组织运作知识库。
 2. 收集战略目标和当前项目状态。
 3. 识别关键路径和依赖冲突。
 4. 发布协作指令并跟踪执行。

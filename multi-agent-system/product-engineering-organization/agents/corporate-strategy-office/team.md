@@ -78,7 +78,7 @@ Level 2: 外部升级（Human-in-the-Loop）
 | 文档 | 路径 | 用途 |
 |------|------|------|
 | 组织架构 | [`organization/organization-structure.md`](../../organization/organization-structure.md) | 组织层级与团队关系参考 |
-| 组织知识库规范 | [`prompts/organization-knowledge-base.md`](../../prompts/organization-knowledge-base.md) | Orchestrator Agent 知识库维护依据 |
+| 组织知识库管理 | [`docs/organization-knowledge-base-management.md`](../../docs/organization-knowledge-base-management.md) | Orchestrator Agent 知识库维护依据 |
 | 事故响应工作流 | [`workflows/incident-response-workflow.md`](../../workflows/incident-response-workflow.md) | 事故升级与响应规范 |
 | 人工介入策略 | [`governance/human-in-the-loop.md`](../../governance/human-in-the-loop.md) | 合规与风险升级规则 |
 
