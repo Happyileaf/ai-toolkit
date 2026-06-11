@@ -10,24 +10,32 @@
 
 ## 本地克隆管理
 
-1. **专用目录**：创建一个名为 `org_knowledge_base` 的文件夹，作为此知识库仓库的父目录。该文件夹须独立存在，不要与其他需要修改的工作仓库混放。路径由 agent 平台的目录逻辑决定。
+1. **稳定路径**：知识库克隆存放在用户主目录下的固定路径中，与 agent 工作空间无关，同一平台的所有 agent 实例均可共享访问。路径以当前 agent 平台名称作为中间层级，agent 平台名称由自身环境识别（如通过环境变量、工作空间目录特征等方式推断）。
 
    ```
-   mkdir -p <agent_workspace>/org_knowledge_base
+   $HOME/<agent_platform>/org_knowledge_base
    ```
 
-2. **初始化克隆**：将仓库克隆到 `org_knowledge_base` 文件夹中。
+   > `<agent_platform>` 为当前运行的平台名称，如 `trae`、`cursor`、`claude-code` 等，由 agent 自行识别。
+
+2. **专用目录**：创建 `org_knowledge_base` 文件夹作为此知识库仓库的父目录。该文件夹须独立存在，不要与其他需要修改的工作仓库混放。
 
    ```
-   cd <agent_workspace>/org_knowledge_base
+   mkdir -p $HOME/<agent_platform>/org_knowledge_base
+   ```
+
+3. **初始化克隆**：将仓库克隆到 `org_knowledge_base` 文件夹中。
+
+   ```
+   cd $HOME/<agent_platform>/org_knowledge_base
    git clone git@github.com:Happyileaf/ai-toolkit.git
    ```
 
-3. **定时同步**：每 1 小时进入 `org_knowledge_base/ai-toolkit` 目录执行一次 `git pull` 保持本地仓库同步。
+4. **定时同步**：每 1 小时进入 `$HOME/<agent_platform>/org_knowledge_base/ai-toolkit` 目录执行一次 `git pull` 保持本地仓库同步。
 
-4. **只读约束**：本仓库仅用于读取参考，禁止在此仓库中进行任何修改或提交。
+5. **只读约束**：本仓库仅用于读取参考，禁止在此仓库中进行任何修改或提交。
 
-5. **本地读取**：所有文件直接从本地克隆仓库中读取，路径为 `<agent_workspace>/org_knowledge_base/ai-toolkit/multi-agent-system/product-engineering-organization/<文件路径>`。
+6. **本地读取**：所有文件直接从本地克隆仓库中读取，路径为 `$HOME/<agent_platform>/org_knowledge_base/ai-toolkit/multi-agent-system/product-engineering-organization/<文件路径>`。
 
 ## 文件查找规则
 
