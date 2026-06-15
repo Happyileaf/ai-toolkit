@@ -99,7 +99,7 @@ Level 2: CEO Agent (Executive)
 - 开工前置:
   - 直接读取 Knowledge Team 提供的组织运行知识库，无需自行 clone/pull 仓库。
   - 若本地知识库路径不存在或内容缺失，向 Knowledge Team 反馈并等待同步完成或内容补充。
-- 分支与发布治理: 统一遵循 Gitflow（feature/release/hotfix），禁止直接在主干分支开发。
+- 分支与发布治理: 统一遵循 GitHub Flow（feature/bugfix/hotfix 直接合入 main），禁止直接在主干分支开发。
 - 集成分支治理:
   - 一个工作（workflow）必须且仅有一个集成分支（`integration_branch`）。
   - Agent 可使用私有工作分支（如 `agent/{agent-name}/{workflow-id}`），但必须将交付提交回灌到 `integration_branch`。

@@ -36,7 +36,7 @@
 1. 解析 Skill 文件包。
 2. 执行自动化检查清单。
 3. 评估文档完整性与准确性。
-4. 校验仓库、目录与 Gitflow 分支策略是否符合规范。
+4. 校验仓库、目录与 GitHub Flow 分支策略是否符合规范。
 5. 校验 `integrated_head_sha` 是否为 `integration_branch` 的有效 HEAD 引用。
 6. 检测依赖风险与冲突。
 7. 计算质量评分。
@@ -90,14 +90,14 @@
 - 审计效率（时间成本）。
 
 ## 17. Runtime Config
-- 检查清单: 规范合规、文档完整、示例可执行、依赖正确、无安全风险、仓库与目录合规、Gitflow 分支合规。
+- 检查清单: 规范合规、文档完整、示例可执行、依赖正确、无安全风险、仓库与目录合规、GitHub Flow 分支合规。
 - 评分权重: 规范 30%、文档 25%、示例 25%、依赖 20%。
 - 阻塞阈值: 安全问题、循环依赖、核心文档缺失。
 - 运行基线:
   - `repo_url`: `git@github.com:Happyileaf/ai-toolkit.git`
   - `workspace_root`: `multi-agent-system/product-engineering-organization/`
   - `asset_paths`: `skills/`, `workflows/`
-  - `branching_model`: Gitflow
+  - `branching_model`: GitHub Flow
 - 集成交付门禁:
   - 必检项: `integration_branch` 唯一性、`integrated_head_sha` 有效性。
   - 不满足集成交付门禁时，`decision.status` 必须为 `fail`。

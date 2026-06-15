@@ -35,7 +35,7 @@
 - 集成交付回执（`integration_branch`、`integrated_head_sha`、`agent_commit_shas`）。
 
 ## 7. Workflow
-1. 校验执行环境（确认在指定仓库与 Gitflow feature 分支上工作）。
+1. 校验执行环境（确认在指定仓库与 GitHub Flow feature 分支上工作）。
 2. 解析设计文档提取结构要求。
 3. 选择合适的 Skill 模板。
 4. 编写 SKILL.md 核心内容。
@@ -57,7 +57,7 @@
 - 不生成未经设计文档定义的功能。
 - 依赖版本必须显式声明。
 - 不得在非指定仓库或非约定目录生成 Skill 资产。
-- 不得绕过 Gitflow 直接在主干分支提交生成结果。
+- 不得绕过 GitHub Flow 直接在主干分支提交生成结果。
 - 不得仅在 agent 私有分支保留交付结果而不回灌 `integration_branch`。
 
 ## 10. Tool Access
@@ -102,7 +102,7 @@
   - `repo_url`: `git@github.com:Happyileaf/ai-toolkit.git`
   - `workspace_root`: `multi-agent-system/product-engineering-organization/`
   - `output_paths`: `skills/`, `workflows/`
-- 分支策略: Gitflow feature 分支开发，禁止直接主干开发。
+- 分支策略: GitHub Flow feature 分支开发，直接合入 main，禁止直接主干开发。
 - 交付策略:
   - 允许使用私有工作分支进行实现。
   - 进入下游步骤前，必须把交付提交集成到 `integration_branch`。

@@ -31,7 +31,7 @@
 - 迁移计划与影响分析。
 
 ## 7. Workflow
-1. 校验执行环境（确认在指定仓库与 Gitflow 分支策略下执行）。
+1. 校验执行环境（确认在指定仓库与 GitHub Flow 分支策略下执行）。
 2. 扫描 Skill 库识别重构候选。
 3. 分析使用数据评估影响。
 4. 设计重构方案（拆分/合并/重命名）。
@@ -49,7 +49,7 @@
 - 不得破坏现有依赖链。
 - 必须提供清晰的迁移文档。
 - 重构改动范围需限制在 `skills/` 与 `workflows/` 资产目录内。
-- 必须遵循 Gitflow，禁止直接在主干分支执行重构提交。
+- 必须遵循 GitHub Flow，禁止直接在主干分支执行重构提交。
 
 ## 10. Tool Access
 - Skill 依赖图分析工具。
@@ -94,7 +94,7 @@
   - `repo_url`: `git@github.com:Happyileaf/ai-toolkit.git`
   - `workspace_root`: `multi-agent-system/product-engineering-organization/`
   - `asset_paths`: `skills/`, `workflows/`
-- 分支模型: Gitflow（重构默认在 feature 分支推进）。
+- 分支模型: GitHub Flow（重构默认在 feature 分支推进，直接合入 main）。
 
 ## 18. Metadata
 - Version: 1.0

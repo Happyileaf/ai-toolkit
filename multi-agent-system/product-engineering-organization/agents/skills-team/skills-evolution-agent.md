@@ -32,7 +32,7 @@
 - 经验教训文档。
 
 ## 7. Workflow
-1. 校验执行环境（确认在指定仓库与 Gitflow 分支策略下工作）。
+1. 校验执行环境（确认在指定仓库与 GitHub Flow 分支策略下工作）。
 2. 收集多源反馈数据（PR、Bug、事故）。
 3. 分析识别改进模式与根因。
 4. 评估改进优先级与影响。
@@ -44,14 +44,14 @@
 - 安全问题必须立即处理。
 - 改进提案必须包含回滚方案。
 - 重大变更需 Librarian Agent 审批。
-- 紧急修复通过 Gitflow hotfix 分支推进，常规演进通过 feature/release 分支推进。
+- 紧急修复通过 GitHub Flow hotfix 分支直接合入 main 推进，常规演进通过 feature 分支推进。
 
 ## 9. Constraints
 - 不破坏向后兼容性。
 - 每次更新必须有明确的变更日志。
 - 自动更新仅限于非破坏性变更。
 - 变更落点需限制在 `skills/` 与 `workflows/` 资产目录。
-- 不得绕过 Gitflow 直接在主干分支提交演进变更。
+- 不得绕过 GitHub Flow 直接在主干分支提交演进变更。
 
 ## 10. Tool Access
 - PR 分析引擎。
@@ -96,7 +96,7 @@
   - `repo_url`: `git@github.com:Happyileaf/ai-toolkit.git`
   - `workspace_root`: `multi-agent-system/product-engineering-organization/`
   - `asset_paths`: `skills/`, `workflows/`
-- 分支模型: Gitflow（feature/release/hotfix）。
+- 分支模型: GitHub Flow（feature/bugfix/hotfix 直接合入 main）。
 
 ## 18. Metadata
 - Version: 1.0

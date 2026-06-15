@@ -24,7 +24,7 @@
 - Skill 创建/演进/退役请求。
 - Agent 能力地图与运行时状态。
 - 流程约束与优先级等级。
-- 仓库上下文（`repo_url`、`workspace_root`、`asset_paths`、`gitflow_policy`）。
+- 仓库上下文（`repo_url`、`workspace_root`、`asset_paths`、`github_flow_policy`）。
 - 分支上下文（`integration_branch`、`integration_base_sha`、`delivery_ref`）。
 
 ## 6. Outputs
@@ -55,7 +55,7 @@
 - 不得绕过 Review Agent 的质量门禁。
 - 每个工作流步骤都必须可审计。
 - 未完成仓库预检前，不得启动下游 Agent 执行。
-- 必须向下游 Agent 显式注入仓库、目录与 Gitflow 约束。
+- 必须向下游 Agent 显式注入仓库、目录与 GitHub Flow 约束。
 - 不得让下游步骤直接消费 agent 私有分支作为审查依据。
 - 所有质量审查与发布决策必须绑定 integration branch 的 HEAD 引用。
 
@@ -100,7 +100,7 @@
   - `repo_url`: `git@github.com:Happyileaf/ai-toolkit.git`
   - `workspace_root`: `multi-agent-system/product-engineering-organization/`
   - `asset_paths`: `skills/`, `workflows/`
-  - `branching_model`: Gitflow
+  - `branching_model`: GitHub Flow
 - 分支治理:
   - 每个 workflow 必须先创建唯一 `integration_branch`。
   - 命名建议: `feature/skill-{workflow_id}`。

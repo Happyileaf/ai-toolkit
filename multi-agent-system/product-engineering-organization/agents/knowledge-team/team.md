@@ -91,7 +91,7 @@ Level 2: CEO Agent (Corporate Strategy Office)
 - 开工前置:
   - Knowledge Sync Agent 初始化并同步组织运行知识库。
   - 若本地知识库路径不存在或内容缺失，Knowledge Curator Agent 负责追踪并补充缺失内容。
-- 分支与发布治理: 统一遵循 Gitflow（feature/release/hotfix），禁止直接在主干分支开发。
+- 分支与发布治理: 统一遵循 GitHub Flow（feature/bugfix/hotfix 直接合入 main），禁止直接在主干分支开发。
 - 集成分支治理:
   - 一个工作（workflow）必须且仅有一个集成分支（`integration_branch`）。
   - Agent 可使用私有工作分支（如 `feat/{workflow-id}/{agent-name}`），但必须将交付提交回灌到 `integration_branch`。
