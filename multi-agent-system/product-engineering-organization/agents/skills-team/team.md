@@ -93,12 +93,12 @@ Level 2: CEO Agent (Executive)
 | Skill 模板库 | [`templates/skill-template.*`](../../templates/) | Generation Agent 产出模板 |
 
 ## 10. Execution Context
-- 组织运行知识库: 由 Orchestrator Agent 维护，本地路径由 Orchestrator Agent 给出。
+- 组织运行知识库: 由 Knowledge Team 提供服务，Knowledge Sync Agent 负责克隆同步与路径管理。
 - 团队工作根目录: `multi-agent-system/product-engineering-organization/`
 - Skills 资产目录: `skills/` 与 `workflows/`
 - 开工前置:
-  - 直接读取 Orchestrator Agent 维护在本地的组织运行知识库，无需自行 clone/pull 仓库。
-  - 若本地知识库路径不存在或内容缺失，向 Orchestrator Agent 反馈并等待同步完成。
+  - 直接读取 Knowledge Team 提供的组织运行知识库，无需自行 clone/pull 仓库。
+  - 若本地知识库路径不存在或内容缺失，向 Knowledge Team 反馈并等待同步完成或内容补充。
 - 分支与发布治理: 统一遵循 Gitflow（feature/release/hotfix），禁止直接在主干分支开发。
 - 集成分支治理:
   - 一个工作（workflow）必须且仅有一个集成分支（`integration_branch`）。

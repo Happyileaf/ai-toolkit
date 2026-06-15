@@ -89,12 +89,12 @@ Level 2: CEO Agent (Corporate Strategy Office)
 | 人工介入策略 | [`governance/human-in-the-loop.md`](../../governance/human-in-the-loop.md) | 合规与风险升级规则 |
 
 ## 10. Execution Context
-- 组织运行知识库: 由 Orchestrator Agent 维护，本地路径由 Orchestrator Agent 给出。
+- 组织运行知识库: 由 Knowledge Team 提供服务，Knowledge Sync Agent 负责克隆同步与路径管理。
   - 目录: `org_knowledge_base/ai-toolkit/multi-agent-system/product-engineering-organization/`
   - 工作过程中如果某些路径找不到的文件都可以在知识库中进行查找作为兜底。
 - 开工前置:
-  - 直接读取 Orchestrator Agent 维护在本地的组织运行知识库。
-  - 若本地知识库路径不存在或内容缺失，向 Orchestrator Agent 反馈并等待同步完成。
+  - 通过 Knowledge Sync Agent 获取知识库真实本地路径与同步状态。
+  - 若本地知识库路径不存在或内容缺失，向 Knowledge Team 反馈并等待同步完成或内容补充。
 - 分支与发布治理: 统一遵循 Gitflow（feature/release/hotfix），禁止直接在主干分支开发。
 - 集成分支治理:
   - 一个工作（workflow）必须且仅有一个集成分支（`integration_branch`）。

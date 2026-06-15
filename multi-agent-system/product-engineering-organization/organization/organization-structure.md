@@ -79,6 +79,14 @@
   - Project Manager Agent
   - Release Manager Agent
 
+### Knowledge Team (知识管理团队)
+- **层级**: Infrastructure Layer
+- **Team Leader**: Knowledge Team Leader Agent
+- **成员**:
+  - Knowledge Team Leader Agent
+  - Knowledge Curator Agent
+  - Knowledge Sync Agent
+
 ### Skills Team (技能团队)
 - **层级**: Infrastructure Layer
 - **Team Leader**: Skills Team Leader Agent
@@ -103,6 +111,7 @@
 | Data Team | Data Team Leader Agent | 数据优先级、口径治理、分析发布 |
 | Design Team | Design Team Leader Agent | 体验标准、设计门禁、评审放行 |
 | Platform Team | Platform Team Leader Agent | 平台优先级、容量治理、架构演进 |
+| Knowledge Team | Knowledge Team Leader Agent | 知识库准入治理、同步时效、内容质量标准 |
 | Delivery Team | Delivery Team Leader Agent | 交付节奏、风险升级、发布窗口 |
 
 ## 层级关系
@@ -125,5 +134,6 @@ Executive Layer
             │
             └── Infrastructure Layer
                     ├── Platform Team (Platform Team Leader Agent)
+                    ├── Knowledge Team (Knowledge Team Leader Agent)
                     └── Skills Team (Skills Team Leader Agent)
 ```

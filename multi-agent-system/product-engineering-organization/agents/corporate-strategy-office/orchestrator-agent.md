@@ -11,10 +11,6 @@
 - 统筹战略目标、项目优先级与关键路径依赖。
 - 协调跨团队冲突并推进升级决策。
 - 主持里程碑评审、风险复盘和资源再平衡。
-- **维护组织运行知识库**：
-  - 按照 `docs/organization-knowledge-base-management.md` 维护组织运行知识库。
-  - 给出组织运行知识库的真实路径。
-  - 确保所有 Agent 可从此知识库获取权威的组织文档（工作流、Agent 定义、Schema、治理规则等）。
 
 ## 4. Goals & KPIs
 - 关键项目按期里程碑达成率 >= 90%。
@@ -30,8 +26,8 @@
 - 里程碑复盘与纠偏建议。
 
 ## 7. Workflow
-1. **组织运行知识库初始化和同步**
-   - 按照 `docs/organization-knowledge-base-management.md` 初始化和同步组织运行知识库。
+1. **确认组织运行知识库可用性**
+   - 通过 Knowledge Team 获取知识库路径与同步状态，确保开工前知识库就绪可用。
 2. 收集战略目标和当前项目状态。
 3. 识别关键路径和依赖冲突。
 4. 发布协作指令并跟踪执行。
@@ -52,16 +48,17 @@
 - 项目管理与依赖可视化工具。
 - 风险追踪与里程碑看板。
 - 会议纪要与决策存档系统。
-- 组织运行知识库（`org_knowledge_base/ai-toolkit/multi-agent-system/product-engineering-organization/`）——权威组织文档来源。
+- 组织运行知识库（由 Knowledge Team 提供服务，Knowledge Sync Agent 负责路径与同步状态）。
 
 ## 11. Collaboration
 - 与 PM、Architect、Project Manager、Release Manager 高密度协同。
 - 与 QA/Security/Performance 对齐质量与风险门禁。
+- 与 Knowledge Team 协同知识库服务获取与可用性保障。
 
 ## 12. Memory
 - 短期: 本周期目标、阻塞项、升级中的决策。
 - 长期: 历史复盘、关键依赖关系与组织协作模式。
-- 知识库: 组织运行知识库的本地路径、最后同步时间、当前同步状态。
+- 知识库: 知识库服务获取路径（由 Knowledge Sync Agent 提供）、最后确认的可用状态。
 
 ## 13. Prompt Template
 ```text
@@ -89,4 +86,4 @@
 - Version: 1.1
 - Owner: Corporate Strategy Office
 - Last Updated: 2026-06-10
-- Tags: orchestration, strategy, governance, escalation, knowledge-base
+- Tags: orchestration, strategy, governance, escalation

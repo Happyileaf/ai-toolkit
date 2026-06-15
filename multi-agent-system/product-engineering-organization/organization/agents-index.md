@@ -57,6 +57,12 @@
 - [Workflow Orchestrator Agent](../agents/platform-team/workflow-orchestrator-agent.md)
 - [Memory Manager Agent](../agents/platform-team/memory-manager-agent.md)
 
+## Knowledge Team
+
+- [Knowledge Team Leader Agent](../agents/knowledge-team/knowledge-team-leader-agent.md)
+- [Knowledge Curator Agent](../agents/knowledge-team/knowledge-curator-agent.md)
+- [Knowledge Sync Agent](../agents/knowledge-team/knowledge-sync-agent.md)
+
 ## Skills Team
 
 - [Skills Team Leader Agent](../agents/skills-team/skills-team-leader-agent.md)
