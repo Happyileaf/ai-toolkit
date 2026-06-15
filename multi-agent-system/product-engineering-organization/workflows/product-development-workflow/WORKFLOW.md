@@ -72,7 +72,7 @@ outputs:
   - post_release_report
   - retrospective_action_log
 requires_agents:
-  - Workflow Orchestrator Agent
+  - Orchestrator Agent
   - Product Team Leader Agent
   - Product Manager Agent
   - Requirement Analyst Agent
@@ -91,7 +91,7 @@ requires_agents:
 
 构建一套生产级、完整、可执行的产品研发主流程，确保从需求进入到上线复盘全链路可追踪、可审计、可回滚。
 
-该流程由 **Workflow Orchestrator Agent** 编排执行，默认串行主干 + 有界并行子任务模式。
+该流程由 **Orchestrator Agent** 编排执行，默认串行主干 + 有界并行子任务模式。
 
 ## Agents Involved
 
