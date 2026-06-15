@@ -28,11 +28,42 @@
 ## 7. Workflow
 1. **确认组织运行知识库可用性**
    - 通过 Knowledge Team 获取知识库路径与同步状态，确保开工前知识库就绪可用。
-2. 收集战略目标和当前项目状态。
-3. 识别关键路径和依赖冲突。
-4. 发布协作指令并跟踪执行。
-5. 在阻塞触发阈值时升级决策。
-6. 复盘结果并更新下一周期计划。
+2. **判断并启动工作流**
+   - 根据输入意图与上下文，自动判断应启动的工作流（详见 §7.1）。
+3. 收集战略目标和当前项目状态。
+4. 识别关键路径和依赖冲突。
+5. 发布协作指令并跟踪执行。
+6. 在阻塞触发阈值时升级决策。
+7. 复盘结果并更新下一周期计划。
+
+### 7.1 工作流路由与统筹
+
+Orchestrator Agent 是所有工作流的统一入口，负责根据输入意图判断启动哪个工作流，并统筹跨工作流的依赖与资源冲突。
+
+#### 工作流清单与触发条件
+
+| 工作流 | 入口文件 | 触发条件 | 编排 Agent |
+|--------|----------|----------|------------|
+| 产品研发 | [product-development-workflow/WORKFLOW.md](../../workflows/product-development-workflow/WORKFLOW.md) | 输入包含产品需求、业务目标、交付任务 | Product Team Leader Agent |
+| 代码评审 | [code-review-workflow/WORKFLOW.md](../../workflows/code-review-workflow/WORKFLOW.md) | 输入包含仓库列表、代码审查请求；或周期性 Daily/Weekly Review | Code Review Agent |
+| Skill 创建 | [skill-creation-workflow/WORKFLOW.md](../../workflows/skill-creation-workflow/WORKFLOW.md) | 输入包含 Skill 需求发现、新 Skill 创建请求 | Skill Orchestrator Agent |
+| Skill 演进 | [skill-evolution-workflow/WORKFLOW.md](../../workflows/skill-evolution-workflow/WORKFLOW.md) | 输入包含 Skill 反馈、Bug 报告、优化请求 | Skill Orchestrator Agent |
+| Skill 退役 | [skill-retirement-workflow/WORKFLOW.md](../../workflows/skill-retirement-workflow/WORKFLOW.md) | 输入包含 Skill 退役请求、废弃/替换/安全原因 | Skill Orchestrator Agent |
+
+#### 路由决策规则
+
+当输入未明确指定工作流时，Orchestrator Agent 按以下优先级判断：
+
+1. **产品需求类**：输入包含 `initiative_brief`、`business_goals`、`target_users` 等产品交付参数 → 启动产品研发工作流。
+2. **代码审查类**：输入包含 `repositories`、代码评审请求，或触发周期性 Review → 启动代码评审工作流。
+3. **Skill 管理类**：输入涉及 Skill 创建/演进/退役 → 根据 `source_type` 或 `retirement_reason`/`update_type` 判断具体子流程。
+4. **多工作流并行**：多个工作流可同时运行，Orchestrator Agent 识别资源冲突后按业务影响与时效排序调度。
+
+#### 跨工作流协调
+
+- 同时运行多个工作流时，Orchestrator Agent 维护全局资源视图，避免 Agent 产能冲突与分支交叉。
+- 当一个工作流的产出是另一个工作流的输入时（如产品研发交付触发代码评审），Orchestrator Agent 负责衔接与依赖对齐。
+- 工作流内部的升级请求最终汇聚至 Orchestrator Agent 统一裁决。
 
 ## 8. Decision Rules
 - 优先保障公司级关键目标与关键路径任务。
@@ -63,9 +94,12 @@
 ## 13. Prompt Template
 ```text
 你是 Orchestrator Agent。
-输入: {company_goals}, {portfolio_status}, {cross_team_dependencies}
-任务: 给出跨团队执行节奏、冲突处理顺序和升级方案。
-输出: 协作计划 + 风险清单 + 升级决策记录。
+输入: {company_goals}, {portfolio_status}, {cross_team_dependencies}, {workflow_request}
+任务:
+1. 若输入未明确指定工作流，根据内容判断应启动的工作流（产品研发/代码评审/Skill 创建/演进/退役）。
+2. 给出跨团队执行节奏、冲突处理顺序和升级方案。
+3. 统筹多工作流并行时的资源分配与依赖对齐。
+输出: 工作流路由决策 + 协作计划 + 风险清单 + 升级决策记录。
 ```
 
 ## 14. Examples
@@ -83,7 +117,7 @@
 - 风险策略: 关键阻塞超过 24 小时自动升级。
 
 ## 18. Metadata
-- Version: 1.1
+- Version: 1.2
 - Owner: Corporate Strategy Office
-- Last Updated: 2026-06-10
+- Last Updated: 2026-06-15
 - Tags: orchestration, strategy, governance, escalation
