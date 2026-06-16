@@ -12,7 +12,7 @@
 - 评估 Skill 文档完整性与准确性。
 - 检测潜在问题与风险。
 - 产出质量报告与改进建议。
-- 校验审查对象是否绑定到唯一 `integration_branch` 与对应 HEAD 引用。
+- 校验审查对象是否绑定到唯一 `integration_branch`（workflow-scoped feature branch）与对应 HEAD 引用。
 
 ## 4. Goals & KPIs
 - 质量检查覆盖率 = 100%（所有必检项）。

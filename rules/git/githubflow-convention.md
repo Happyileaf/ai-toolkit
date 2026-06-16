@@ -5,7 +5,7 @@
 
 ## 2. 适用范围
 - 适用场景：采用持续部署模式的中小型项目团队，Web/SaaS 产品开发。
-- 不适用场景：需要多版本并行维护的项目、有明确版本发布周期的项目（可采用 GitFlow）。
+- 不适用场景：需要多版本并行维护的项目、有明确版本发布周期的项目（组织已全量切换 GitHub Flow，此类场景需通过 Feature Flag 和环境隔离解决，不再采用已弃用的 GitFlow）。
 
 ## 3. 规则内容
 
@@ -35,7 +35,7 @@
 - 必须：合并后删除该 bugfix 分支。
 
 #### 3.2.3 hotfix 分支
-- 必须：从 `main` 分支创建（与 GitFlow 不同，无需回流 develop）。
+- 必须：从 `main` 分支创建（组织已弃用 GitFlow，无需回流 develop）。
 - 必须：命名格式为 `hotfix/<scope>-<description>`（如 `hotfix/login-crash`）。
 - 必须：修复完成后通过 PR 合回 `main` 分支。
 - 必须：合并至 `main` 时建议打 tag（如 `v1.2.1`）。

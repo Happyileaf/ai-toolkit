@@ -93,11 +93,10 @@ Level 2: CEO Agent (Corporate Strategy Office)
   - 通过 Knowledge Sync Agent 获取知识库真实本地路径与同步状态。
   - 若本地知识库路径不存在或内容缺失，向 Knowledge Team 反馈并等待同步完成或内容补充。
 - 分支与发布治理: 统一遵循 GitHub Flow（feature/bugfix/hotfix 直接合入 main），禁止直接在主干分支开发。
-- 集成分支治理:
-  - 一个工作（workflow）必须且仅有一个集成分支（`integration_branch`）。
-  - Agent 可使用私有工作分支（如 `feat/{workflow-id}/{agent-name}`），但必须将交付提交回灌到 `integration_branch`。
-  - 审查、注册、发布均以 `integration_branch` 的 HEAD commit 为唯一依据。
-  - 不允许以多个 agent 分支并列作为最终交付物。
+- 工作流分支治理（GitHub Flow 对齐）:
+  - 每个 workflow 启动时从 `main` 创建唯一工作流分支（`integration_branch`），该分支是 **workflow-scoped feature branch**，最终通过 PR 合入 `main` 并删除——不是 GitFlow 的长期 develop 分支。
+  - Agent 可使用私有工作分支（如 `feat/{workflow-id}/{agent-name}`），但交付前必须回灌到 `integration_branch`。
+  - 审查、注册、发布均以 `integration_branch` 的 HEAD commit 为唯一依据；不允许以多个 agent 分支并列作为最终交付物。
 
 ## 11. Metadata
 - Version: 1.0

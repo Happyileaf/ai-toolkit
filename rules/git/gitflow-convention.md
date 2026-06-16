@@ -1,3 +1,5 @@
+> **⚠️ DEPRECATED** — 本规范已于 2026-06-16 标记为 `deprecated`。组织已全量切换至 GitHub Flow（参见 [`githubflow-convention.md`](./githubflow-convention.md)），不再使用 GitFlow 模型。本文档仅作为历史参考保留，新项目严禁使用。
+
 # GitFlow 使用规范（GIT-GITFLOW-001）
 
 ## 1. 目标

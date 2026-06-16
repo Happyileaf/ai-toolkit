@@ -123,7 +123,8 @@ requires_agents:
 
 ## Branching & Artifact Baseline
 
-- 工作流启动时必须创建唯一 `integration_branch`（示例: `feature/product-WF-2026-001`）。
+- 工作流启动时必须从 `main` 创建唯一 `integration_branch`（workflow-scoped feature branch，示例: `feature/product-WF-2026-001`）。
+- `integration_branch` 不是 GitFlow 的长期 develop 分支；所有变更最终通过 PR 合入 `main`，合入后删除该分支。
 - 允许各工程 Agent 使用私有开发分支，但提交进入评审前必须回灌到 `integration_branch`。
 - 所有质量结论与发布动作必须绑定同一交付引用链路：`integration_base_sha -> reviewed_ref -> released_ref`。
 - 建议统一产物目录：`artifacts/product-development/{workflow_id}/`，每步生成结构化文件（JSON/YAML/Markdown）。

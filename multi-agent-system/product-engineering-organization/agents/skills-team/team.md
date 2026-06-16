@@ -47,7 +47,7 @@
 - 设计评审: Design Agent 产出需 Review Agent 签署
 - 生成验证: Generation Agent 产出需通过自动化测试
 - 发布审批: Librarian Agent 确认所有检查通过后发布
-- 集成交付门禁: 所有步骤产出必须先集成到同一 `integration_branch`，审查仅基于该分支 HEAD
+- 集成交付门禁: 所有步骤产出必须先集成到同一 `integration_branch`（workflow-scoped feature branch），审查仅基于该分支 HEAD
 
 ## 7. Arbitration Mechanism
 详见 [`skills-arbitration-mechanism.md`](./skills-arbitration-mechanism.md)
@@ -100,11 +100,10 @@ Level 2: CEO Agent (Executive)
   - 直接读取 Knowledge Team 提供的组织运行知识库，无需自行 clone/pull 仓库。
   - 若本地知识库路径不存在或内容缺失，向 Knowledge Team 反馈并等待同步完成或内容补充。
 - 分支与发布治理: 统一遵循 GitHub Flow（feature/bugfix/hotfix 直接合入 main），禁止直接在主干分支开发。
-- 集成分支治理:
-  - 一个工作（workflow）必须且仅有一个集成分支（`integration_branch`）。
-  - Agent 可使用私有工作分支（如 `agent/{agent-name}/{workflow-id}`），但必须将交付提交回灌到 `integration_branch`。
-  - 审查、注册、发布均以 `integration_branch` 的 HEAD commit 为唯一依据。
-  - 不允许以多个 agent 分支并列作为最终交付物。
+- 工作流分支治理（GitHub Flow 对齐）:
+  - 每个 workflow 启动时从 `main` 创建唯一工作流分支（`integration_branch`），该分支是 **workflow-scoped feature branch**，最终通过 PR 合入 `main` 并删除——不是 GitFlow 的长期 develop 分支。
+  - Agent 可使用私有工作分支（如 `agent/{agent-name}/{workflow-id}`），但交付前必须回灌到 `integration_branch`。
+  - 审查、注册、发布均以 `integration_branch` 的 HEAD commit 为唯一依据；不允许以多个 agent 分支并列作为最终交付物。
 - 工作过程中如果某些路径找不到的文件都可以在仓库中进行查找作为兜底。
 
 ## 11. Metadata

@@ -56,7 +56,7 @@
         },
         "integration_branch": {
           "type": ["string", "null"],
-          "description": "集成分支（如适用）"
+          "description": "工作流分支（workflow-scoped feature branch，从 main 创建，最终通过 PR 合入 main 并删除，不是 GitFlow 的长期 develop 分支）"
         },
         "trace_id": {
           "type": ["string", "null"],

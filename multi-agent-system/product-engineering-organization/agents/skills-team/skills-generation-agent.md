@@ -12,7 +12,7 @@
 - 生成元数据（version、dependencies、status）。
 - 编写使用示例与测试用例。
 - 确保代码风格与文档规范一致。
-- 将生成结果集成到工作流指定的 `integration_branch`，并输出可审计提交引用。
+- 将生成结果集成到工作流指定的 `integration_branch`（workflow-scoped feature branch），并输出可审计提交引用。
 
 ## 4. Goals & KPIs
 - 生成文件规范合规率 = 100%。

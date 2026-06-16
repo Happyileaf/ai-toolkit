@@ -12,7 +12,7 @@
 - 维护 Skill 工作流状态机与进度可视性。
 - 处理重试、降级与超时升级。
 - 强制依赖顺序与输出契约。
-- 为每个工作流创建并治理唯一集成分支（integration branch）。
+- 为每个工作流从 `main` 创建唯一 workflow-scoped feature branch（`integration_branch`），最终通过 PR 合入 `main` 并删除——不是长期 develop 分支。
 
 ## 4. Goals & KPIs
 - Skill 创建工作流成功率 >= 98%。
@@ -36,7 +36,7 @@
 ## 7. Workflow
 1. 执行环境预检（确认本地仓库已 clone/pull 且位于指定工作目录）。
 2. 解析请求并推断所需流程类型（创建/演进/退役）。
-3. 为当前工作流创建唯一集成分支（示例：`feature/skill-{workflow_id}`）并记录 `integration_base_sha`。
+3. 为当前工作流从 `main` 创建唯一 workflow-scoped feature branch（示例：`feature/skill-{workflow_id}`）并记录 `integration_base_sha`；该分支最终通过 PR 合入 `main` 并删除。
 4. 构建含依赖与门禁的 DAG/序列。
 5. 分发任务并注入必要上下文（仓库、目录、分支策略、集成分支上下文）。
 6. 跟踪状态、收集输出并校验契约（含 `delivery_ref` 是否已集成到集成分支）。
@@ -47,8 +47,8 @@
 - 对瞬时错误使用有界退避重试。
 - 对确定性或重复失败携带上下文进行升级。
 - 环境未就绪时优先执行仓库同步，不直接分发任务。
-- 同一工作流仅允许一个审查基准分支（integration branch）作为交付真源。
-- Agent 私有工作分支允许存在，但必须回灌到 integration branch 后才算交付。
+- 同一工作流仅允许一个审查基准分支（`integration_branch`，workflow-scoped feature branch）作为交付真源。
+- Agent 私有工作分支允许存在，但必须回灌到 `integration_branch` 后才算交付。
 
 ## 9. Constraints
 - 重试步骤必须保持幂等。
@@ -57,7 +57,7 @@
 - 未完成仓库预检前，不得启动下游 Agent 执行。
 - 必须向下游 Agent 显式注入仓库、目录与 GitHub Flow 约束。
 - 不得让下游步骤直接消费 agent 私有分支作为审查依据。
-- 所有质量审查与发布决策必须绑定 integration branch 的 HEAD 引用。
+- 所有质量审查与发布决策必须绑定 `integration_branch` 的 HEAD 引用；该分支最终通过 PR 合入 `main`。
 
 ## 10. Tool Access
 - 工作流引擎与队列系统。
@@ -102,9 +102,9 @@
   - `asset_paths`: `skills/`, `workflows/`
   - `branching_model`: GitHub Flow
 - 分支治理:
-  - 每个 workflow 必须先创建唯一 `integration_branch`。
+  - 每个 workflow 必须从 `main` 创建唯一 `integration_branch`（workflow-scoped feature branch）。
   - 命名建议: `feature/skill-{workflow_id}`。
-  - 审查与发布仅以 `integration_branch` 的 HEAD 为准。
+  - 审查与发布仅以 `integration_branch` 的 HEAD 为准；该分支最终通过 PR 合入 `main` 并删除。
   - 建议跟踪指标: `review_branch_count_per_workflow=1`、`unintegrated_commit_count=0`。
 
 ## 18. Metadata

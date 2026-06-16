@@ -148,7 +148,7 @@
         "intake_record": { "type": "object" },
         "risk_register": { "type": "object" },
         "metric_baseline": { "type": "array" },
-        "integration_branch": { "type": "string" },
+        "integration_branch": { "type": "string", "description": "workflow-scoped feature branch，从 main 创建，最终通过 PR 合入 main 并删除" },
         "integration_base_sha": { "type": "string" }
       },
       "additionalProperties": true

@@ -76,7 +76,8 @@ requires_agents:
 
 ## Branching & Delivery Baseline
 
-- 每个 workflow 开始时由 Orchestrator 创建唯一 `integration_branch`（示例: `feature/skill-WF-001`）。
+- 每个 workflow 启动时由 Orchestrator 从 `main` 创建唯一 `integration_branch`（workflow-scoped feature branch，示例: `feature/skill-WF-001`）。
+- `integration_branch` 不是 GitFlow 的长期 develop 分支；所有变更最终通过 PR 合入 `main`，合入后删除该分支。
 - 各 Agent 可使用私有分支并行工作，但交付必须回灌到 `integration_branch`。
 - 所有审查、注册、发布结论必须绑定 `integration_branch` 的具体 commit 引用（`delivery_ref` / `reviewed_ref` / `released_ref`）。
 - 不允许使用多个 agent 分支并列作为最终审查依据。

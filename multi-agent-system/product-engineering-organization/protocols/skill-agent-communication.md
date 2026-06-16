@@ -197,7 +197,7 @@ required_fields:
 required_context_for_skill_workflow:
   - context.workflow_id
   - context.step_id
-  - context.integration_branch
+  - context.integration_branch  # workflow-scoped feature branch，最终通过 PR 合入 main
   - context.delivery_ref
 ```
 

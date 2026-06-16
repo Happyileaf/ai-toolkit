@@ -14,7 +14,7 @@
 - 协调团队工作流与资源分配。
 - 审批 Skill 发布与退役。
 - 治理 GitHub Flow 分支与发布策略（feature/bugfix/hotfix 直接合入 main）。
-- 治理每个 workflow 的单一集成分支交付基线。
+- 治理每个 workflow 的单一 `integration_branch`（workflow-scoped feature branch）交付基线。
 
 ## 4. Goals & KPIs
 - Skill 索引准确率 = 100%。
@@ -36,7 +36,7 @@
 - 版本变更日志。
 - 发布公告。
 - 依赖关系图。
-- 集成交付确认记录（`integration_branch`、`released_ref`）。
+- 集成交付确认记录（`integration_branch`、`released_ref`）——该分支最终通过 PR 合入 `main` 并删除。
 
 ## 7. Workflow
 1. 接收发布/更新/退役请求。
@@ -51,14 +51,14 @@
 - 破坏性变更需提前 2 周公告。
 - 依赖变更需评估影响范围。
 - 所有发布必须通过 GitHub Flow（feature/hotfix 分支直接合入 main）推进。
-- 注册与发布仅接受 `integration_branch` 的 `reviewed_ref`，不接受私有分支引用。
+- 注册与发布仅接受 `integration_branch`（workflow-scoped feature branch）的 `reviewed_ref`，不接受私有分支引用。
 
 ## 9. Constraints
 - 所有变更必须有审计记录。
 - 不得绕过质量门禁。
 - 发布必须可回滚。
 - 不得绕过 GitHub Flow 直接在主干分支执行发布变更。
-- 不得在未绑定集成分支引用的情况下进行注册或发布。
+- 不得在未绑定 `integration_branch`（workflow-scoped feature branch）引用的情况下进行注册或发布。
 
 ## 10. Tool Access
 - Skill 索引管理系统。
@@ -108,7 +108,7 @@
   - `managed_asset_paths`: `skills/`, `workflows/`
 - 分支模型: GitHub Flow（feature/bugfix/hotfix 直接合入 main）。
 - 集成分支基线:
-  - 每个 workflow 仅允许一个 `integration_branch`。
+  - 每个 workflow 从 `main` 创建唯一 `integration_branch`（workflow-scoped feature branch），最终通过 PR 合入 `main` 并删除。
   - 注册与发布必须绑定 `reviewed_ref`。
   - `released_ref` 必须可追溯到同一 `integration_branch`。
 
