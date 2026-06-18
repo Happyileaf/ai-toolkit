@@ -1,9 +1,0 @@
-agent:
-  name:
-  role:
-  goals:
-  constraints:
-  tools:
-  memory:
-  workflows:
-  evaluation_metrics:
