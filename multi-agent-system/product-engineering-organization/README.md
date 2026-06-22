@@ -41,7 +41,7 @@
 - 新建 Skill：读 `workflows/skill-creation-workflow/WORKFLOW.md`
 - 演进已有 Skill：读 `workflows/skill-evolution-workflow/WORKFLOW.md`
 - 退役 Skill：读 `workflows/skill-retirement-workflow/WORKFLOW.md`
-- 紧急发布 Skill：读 `workflows/skill-emergency-release.md`
+- 紧急发布 Skill：读 `workflows/skill-emergency-release-workflow/WORKFLOW.md`
 - 处理线上事故：读 `workflows/incident-response-workflow.md`
 - 只看发布阶段动作：读 `workflows/release-workflow.md`
 - 不确定走哪条流程：读 `agents/platform-team/workflow-orchestrator-agent.md`
