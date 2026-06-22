@@ -70,7 +70,7 @@ Level 2: CEO Agent (Executive)
 | 战略分歧 | CEO Agent 仲裁 |
 
 ## 8. Emergency Release
-详见 [`../workflows/skill-emergency-release-workflow/WORKFLOW.md`](../workflows/skill-emergency-release-workflow/WORKFLOW.md)
+详见 [`../../workflows/skill-emergency-release-workflow/WORKFLOW.md`](../../workflows/skill-emergency-release-workflow/WORKFLOW.md)
 
 ### 紧急发布条件
 | 类型 | 时间要求 |

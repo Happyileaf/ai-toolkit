@@ -85,7 +85,7 @@ requires_agents:
 
 安全问题触发紧急发布流程，跳过正常排期，24 小时内完成。
 
-详见: `./skill-emergency-release-workflow/WORKFLOW.md`
+详见: `../skill-emergency-release-workflow/WORKFLOW.md`
 
 ## State Model
 
