@@ -8,4 +8,4 @@
 | ENUM-001 | [`enum-definition.md`](./enum-definition.md) | active | 枚举定义（Enum + LabelMap + Options）生成规范 |
 | REACT-001 | [`react-component.md`](./react-component.md) | active | React 组件目录与拆分规范 |
 | NAMING-001 | [`naming-convention.md`](./naming-convention.md) | active | 命名规范（变量、文件、文件夹） |
-| COMMENT-001 | [`comment-convention.md`](./comment-convention.md) | active | 注释规范（变量、函数） |
+| COMMENT-001 | [`comment-convention.md`](./comment-convention.md) | active | 注释规范（分级要求：导出 API 强制 JSDoc，自解释代码免复述注释） |
