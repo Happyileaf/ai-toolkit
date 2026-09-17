@@ -34,6 +34,7 @@ Co-authored-by: <agent-name> <email>
 | Copilot | `Co-authored-by: Copilot <copilot-connector[bot]@users.noreply.github.com>` |
 | Cursor | `Co-authored-by: Cursor <cursoragent@cursor.com>` |
 | Warp | `Co-authored-by: Warp <agent@warp.dev>` |
+| Trae | `Co-authored-by: Trae <trae-agent@users.noreply.github.com>` |
 
 ## 5. 示例
 
