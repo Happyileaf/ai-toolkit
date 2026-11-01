@@ -4,4 +4,4 @@
 
 ## Unreleased
 
-- 暂无待发布变更。
+- 新增 `repository-documentation`：全量分析现有代码仓库，生成系统概览、架构、业务/运行流程、术语表及 Mermaid 图表。
