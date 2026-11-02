@@ -1,29 +1,29 @@
-# Business and Operational Flows
+# 业务与运行流程
 
-## Scope
-Explain whether this repository primarily implements business scenarios, runtime behavior, or operational processes.
+## 范围
+说明当前 Repository 主要实现业务场景、运行时行为还是运维流程。
 
-## Flow: [Scenario Name]
-### Trigger
-What starts the flow.
+## 流程：[场景名称]
+### 触发条件
+说明流程如何启动。
 
-### Participants
-The modules, services, actors, or external systems involved.
+### 参与方
+列出涉及的模块、服务、角色或外部系统。
 
-### Main Sequence
-Describe the execution steps in order, with source references.
+### 主要步骤
+按顺序描述执行过程，并附上源码引用。
 
-### Branches and Decisions
-Explain conditions that change the path.
+### 分支与判断
+说明会改变执行路径的条件。
 
-### Data Transitions
-Describe important inputs, outputs, and state changes.
+### 数据变化
+描述重要输入、输出和状态变化。
 
-### Errors and Recovery
-Describe validation, exceptions, retries, compensation, and cleanup where implemented.
+### 错误与恢复
+描述已实现的校验、异常、重试、补偿和清理逻辑。
 
-## Additional Flows
-Repeat the structure for other important scenarios.
+## 其他流程
+对其他重要场景重复上述结构。
 
-## Evidence and Limitations
-Record gaps or behaviors that could not be established.
+## 证据与限制
+记录证据缺口或无法确认的行为。

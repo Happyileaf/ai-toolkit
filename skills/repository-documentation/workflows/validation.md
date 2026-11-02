@@ -1,21 +1,24 @@
-# Consistency Validation
+# 一致性验证
 
-Review the generated documentation before reporting completion.
+在报告完成之前，检查生成的文档。
 
-## Factual grounding
-- Verify important statements against the cited source paths and symbols.
-- Ensure described entry points, modules, interfaces, dependencies, and flows exist.
-- Check that inferred behavior is labeled as inference and unknowns remain explicit.
+## 事实依据
 
-## Cross-document consistency
-- Ensure module names, layer names, terms, and boundaries agree.
-- Ensure the system overview, architecture, and flow descriptions tell a compatible story.
-- Ensure glossary definitions match how terms are used elsewhere.
+- 根据引用的源文件路径和 symbol 核实重要陈述。
+- 确认描述的入口、模块、接口、依赖和流程确实存在。
+- 确保推断内容已明确标记，未知信息仍然保持明确。
 
-## Repository integrity
-- Check relative links and referenced paths.
-- Confirm generated files are under `docs/analysis/`.
-- Confirm unrelated user files were not modified.
-- Validate Mermaid syntax where a validator is available; otherwise inspect diagram structure manually and disclose that limitation.
+## 跨文档一致性
 
-Do not claim checks that were not run. Fix discovered inconsistencies and repeat the relevant checks.
+- 确保模块名称、分层名称、术语和边界保持一致。
+- 确保系统概览、架构和流程描述能够相互对应。
+- 确保术语表定义与其他文档中的实际用法一致。
+
+## Repository 完整性
+
+- 检查相对链接和引用路径。
+- 确认生成文件位于 `docs/analysis/` 下。
+- 确认没有修改无关的用户文件。
+- 如果环境提供 Mermaid validator，则验证 Mermaid 语法；否则手动检查图示结构，并说明这一限制。
+
+不要声称执行了实际未执行的检查。发现不一致时先修复，再重复相关检查。

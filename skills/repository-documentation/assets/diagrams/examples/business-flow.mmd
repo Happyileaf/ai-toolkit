@@ -1,11 +1,11 @@
 sequenceDiagram
-    actor User
-    participant Entry as Entry Point
-    participant Core as Core Logic
-    participant Store as Persistence
-    User->>Entry: Submit request
-    Entry->>Core: Validate and execute
-    Core->>Store: Read or write data
-    Store-->>Core: Result
-    Core-->>Entry: Outcome
-    Entry-->>User: Response
+    actor User as 用户
+    participant Entry as 入口
+    participant Core as 核心逻辑
+    participant Store as 持久化层
+    User->>Entry: 提交请求
+    Entry->>Core: 校验并执行
+    Core->>Store: 读取或写入数据
+    Store-->>Core: 返回结果
+    Core-->>Entry: 返回执行结果
+    Entry-->>User: 响应

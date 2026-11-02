@@ -1,14 +1,14 @@
-# System Analysis
+# 系统分析
 
-Trace how the system actually works.
+追踪系统的真实工作方式。
 
-1. Identify startup paths, public entry points, and runtime lifecycle.
-2. Group source files into modules by responsibility and observed dependency boundaries.
-3. Trace important imports, calls, events, messages, and API boundaries.
-4. Identify data structures, schemas, persistence mechanisms, caches, and state ownership.
-5. Inspect external services, network calls, filesystem access, browser/platform APIs, and third-party integrations.
-6. Trace representative success, validation, failure, retry, and cleanup paths.
-7. Use tests to corroborate behavior, not as a substitute for implementation.
-8. Record evidence for each significant conclusion, including file paths and symbols; include line ranges when available.
+1. 识别启动路径、public entry points 和 runtime lifecycle。
+2. 根据职责和实际依赖边界，将源文件归纳为不同模块。
+3. 追踪重要的 imports、calls、events、messages 和 API boundaries。
+4. 识别数据结构、schemas、persistence mechanisms、caches 和 state ownership。
+5. 检查外部服务、network calls、filesystem access、browser/platform APIs 和 third-party integrations。
+6. 追踪典型的成功、校验失败、异常、重试和清理路径。
+7. 使用 tests 辅助验证行为，但不能用 tests 替代实现分析。
+8. 为每项重要结论记录证据，包括文件路径和 symbol；条件允许时补充行号范围。
 
-Do not infer runtime behavior solely from filenames or comments. If static inspection cannot establish a behavior, label it unknown or a hypothesis.
+不要仅根据文件名或注释推断 runtime behavior。如果静态检查无法确认某项行为，应将其标记为未知或假设。

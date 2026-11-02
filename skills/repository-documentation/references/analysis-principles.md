@@ -1,20 +1,25 @@
-# Analysis Principles
+# 分析原则
 
-## Evidence hierarchy
-Use implementation source as primary evidence. Use tests to confirm expected behavior, configuration and manifests to establish declared setup, and README/comments as context. Documentation may be stale; verify important claims against code.
+## 证据优先级
 
-## Traceability
-For important conclusions, include a relative path and the relevant symbol. Add line ranges when the inspection environment provides stable line numbers. Prefer a small number of precise references over a long undifferentiated file list.
+以实现代码作为首要证据。使用 tests 确认预期行为，使用配置和 manifests 确认声明的环境与依赖，使用 README 和注释补充上下文。文档可能已经过时，重要结论必须回到代码中核实。
 
-## Confidence
-- **Observed:** directly established by implementation or configuration.
-- **Inferred:** strongly suggested by multiple pieces of evidence but not directly explicit.
-- **Unknown:** repository evidence is insufficient.
+## 可追溯性
 
-Do not silently promote inferred or unknown details into facts.
+重要结论应包含相对路径和相关 symbol。如果分析环境提供稳定行号，则补充行号范围。相比罗列大量文件，优先提供少量精准的引用。
 
-## Boundaries
-Describe the current system and its actual dependencies. Do not redesign it, grade it, or propose refactors unless separately requested.
+## 可信度标记
 
-## Full analysis
-Re-scan the current repository on each run. Existing generated documents are useful context but are not authoritative evidence and must be revalidated.
+- **Observed（已观察）**：由实现或配置直接证实。
+- **Inferred（推断）**：多个证据共同支持，但没有直接明确的实现说明。
+- **Unknown（未知）**：Repository 证据不足以得出结论。
+
+不要将推断或未知内容不加说明地写成事实。
+
+## 分析边界
+
+描述当前系统及其实际依赖。除非用户另行提出要求，否则不要重新设计、评价系统或提出重构方案。
+
+## 完整分析
+
+每次执行都重新扫描当前 Repository。已有生成文档可以作为上下文，但不能视为权威证据，必须重新核实。
