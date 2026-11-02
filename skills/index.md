@@ -10,3 +10,4 @@
 | SKILL-004 | UI Restore Implementation | [`ui-restore-implementation/SKILL.md`](./ui-restore-implementation/SKILL.md) | active | SKILL-001 | 基于 UI 差距清单实施前端代码修改并复验 |
 | SKILL-005 | UI Prototype Restore | [`ui-prototype-restore/SKILL.md`](./ui-prototype-restore/SKILL.md) | active | SKILL-001、SKILL-003、SKILL-004 | 端到端驱动前端 UI 原型还原流程 |
 | SKILL-006 | Repository Documentation | [`repository-documentation/SKILL.md`](./repository-documentation/SKILL.md) | active | 无 | 全量分析现有代码仓库，生成系统概览、架构、业务/运行流程和术语文档 |
+| SKILL-007 | Git Branch Name Generator | [`git-branch-name-generator/SKILL.md`](./git-branch-name-generator/SKILL.md) | active | 无 | 配置驱动生成 Git 分支名称，内置多套命名规范，支持自定义规范、语义提炼与最终校验，只生成不执行 |

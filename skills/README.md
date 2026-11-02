@@ -11,6 +11,7 @@
 - `ui-restore-implementation/` - UI 还原实现技能
 - `ui-prototype-restore/` - UI 原型还原端到端技能
 - `repository-documentation/` - 全量分析代码仓库并生成技术文档的技能
+- `git-branch-name-generator/` - 配置驱动生成 Git 分支名称的技能
 
 ## 技能索引
 
