@@ -1,28 +1,28 @@
-# Architecture
+# 架构设计
 
-## Architectural Overview
-Describe the observed architecture and its major boundaries.
+## 架构概览
+描述观察到的架构及其主要边界。
 
-## Layers and Components
-For each layer or component, explain responsibility, key implementation paths, and interfaces.
+## 分层与组件
+逐一说明各层或组件的职责、关键实现路径和接口。
 
-## Dependency Relationships
-Describe important direct dependencies and direction of control.
+## 依赖关系
+描述重要的直接依赖及控制方向。
 
-## Entry Points and Lifecycle
-Explain initialization, startup, and shutdown where relevant.
+## 入口与生命周期
+在适用时说明初始化、启动和关闭过程。
 
-## Data and State
-Describe important data structures, ownership, persistence, and transformations.
+## 数据与状态
+描述重要数据结构、所有权、持久化方式和转换过程。
 
-## External Integrations
-Document external services, protocols, and platform APIs.
+## 外部集成
+记录外部服务、协议和平台 API。
 
-## Configuration and Deployment
-Explain relevant configuration and deployment/runtime topology.
+## 配置与部署
+说明相关配置及部署/运行拓扑。
 
-## Diagrams
-Embed or link architecture diagrams where useful.
+## 图示
+在有帮助时嵌入或链接架构图。
 
-## Evidence and Limitations
-Record source references and unresolved questions.
+## 证据与限制
+记录源码引用和未解决的问题。

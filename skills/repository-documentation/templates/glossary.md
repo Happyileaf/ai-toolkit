@@ -1,7 +1,7 @@
-# Glossary
+# 术语表
 
-| Term | Category | Definition in this repository | Evidence |
+| 术语 | 类别 | 在当前 Repository 中的定义 | 证据 |
 |---|---|---|---|
-| Term | Domain / Architecture / Technical | Meaning as implemented in this project | Source path or document |
+| 术语 | 领域 / 架构 / 技术 | 该术语在项目实现中的实际含义 | 源文件路径或文档 |
 
-Include domain vocabulary, module names, architectural concepts, technical keywords, abbreviations, and project-specific names. Prefer the meaning used by this repository over generic industry definitions. Sort entries alphabetically where practical.
+收录领域词汇、模块名称、架构概念、技术关键词、缩写和项目专有名称。优先采用当前 Repository 中的实际含义，而不是通用行业定义。条件允许时按字母顺序排列。

@@ -1,17 +1,18 @@
-# Knowledge Organization
+# 知识整理
 
-Before writing documents, consolidate findings into one consistent analysis model.
+在编写文档之前，将发现的信息整合为一致的分析模型。
 
-The model should capture:
-- Repository and project type.
-- System purpose, scope, runtime, and consumers.
-- Entry points and lifecycle.
-- Layers, modules, responsibilities, and dependency relationships.
-- Public interfaces and important contracts.
-- Data entities, state, persistence, and transformations.
-- Important business, runtime, and operational flows.
-- External systems and integration boundaries.
-- Domain vocabulary and technical concepts.
-- Evidence references, confidence, and unresolved questions.
+分析模型应包含：
 
-Use one canonical name for each module and concept. Distinguish direct dependencies from indirect relationships, and observed facts from interpretations. Resolve contradictions by returning to source evidence; otherwise document the uncertainty.
+- Repository 和项目类型。
+- 系统目标、范围、运行环境和调用方。
+- 入口与生命周期。
+- 分层、模块、职责和依赖关系。
+- Public interfaces 和重要 contracts。
+- 数据实体、状态、持久化和转换过程。
+- 重要业务、运行时和运维流程。
+- 外部系统及集成边界。
+- 领域词汇和技术概念。
+- 证据引用、可信度和未解决问题。
+
+为每个模块和概念确定唯一的标准名称。区分直接依赖与间接关系，也要区分观察到的事实与分析解释。遇到矛盾时，回到源码证据核实；如果仍无法确认，则明确记录不确定性。

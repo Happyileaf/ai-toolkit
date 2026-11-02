@@ -1,72 +1,72 @@
 ---
 name: repository-documentation
-description: Analyze an existing software repository and produce a structured, evidence-based technical documentation set covering the system overview, architecture, business or operational flows, and glossary. Use when a user asks to understand, document, map, or explain an existing codebase. Do not use for implementing features, refactoring, or changing business code.
+description: 分析现有软件 Repository，并生成结构化、基于证据的技术文档，涵盖系统概览、架构、业务或运行流程以及术语表。适用于用户希望理解、梳理、记录或解释现有代码库的场景。不适用于功能开发、代码重构或业务代码修改。
 ---
 
 # Repository Documentation
 
-Analyze the repository as it exists and generate a coherent technical documentation set. Treat source code as the primary evidence. Do not modify application code, refactor the system, or redesign its architecture.
+分析 Repository 当前的实际实现，并生成一套连贯的技术文档。以源代码作为主要证据。不要修改应用代码、重构系统或重新设计架构。
 
-## Operating principles
+## 工作原则
 
-- Perform a full repository analysis for each run. Do not assume prior reports or Git diffs are a substitute for inspecting the current repository.
-- Ground conclusions in implementation. Use configuration, tests, README files, comments, and package metadata as supporting evidence.
-- Never invent behavior, dependencies, data models, or execution paths. Mark uncertain conclusions as unknown or clearly labeled hypotheses.
-- Attach source paths and, where available, symbol names and line ranges to important claims.
-- Separate observed facts from interpretation and recommendations. Do not turn documentation into an unsolicited architecture review.
-- Build one consistent analysis model before generating documents so names, boundaries, and conclusions agree across outputs.
-- Adapt analysis emphasis to the detected project type while retaining the common workflow.
-- Keep generated documentation under `docs/analysis/`. Do not overwrite unrelated files.
+- 每次执行都必须完整分析当前 Repository。不能假设已有报告或 Git diff 可以替代对当前 Repository 的检查。
+- 以实际实现为依据。配置、测试、README、注释和 package metadata 可作为辅助证据。
+- 不得虚构行为、依赖、数据模型或执行路径。无法确认的结论应标记为未知，或明确标注为假设。
+- 重要结论应附带源文件路径；条件允许时，同时提供 symbol 名称和行号范围。
+- 明确区分已观察到的事实、分析推断和建议。不要擅自将文档任务扩展为架构评审。
+- 生成文档前，先建立统一的分析模型，确保不同文档中的名称、边界和结论一致。
+- 根据识别出的项目类型调整分析重点，同时保留通用工作流程。
+- 生成的文档统一放在 `docs/analysis/` 下。不要覆盖无关文件。
 
-## Deliverables
+## 交付文档
 
-Generate the following documents:
+生成以下文档：
 
-1. `docs/analysis/system-overview.md` — a standalone, detailed explanation of the system's purpose, scope, major capabilities, users or consumers, runtime context, key concepts, and how the pieces work together. It should help a new reader understand the system without reading every source file, while providing pointers to implementation.
-2. `docs/analysis/architecture.md` — system layers, modules, responsibilities, dependencies, entry points, data stores, external services, and important architectural boundaries.
-3. `docs/analysis/business-flow.md` — important user/business scenarios and their execution sequences, branches, data transitions, and error handling. For projects without business workflows, document runtime or operational flows instead.
-4. `docs/analysis/glossary.md` — domain terms, architectural concepts, technical keywords, abbreviations, and project-specific names.
+1. `docs/analysis/system-overview.md`：独立、完整地说明系统的目标、范围、主要能力、用户或调用方、运行环境、核心概念，以及各部分如何协作。帮助新读者在不通读所有源文件的情况下理解系统，同时提供实现位置索引。
+2. `docs/analysis/architecture.md`：说明系统分层、模块、职责、依赖关系、入口、数据存储、外部服务和重要架构边界。
+3. `docs/analysis/business-flow.md`：说明重要用户或业务场景的执行顺序、分支、数据变化和错误处理。若项目不存在业务流程，则记录运行时或运维流程。
+4. `docs/analysis/glossary.md`：整理领域术语、架构概念、技术关键词、缩写和项目专有名称。
 
-Also generate `docs/analysis/README.md` as the documentation index. Include Mermaid source files in `docs/analysis/diagrams/` when diagrams materially clarify the system. Mermaid `.mmd` files are the authoritative editable diagram sources.
+同时生成 `docs/analysis/README.md` 作为文档索引。如果图示能实质性帮助理解系统，则在 `docs/analysis/diagrams/` 中生成 Mermaid 源文件。`.mmd` 文件是可编辑图示的权威源文件。
 
-## Workflow
+## 工作流程
 
-Follow the six stages in order. Consult the corresponding file in `workflows/` for detailed instructions.
+严格按照顺序执行以下六个阶段。详细要求见 `workflows/` 中对应文件。
 
-1. **Repository Preparation** — identify the repository root, inspect the current branch and working-tree state, and understand remote synchronization before analysis. Do not switch branches, pull, reset, stash, or overwrite user changes without permission.
-2. **Repository Scanning** — map the directory structure, identify project type(s), languages, frameworks, package manifests, entry points, configuration, scripts, tests, and deployment/runtime files. Exclude generated and vendored content unless it is relevant.
-3. **System Analysis** — trace module responsibilities, imports and dependencies, public interfaces, execution paths, data structures, persistence, external integrations, and error handling.
-4. **Knowledge Organization** — consolidate findings into a single internal model of system boundaries, modules, concepts, interfaces, and flows. Resolve naming inconsistencies and record evidence and uncertainty.
-5. **Documentation Generation** — produce the four core documents, index, and useful diagrams from the consolidated model.
-6. **Consistency Validation** — verify factual grounding, cross-document terminology, source paths, internal links, and Mermaid syntax. Correct inconsistencies before reporting completion.
+1. **Repository Preparation**：确认 Repository 根目录，检查当前 branch 和 working tree 状态，并了解 remote 同步情况。未经许可，不要切换 branch、pull、reset、stash 或覆盖用户更改。
+2. **Repository Scanning**：梳理目录结构，识别项目类型、语言、framework、package manifest、入口、配置、scripts、tests 和部署/运行文件。除非与分析相关，否则排除生成文件和 vendored 内容。
+3. **System Analysis**：追踪模块职责、imports 和依赖、公开接口、执行路径、数据结构、持久化、外部集成和错误处理。
+4. **Knowledge Organization**：将发现整合为统一的系统边界、模块、概念、接口和流程模型。统一命名，并记录证据与不确定性。
+5. **Documentation Generation**：基于整合后的模型生成四份核心文档、索引和必要的图示。
+6. **Consistency Validation**：检查事实依据、跨文档术语、源文件路径、内部链接和 Mermaid 语法。发现不一致时先修正，再报告完成。
 
-## Project-type adaptation
+## 按项目类型调整分析重点
 
-Identify the repository's actual shape before choosing analysis emphasis. Use the common workflow and adapt its questions:
+先识别 Repository 的实际形态，再确定分析重点。使用通用工作流程，并按需调整关注点：
 
-- **Frontend:** routes, pages, components, state management, browser APIs, network interfaces, and user interactions.
-- **Backend:** application bootstrap, API endpoints, middleware, services, domain logic, persistence, queues, and integrations.
-- **Full-stack:** frontend and backend structure plus their contracts and communication.
-- **Library/toolkit:** public exports, capability units, APIs, dependency graph, supported environments, and usage patterns.
-- **CLI:** executable entry points, command parsing, options, execution pipeline, output, and exit behavior.
-- **SDK:** public API surface, client initialization, contracts, transport, errors, and examples.
-- **Other or mixed projects:** infer the relevant runtime and component boundaries from repository evidence; do not force an unsuitable category.
+- **Frontend**：routes、pages、components、state management、Browser API、network interface 和用户交互。
+- **Backend**：应用 bootstrap、API endpoints、middleware、services、domain logic、persistence、queues 和 integrations。
+- **Full-stack**：Frontend 与 Backend 结构，以及双方的 contracts 和通信方式。
+- **Library/toolkit**：public exports、capability units、API、dependency graph、支持的运行环境和使用方式。
+- **CLI**：可执行入口、命令解析、options、执行 pipeline、输出和退出行为。
+- **SDK**：public API、client 初始化、contracts、transport、errors 和 examples。
+- **其他或混合项目**：根据 Repository 证据识别运行环境和组件边界，不要强行套用不合适的分类。
 
-## Diagram policy
+## 图示规范
 
-Prefer diagrams that explain relationships or execution:
+优先绘制能够解释关系或执行过程的图示：
 
-- System-level architecture and major external boundaries.
-- Module-level dependencies or composition where useful.
-- Business/runtime sequence and data flow for important scenarios.
-- Code-level diagrams only when they materially clarify complex logic.
+- 系统级架构及主要外部边界。
+- 必要时展示模块级依赖或组合关系。
+- 重要场景的业务/运行时 sequence 和 data flow。
+- 只有在能实质性解释复杂逻辑时，才绘制 code-level diagram。
 
-Use Mermaid and save source as `.mmd`. Keep diagrams readable, label relationships precisely, and ensure they match the written documents. Do not create diagrams merely to increase document volume.
+使用 Mermaid，源文件保存为 `.mmd`。保持图示易读，准确标注关系，并确保图示与文档描述一致。不要为了增加文档数量而制作没有解释价值的图示。
 
-## Scope boundaries
+## 范围边界
 
-This skill documents the existing implementation. It does not implement features, modify business logic, refactor code, introduce dependencies, or propose a replacement architecture. If the user separately requests changes, treat that as a distinct task and obtain the required authorization.
+本 Skill 只记录现有实现，不负责开发功能、修改业务逻辑、重构代码、引入依赖或设计替代架构。如果用户另行要求修改代码，应将其视为独立任务，并取得必要授权。
 
-## Completion report
+## 完成报告
 
-When finished, summarize the repository and project type, list generated files, identify the most important source areas examined, and disclose unresolved questions or limitations. Do not claim a validation or inspection was performed unless it actually was.
+完成后，汇总 Repository 和项目类型，列出生成的文件，指出检查过的关键源代码区域，并说明尚未解决的问题或分析限制。不得声称执行过实际未执行的检查或验证。

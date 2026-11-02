@@ -1,21 +1,21 @@
-# Repository Analysis Documentation
+# Repository 分析文档
 
-> Generated technical documentation for this repository. Content describes the inspected implementation at the time of analysis.
+> 本文档记录分析时所检查的 Repository 实现情况。
 
-## Documents
+## 文档列表
 
-- [System Overview](./system-overview.md) — purpose, scope, capabilities, runtime, and system behavior.
-- [Architecture](./architecture.md) — layers, modules, responsibilities, dependencies, and integrations.
-- [Business and Operational Flows](./business-flow.md) — important scenarios, execution sequences, data transitions, and error paths.
-- [Glossary](./glossary.md) — domain terms, architectural concepts, and project-specific vocabulary.
+- [系统概览](./system-overview.md)：系统目标、范围、能力、运行环境和行为。
+- [架构设计](./architecture.md)：分层、模块、职责、依赖和集成。
+- [业务与运行流程](./business-flow.md)：重要场景、执行顺序、数据变化和错误路径。
+- [术语表](./glossary.md)：领域术语、架构概念和项目专有词汇。
 
-## Diagrams
+## 图示
 
-See [diagrams/](./diagrams/) for editable Mermaid source files, when generated.
+如已生成可编辑的 Mermaid 源文件，请查看 [diagrams/](./diagrams/)。
 
-## Analysis Notes
+## 分析记录
 
-- Analysis date:
-- Repository revision:
-- Detected project type:
-- Known limitations:
+- 分析日期：
+- Repository revision：
+- 识别出的项目类型：
+- 已知限制：

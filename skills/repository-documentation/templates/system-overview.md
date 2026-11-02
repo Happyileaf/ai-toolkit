@@ -1,31 +1,31 @@
-# System Overview
+# 系统概览
 
-## Purpose and Scope
-Describe what the system does, the problem it addresses, and what is in or out of scope.
+## 目标与范围
+说明系统的用途、解决的问题，以及包含和不包含的内容。
 
-## Users and Consumers
-Identify user groups, calling systems, or developers consuming the system.
+## 用户与调用方
+识别用户群体、调用系统或使用该系统的开发者。
 
-## Main Capabilities
-Describe the major capabilities and link each to its implementation.
+## 主要能力
+描述主要能力，并关联到对应实现。
 
-## Runtime Context
-Explain how the system starts, where it runs, and its major runtime dependencies.
+## 运行环境
+说明系统如何启动、运行位置及主要运行时依赖。
 
-## Key Concepts
-Introduce the core concepts needed to understand the implementation.
+## 核心概念
+介绍理解系统实现所必需的核心概念。
 
-## How the System Works
-Explain the major components and how they cooperate in a typical execution.
+## 系统工作方式
+说明主要组件如何协作完成一次典型执行。
 
-## Important Entry Points
-List the primary entry points and their roles.
+## 重要入口
+列出主要入口及其职责。
 
-## External Dependencies
-Summarize important external services, platforms, and packages.
+## 外部依赖
+概述重要的外部服务、平台和 packages。
 
-## Further Reading
-Link to the architecture, flows, glossary, and relevant source areas.
+## 延伸阅读
+链接到架构、流程、术语表和相关源码区域。
 
-## Evidence and Limitations
-Record important evidence references, uncertainties, and analysis limitations.
+## 证据与限制
+记录重要证据、不确定性和分析限制。

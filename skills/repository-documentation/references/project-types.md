@@ -1,15 +1,15 @@
-# Project Type Guide
+# 项目类型指南
 
-Use these profiles to adjust emphasis after scanning. A repository may combine several types.
+完成扫描后，使用以下类型调整分析重点。一个 Repository 可能同时包含多种类型。
 
-| Type | Primary analysis targets |
+| 类型 | 主要分析对象 |
 |---|---|
-| Frontend | Routes, pages, components, state, rendering, browser APIs, network contracts, interactions |
-| Backend | Bootstrap, routes/controllers, middleware, services, domain logic, persistence, queues, integrations |
-| Full-stack | Frontend and backend boundaries, shared contracts, authentication, data flow between tiers |
-| Library/toolkit | Public exports, capability units, API contracts, dependency graph, supported runtimes, usage |
-| CLI | Executable entry points, argument parsing, command dispatch, execution pipeline, output and exit codes |
-| SDK | Client setup, public API, transport, serialization, errors, compatibility and examples |
-| Monorepo | Workspace boundaries, package ownership, shared packages, build graph, deployment units |
+| Frontend | Routes、pages、components、state、rendering、Browser API、network contracts、用户交互 |
+| Backend | Bootstrap、routes/controllers、middleware、services、domain logic、persistence、queues、integrations |
+| Full-stack | Frontend 与 Backend 边界、共享 contracts、authentication、跨层 data flow |
+| Library/toolkit | Public exports、capability units、API contracts、dependency graph、支持的 runtime、使用方式 |
+| CLI | 可执行入口、参数解析、命令分发、执行 pipeline、输出和 exit codes |
+| SDK | Client 配置、public API、transport、serialization、errors、兼容性和 examples |
+| Monorepo | Workspace 边界、package 归属、共享 packages、build graph、部署单元 |
 
-For unfamiliar projects, derive a suitable profile from entry points, manifests, runtime configuration, and code structure. Do not force a category when the evidence indicates a different shape.
+对于不熟悉的项目，根据 entry points、manifests、runtime configuration 和代码结构推导合适的类型。如果证据表明项目形态不同，不要强行归类。

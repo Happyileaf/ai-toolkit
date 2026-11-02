@@ -1,16 +1,21 @@
-# Documentation Conventions
+# 文档编写规范
 
-## General
-Write for a technically capable reader who is new to this repository. Expand project-specific abbreviations on first use. Prefer concrete descriptions over promotional language.
+## 通用要求
 
-## Source references
-Use repository-relative links where possible, for example `[src/server.ts](../../src/server.ts)`. Link to relevant symbols or line ranges when the platform supports stable anchors.
+面向熟悉技术、但不了解当前 Repository 的读者编写。首次出现项目专有缩写时应给出解释。优先使用具体描述，避免宣传性语言。
 
-## Structure
-Use descriptive headings, concise paragraphs, and tables for module inventories or interface summaries. Explain important relationships in prose; do not rely on diagrams alone.
+## 源码引用
 
-## Uncertainty
-Use explicit labels such as **Inferred** and **Unknown**. Explain what evidence is missing when a conclusion cannot be established.
+尽可能使用 Repository 相对路径链接，例如 `[src/server.ts](../../src/server.ts)`。如果平台支持稳定锚点，则链接到相关 symbol 或行号范围。
 
-## Scope
-Document implemented behavior. Keep recommendations, opinions, and future possibilities out of the factual system description unless the user asks for them.
+## 结构
+
+使用明确的标题、简洁的段落；模块清单或接口摘要适合使用表格。重要关系应通过文字解释，不能只依赖图示。
+
+## 不确定性
+
+使用 **Inferred（推断）** 和 **Unknown（未知）** 等明确标签。无法确认结论时，说明缺少什么证据。
+
+## 范围
+
+只记录已经实现的行为。除非用户提出要求，否则不要在事实性系统描述中混入建议、主观评价或未来设想。
