@@ -1,0 +1,4 @@
+interface:
+  display_name: "Repository Documentation"
+  short_description: "Analyze a codebase and generate technical documentation"
+  default_prompt: "Analyze this repository and generate a consistent technical documentation set under docs/analysis/."

@@ -1,0 +1,11 @@
+sequenceDiagram
+    actor User
+    participant Entry as Entry Point
+    participant Core as Core Logic
+    participant Store as Persistence
+    User->>Entry: Submit request
+    Entry->>Core: Validate and execute
+    Core->>Store: Read or write data
+    Store-->>Core: Result
+    Core-->>Entry: Outcome
+    Entry-->>User: Response

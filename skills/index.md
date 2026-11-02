@@ -9,3 +9,4 @@
 | SKILL-003 | UI Gap Audit | [`ui-gap-audit/SKILL.md`](./ui-gap-audit/SKILL.md) | active | SKILL-001 | 对比原型页与本地前端页，输出结构化 UI 差距清单 |
 | SKILL-004 | UI Restore Implementation | [`ui-restore-implementation/SKILL.md`](./ui-restore-implementation/SKILL.md) | active | SKILL-001 | 基于 UI 差距清单实施前端代码修改并复验 |
 | SKILL-005 | UI Prototype Restore | [`ui-prototype-restore/SKILL.md`](./ui-prototype-restore/SKILL.md) | active | SKILL-001、SKILL-003、SKILL-004 | 端到端驱动前端 UI 原型还原流程 |
+| SKILL-006 | Repository Documentation | [`repository-documentation/SKILL.md`](./repository-documentation/SKILL.md) | active | 无 | 全量分析现有代码仓库，生成系统概览、架构、业务/运行流程和术语文档 |
