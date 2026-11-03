@@ -64,9 +64,9 @@ Skill 内置以下 Naming Presets，配置位于 [`presets.mjs`](./presets.mjs)�
 
 | Preset | 说明 | 示例 |
 |---|---|---|
-| standard | 标准规范：类型/日期-需求编号-英文描述（默认启用） | feature/20261102-123-add-user-login |
+| standard | 标准规范：类型/日期-需求编号-英文描述 | feature/20261102-123-add-user-login |
 | conventional | Conventional 风格：type/英文描述 | feat/add-user-login |
-| gitflow | GitFlow 风格：feature/英文描述 | feature/add-user-login |
+| gitflow | GitFlow 风格：feature/英文描述（默认启用） | feature/add-user-login |
 | simple | 简洁命名规范：仅英文描述 | add-user-login |
 
 不同 Preset 可以拥有不同的：
@@ -80,7 +80,7 @@ Skill 内置以下 Naming Presets，配置位于 [`presets.mjs`](./presets.mjs)�
 
 ### 3.2 默认规范
 
-Default Preset 为 `standard`（由 `presets.mjs` 中的 `DEFAULT_PRESET` 记录，preset 本身用语义化名称而非 `default`）。
+Default Preset 为 `gitflow`（由 `presets.mjs` 中的 `DEFAULT_PRESET` 记录，preset 本身用语义化名称而非 `default`）。
 
 当用户没有指定命名规范，也没有提供其他有效的配置覆盖时，直接使用 Default Preset。
 
@@ -100,7 +100,8 @@ Default Preset 为 `standard`（由 `presets.mjs` 中的 `DEFAULT_PRESET` 记录
 
 | 用户表达 | Preset |
 |---|---|
-| 默认、标准、standard、default | standard |
+| 默认、default | gitflow |
+| 标准、standard | standard |
 | conventional、Conventional、规范提交风格 | conventional |
 | gitflow、GitFlow、标准 git 流 | gitflow |
 | simple、简洁、简短 | simple |

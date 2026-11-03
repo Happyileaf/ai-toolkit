@@ -85,6 +85,14 @@ const idField = {
   normalize: 'token',
 };
 
+/** EDY 规范的仓库标识字段：固定前缀 slh */
+const edyRepoField = {
+  source: 'static',
+  required: true,
+  processor: { type: 'passthrough', value: 'slh' },
+  normalize: 'none',
+};
+
 /**
  * 英文描述字段：LLM 将需求提炼为简洁的英文 kebab-case slug。
  * 语义要求见 SKILL.md 第 7 节；max_words 为单词数上限。
@@ -101,7 +109,7 @@ const descriptionField = {
 };
 
 /** 默认启用的 preset 名称（只负责指向，preset 本身使用语义化名称） */
-export const DEFAULT_PRESET = 'standard';
+export const DEFAULT_PRESET = 'gitflow';
 
 export const presets = {
   // 标准规范：类型/日期-需求编号-英文描述
