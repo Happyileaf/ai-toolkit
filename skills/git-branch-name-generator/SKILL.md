@@ -64,11 +64,11 @@ Skill 内置以下 Naming Presets，配置位于 [`presets.mjs`](./presets.mjs)�
 
 | Preset | 说明 | 示例 |
 |---|---|---|
-| standard | 标准规范：类型/日期-需求编号-英文描述 | feature/20261102-123-add-user-login |
-| conventional | Conventional 风格：type/英文描述 | feat/add-user-login |
 | gitflow | GitFlow 风格：feature/英文描述（默认启用） | feature/add-user-login |
-| edy | EDY 规范：git用户名-类型-需求ID-需求名称-日期 | alice-feature-PRJC4RW-1000029704-remove-leading-zeros-20261029 |
+| conventional | Conventional 风格：type/英文描述 | feat/add-user-login |
+| standard | 标准规范：类型/日期-需求编号-英文描述 | feature/20261102-123-add-user-login |
 | simple | 简洁命名规范：仅英文描述 | add-user-login |
+| edy | EDY 规范：git用户名-类型-需求ID-需求名称-日期 | alice-feature-PRJC4RW-1000029704-remove-leading-zeros-20261029 |
 
 不同 Preset 可以拥有不同的：
 - 字段定义
@@ -101,12 +101,11 @@ Default Preset 为 `gitflow`（由 `presets.mjs` 中的 `DEFAULT_PRESET` 记录�
 
 | 用户表达 | Preset |
 |---|---|
-| 默认、default | gitflow |
-| 标准、standard | standard |
+| gitflow、GitFlow、标准 git 流、默认、default | gitflow |
 | conventional、Conventional、规范提交风格 | conventional |
-| gitflow、GitFlow、标准 git 流 | gitflow |
-| edy、EDY | edy |
+| 标准、standard | standard |
 | simple、简洁、简短 | simple |
+| edy、EDY | edy |
 
 如果用户指定的规范名称不明确，才需要进一步确认。
 

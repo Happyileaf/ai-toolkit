@@ -10,7 +10,7 @@
  */
 
 /**
- * 类型枚举：GitFlow 风格（default / gitflow 共用）
+ * 类型枚举：GitFlow 风格（standard / gitflow 共用）
  * key 即分支名中合法的类型值；描述文字说明该类型的性质，供 LLM 归类。
  */
 const GITFLOW_TYPES = {
@@ -64,7 +64,7 @@ const typeField = (values) => ({
 /* 复用或参照新增字段，不要在 preset 内重复写字段定义。                 */
 /* ------------------------------------------------------------------ */
 
-/** 类型字段（GitFlow 枚举范围）：default / gitflow 共用 */
+/** 类型字段（GitFlow 枚举范围）：standard / gitflow 共用 */
 const gitflowTypeField = typeField(GITFLOW_TYPES);
 
 /** 类型字段（Conventional 枚举范围） */
@@ -112,18 +112,16 @@ const descriptionField = {
 export const DEFAULT_PRESET = 'gitflow';
 
 export const presets = {
-  // 标准规范：类型/日期-需求编号-英文描述
-  // 例：feature/20261102-123-add-user-login
-  standard: {
-    description: '标准命名规范：类型/日期-需求编号-英文描述',
+  // GitFlow 风格（默认）：type/英文描述
+  // 例：feature/add-user-login、bugfix/...、hotfix/...
+  gitflow: {
+    description: 'GitFlow 风格：feature/英文描述',
     max_length: 64,
     fields: {
       type: gitflowTypeField,
-      date: dateField,
-      id: idField,
       description: descriptionField,
     },
-    template: '{type}/{date}-{id}-{description}',
+    template: '{type}/{description}',
   },
 
   // Conventional Commits 风格：type/英文描述
@@ -138,16 +136,18 @@ export const presets = {
     template: '{type}/{description}',
   },
 
-  // GitFlow 风格：type/英文描述
-  // 例：feature/add-user-login、bugfix/...、hotfix/...
-  gitflow: {
-    description: 'GitFlow 风格：feature/英文描述',
+  // 标准规范：类型/日期-需求编号-英文描述
+  // 例：feature/20261102-123-add-user-login
+  standard: {
+    description: '标准命名规范：类型/日期-需求编号-英文描述',
     max_length: 64,
     fields: {
       type: gitflowTypeField,
+      date: dateField,
+      id: idField,
       description: descriptionField,
     },
-    template: '{type}/{description}',
+    template: '{type}/{date}-{id}-{description}',
   },
 
   // 简洁规范：仅英文描述
