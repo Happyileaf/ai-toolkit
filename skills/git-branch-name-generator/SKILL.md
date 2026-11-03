@@ -64,7 +64,7 @@ Skill 内置以下 Naming Presets，配置位于 [`presets.mjs`](./presets.mjs)�
 
 | Preset | 说明 | 示例 |
 |---|---|---|
-| default | 默认规范：类型/日期-需求编号-英文描述 | feature/20261102-123-add-user-login |
+| standard | 标准规范：类型/日期-需求编号-英文描述（默认启用） | feature/20261102-123-add-user-login |
 | conventional | Conventional 风格：type/英文描述 | feat/add-user-login |
 | gitflow | GitFlow 风格：feature/英文描述 | feature/add-user-login |
 | simple | 简洁命名规范：仅英文描述 | add-user-login |
@@ -80,7 +80,7 @@ Skill 内置以下 Naming Presets，配置位于 [`presets.mjs`](./presets.mjs)�
 
 ### 3.2 默认规范
 
-Default Preset 为 `default`。
+Default Preset 为 `standard`（由 `presets.mjs` 中的 `DEFAULT_PRESET` 记录，preset 本身用语义化名称而非 `default`）。
 
 当用户没有指定命名规范，也没有提供其他有效的配置覆盖时，直接使用 Default Preset。
 
@@ -100,7 +100,7 @@ Default Preset 为 `default`。
 
 | 用户表达 | Preset |
 |---|---|
-| 默认、default | default |
+| 默认、标准、standard、default | standard |
 | conventional、Conventional、规范提交风格 | conventional |
 | gitflow、GitFlow、标准 git 流 | gitflow |
 | simple、简洁、简短 | simple |
@@ -358,7 +358,7 @@ LLM 只负责配置中指定的语义任务：语义提炼、翻译、摘要、�
 
 ```json
 {
-  "preset": "default",
+  "preset": "standard",
   "config": null,
   "inputs": { "type": "功能", "id": "123", "description": "增加用户登录功能" },
   "llm_values": { "type": "feature", "description": "add-user-login" },
@@ -368,7 +368,7 @@ LLM 只负责配置中指定的语义任务：语义提炼、翻译、摘要、�
 
 字段说明：
 
-- `preset`：预置规范名称，缺省使用 default preset。
+- `preset`：预置规范名称，缺省使用 `DEFAULT_PRESET` 指向的 preset（当前为 `standard`）。
 - `config`：完整的自定义 Naming Configuration，提供时优先于 preset（用于用户自定义/局部覆盖后的配置）。
 - `inputs`：从用户输入提取的字段原始值（source 为 input 的字段），如类型的原始表达、需求原文。
 - `llm_values`：LLM 已完成语义处理的字段值（processor.type 为 llm 的字段），如 enum-select 的归类结果、semantic-slug 的英文 slug。
@@ -379,7 +379,7 @@ LLM 只负责配置中指定的语义任务：语义提炼、翻译、摘要、�
 ```json
 {
   "ok": true,
-  "preset": "default",
+  "preset": "standard",
   "branch": "feature/20261102-123-add-user-login",
   "fields": { "type": "feature", "date": "20261102", "id": "123", "description": "add-user-login" }
 }
@@ -408,7 +408,7 @@ LLM 只负责配置中指定的语义任务：语义提炼、翻译、摘要、�
 调用示例：
 
 ```bash
-echo '{"preset":"default","inputs":{"type":"功能","id":"123","description":"增加用户登录功能"},"llm_values":{"type":"feature","description":"add-user-login"}}' \
+echo '{"preset":"standard","inputs":{"type":"功能","id":"123","description":"增加用户登录功能"},"llm_values":{"type":"feature","description":"add-user-login"}}' \
   | node skills/git-branch-name-generator/scripts/generate-branch-name.mjs
 ```
 
@@ -464,7 +464,7 @@ echo '{"preset":"default","inputs":{"type":"功能","id":"123","description":"�
 feature/20261102-123-add-user-login
 ```
 
-可在名称下用一行小字补充当前使用的 Preset（例如 `（default 规范）`），除非用户明确要求其他格式。
+可在名称下用一行小字补充当前使用的 Preset（例如 `（standard 规范）`），除非用户明确要求其他格式。
 
 缺少必需信息时先询问，不输出不完整结果。用户要求生成多个名称时，按相同规范分别输出。
 

@@ -100,14 +100,14 @@ const descriptionField = {
   normalize: 'slug',
 };
 
-/** 默认启用的 preset 名称 */
-export const DEFAULT_PRESET = 'default';
+/** 默认启用的 preset 名称（只负责指向，preset 本身使用语义化名称） */
+export const DEFAULT_PRESET = 'standard';
 
 export const presets = {
-  // 默认规范：类型/日期-需求编号-英文描述
+  // 标准规范：类型/日期-需求编号-英文描述
   // 例：feature/20261102-123-add-user-login
-  default: {
-    description: '默认命名规范：类型/日期-需求编号-英文描述',
+  standard: {
+    description: '标准命名规范：类型/日期-需求编号-英文描述',
     max_length: 64,
     fields: {
       type: gitflowTypeField,
