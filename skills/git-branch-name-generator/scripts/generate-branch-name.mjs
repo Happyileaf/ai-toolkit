@@ -1,12 +1,7 @@
 #!/usr/bin/env node
-import { readFileSync } from 'node:fs';
-import { dirname, join } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { presets as BUILTIN_PRESETS, DEFAULT_PRESET } from '../presets.mjs';
 
-const SCRIPT_DIR = dirname(fileURLToPath(import.meta.url));
-const PRESETS_PATH = join(SCRIPT_DIR, '..', 'presets.json');
-
-/** 默认分支名称最大长度，与 presets.json 中的默认值保持一致 */
+/** 默认分支名称最大长度，与 presets.mjs 中各 preset 的默认值保持一致 */
 const DEFAULT_MAX_LENGTH = 64;
 
 /** Git 分支名称允许的字符：字母、数字、/ . _ - */
@@ -46,7 +41,7 @@ const parsePayload = async (argv) => {
 
 /**
  * 解析当前生效的 Naming Configuration
- * 负载中提供完整 config 时直接使用，否则按 preset 名称从 presets.json 加载
+ * 负载中提供完整 config 时直接使用，否则按 preset 名称从内置 presets 加载
  *
  * @param payload - 输入负载
  * @returns 配置对象与实际使用的 preset 名称
@@ -57,9 +52,8 @@ const resolveConfig = (payload) => {
     validateConfigShape(payload.config);
     return { config: payload.config, presetName: 'custom' };
   }
-  const presetsFile = JSON.parse(readFileSync(PRESETS_PATH, 'utf8'));
-  const presetName = payload.preset || presetsFile.default_preset;
-  const config = presetsFile.presets[presetName];
+  const presetName = payload.preset || DEFAULT_PRESET;
+  const config = BUILTIN_PRESETS[presetName];
   if (!config) {
     throw new Error(`UNKNOWN_PRESET: 未找到命名规范 ${presetName}`);
   }
@@ -165,29 +159,19 @@ const applyNormalize = (value, mode) => {
 };
 
 /**
- * 按映射表转换字段值
- * 先精确匹配，再忽略大小写匹配
- *
- * @param value - 原始值
- * @param mappings - 映射表
- * @returns 映射结果，未命中时返回 null
- */
-const applyMapping = (value, mappings) => {
-  const key = String(value);
-  if (Object.prototype.hasOwnProperty.call(mappings, key)) {
-    return mappings[key];
-  }
-  const lowerKey = key.toLowerCase();
-  const hitKey = Object.keys(mappings).find((item) => item.toLowerCase() === lowerKey);
-  return hitKey ? mappings[hitKey] : null;
-};
-
-/**
  * 处理单个字段，返回处理后的字段值或错误对象
+ *
+ * input 字段的取值顺序：
+ * 1. llm_values 已提供该字段 → 使用 LLM 的处理结果；
+ * 2. 用户 inputs 提供了原始值但缺少 llm_values：
+ *    - LLM 字段报 MISSING_LLM_VALUE（调用方先执行语义处理再重试）；
+ *    - 非 LLM 字段直接使用原始值；
+ * 3. 两者都没有：必需字段报 MISSING_REQUIRED_FIELD（调用方向用户追问），
+ *    可选字段按空值处理。
  *
  * @param name - 字段名称
  * @param definition - 字段配置
- * @param inputs - 用户输入的字段值
+ * @param inputs - 用户输入的字段原始值
  * @param llmValues - LLM 已完成语义处理的字段值
  * @param now - 当前时间对象
  * @returns 包含 value 的成功结果或包含 error 的失败结果
@@ -197,9 +181,28 @@ const processField = (name, definition, inputs, llmValues, now) => {
   const source = definition.source || 'input';
   const processor = definition.processor || { type: 'passthrough' };
 
+  const hasInput = inputs[name] !== undefined && inputs[name] !== null && inputs[name] !== '';
+  const hasLlmValue = llmValues[name] !== undefined && llmValues[name] !== null && llmValues[name] !== '';
+
   let rawValue;
   if (source === 'input') {
-    rawValue = inputs[name];
+    if (hasLlmValue) {
+      rawValue = llmValues[name];
+    } else if (processor.type === 'llm') {
+      if (!hasInput) {
+        return fail('MISSING_REQUIRED_FIELD', `缺少必需字段: ${name}`);
+      }
+      return fail(
+        'MISSING_LLM_VALUE',
+        `字段 ${name} 需要先执行 LLM 语义处理（operation: ${processor.operation || processor.instruction || 'custom'}），再将结果通过 llm_values.${name} 传入`,
+      );
+    } else if (hasInput) {
+      rawValue = inputs[name];
+    } else if (definition.required) {
+      return fail('MISSING_REQUIRED_FIELD', `缺少必需字段: ${name}`);
+    } else {
+      rawValue = '';
+    }
   } else if (source === 'datetime') {
     if (processor.type !== 'transform' || !processor.format) {
       return fail('INVALID_CONFIG', `字段 ${name} 的 datetime 来源需要 transform processor 与 format`);
@@ -211,34 +214,16 @@ const processField = (name, definition, inputs, llmValues, now) => {
     return fail('INVALID_CONFIG', `字段 ${name} 使用了不支持的 source: ${source}`);
   }
 
-  if (processor.type === 'llm') {
-    if (llmValues[name] === undefined || llmValues[name] === null) {
-      return fail(
-        'MISSING_LLM_VALUE',
-        `字段 ${name} 需要先执行 LLM 语义处理（operation: ${processor.operation || processor.instruction || 'custom'}），再将结果通过 llm_values.${name} 传入`,
-      );
-    }
-    rawValue = llmValues[name];
-  } else if (rawValue === undefined || rawValue === null || rawValue === '') {
-    if (definition.required) {
-      return fail('MISSING_REQUIRED_FIELD', `缺少必需字段: ${name}`);
-    }
-    rawValue = '';
-  } else if (processor.type === 'mapping') {
-    const mapped = applyMapping(rawValue, processor.mappings || {});
-    if (mapped === null) {
-      return fail('UNMAPPED_VALUE', `字段 ${name} 的值 "${rawValue}" 未在映射表中定义`);
-    }
-    rawValue = mapped;
-  } else if (processor.type === 'transform') {
-    if (source !== 'datetime') {
-      return fail('INVALID_CONFIG', `字段 ${name} 的 transform processor 仅支持 datetime 来源`);
-    }
-  } else if (processor.type !== 'passthrough') {
+  if (processor.type === 'transform' && source !== 'datetime') {
+    return fail('INVALID_CONFIG', `字段 ${name} 的 transform processor 仅支持 datetime 来源`);
+  }
+  if (!['llm', 'transform', 'passthrough'].includes(processor.type)) {
     return fail('INVALID_CONFIG', `字段 ${name} 使用了不支持的 processor: ${processor.type}`);
   }
 
-  const value = rawValue === '' ? '' : applyNormalize(rawValue, definition.normalize || 'slug');
+  const value = rawValue === '' || rawValue === undefined || rawValue === null
+    ? ''
+    : applyNormalize(rawValue, definition.normalize || 'slug');
   if (definition.required && !value) {
     return fail('EMPTY_FIELD', `字段 ${name} 规范化后为空`);
   }
@@ -320,8 +305,28 @@ const validateBranch = (branch, values, fields, maxLength) => {
   }
 
   Object.entries(fields).forEach(([name, definition]) => {
-    const maxWords = definition.processor && definition.processor.options && definition.processor.options.max_words;
-    if (definition.processor && definition.processor.type === 'llm' && maxWords && values[name]) {
+    if (!values[name]) {
+      return;
+    }
+    const options = (definition.processor && definition.processor.options) || {};
+
+    // 枚举校验：LLM 的归类结果必须落在配置声明的合法值范围内
+    if (options.values) {
+      const allowed = Array.isArray(options.values)
+        ? options.values
+        : Object.keys(options.values);
+      if (!allowed.includes(values[name])) {
+        errors.push({
+          code: 'INVALID_ENUM_VALUE',
+          field: name,
+          message: `字段 ${name} 的值 "${values[name]}" 不在合法枚举范围内: ${allowed.join(', ')}，需要由 LLM 重新归类或向用户确认`,
+        });
+      }
+    }
+
+    // 单词数校验：超过 max_words 时交回 LLM 重新提炼
+    const maxWords = options.max_words;
+    if (definition.processor && definition.processor.type === 'llm' && maxWords) {
       const wordCount = values[name].split('-').filter(Boolean).length;
       if (wordCount > maxWords) {
         errors.push({

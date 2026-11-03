@@ -60,7 +60,7 @@ Skill 只负责生成 Git Branch Name。
 
 ### 3.1 Naming Presets
 
-Skill 内置以下 Naming Presets，配置位于 [`presets.json`](./presets.json)：
+Skill 内置以下 Naming Presets，配置位于 [`presets.mjs`](./presets.mjs)：
 
 | Preset | 说明 | 示例 |
 |---|---|---|
@@ -161,46 +161,49 @@ Skill 内置的默认配置。
 
 ## 5. Naming Configuration
 
-配置使用 JSON 维护（[`presets.json`](./presets.json)），便于脚本直接解析。结构与 YAML 等价。
+内置配置使用带注释的 ESM 模块维护（[`presets.mjs`](./presets.mjs)），脚本直接 import；用户在对话中提供的自定义规范仍以等价的 JSON 结构通过 `config` 传入。每个 preset 只声明「由哪几个字段组成、每个字段的性质、枚举范围与拼接模板」，不维护同义词映射表。
 
 ### 5.1 基本结构
 
+单个 preset 的 JSON 结构（`presets.mjs` 中为等价的带注释写法）：
+
 ```json
 {
-  "default_preset": "default",
-  "presets": {
-    "default": {
-      "max_length": 64,
-      "fields": {
-        "type": {
-          "source": "input",
-          "required": true,
-          "processor": { "type": "mapping", "mappings": { "feature": "feature", "bugfix": "fix" } },
-          "normalize": "slug"
-        },
-        "id": {
-          "source": "input",
-          "required": true,
-          "processor": { "type": "passthrough" },
-          "normalize": "token"
-        },
-        "description": {
-          "source": "input",
-          "required": true,
-          "processor": { "type": "llm", "operation": "semantic-slug", "options": { "language": "en", "max_words": 10 } },
-          "normalize": "slug"
-        },
-        "date": {
-          "source": "datetime",
-          "required": true,
-          "processor": { "type": "transform", "format": "%Y%m%d" }
-        }
+  "max_length": 64,
+  "fields": {
+    "type": {
+      "source": "input",
+      "required": true,
+      "processor": {
+        "type": "llm",
+        "operation": "enum-select",
+        "options": { "values": { "feature": "新功能与需求开发", "fix": "缺陷修复" } }
       },
-      "template": "{type}/{date}-{id}-{description}"
+      "normalize": "slug"
+    },
+    "id": {
+      "source": "input",
+      "required": true,
+      "processor": { "type": "passthrough" },
+      "normalize": "token"
+    },
+    "description": {
+      "source": "input",
+      "required": true,
+      "processor": { "type": "llm", "operation": "semantic-slug", "options": { "language": "en", "max_words": 10 } },
+      "normalize": "slug"
+    },
+    "date": {
+      "source": "datetime",
+      "required": true,
+      "processor": { "type": "transform", "format": "%Y%m%d" }
     }
-  }
+  },
+  "template": "{type}/{date}-{id}-{description}"
 }
 ```
+
+`options.values` 声明该字段合法值的枚举范围：对象形式时 key 为合法值、value 为值的性质说明；也支持字符串数组。近义词归并由 LLM 按说明完成，脚本只校验结果是否落在枚举内。
 
 ### 5.2 Fields
 
@@ -228,22 +231,36 @@ Skill 内置的默认配置。
 | Processor | 说明 |
 |---|---|
 | passthrough | 原样传递 |
-| mapping | 根据映射表转换，先精确匹配再忽略大小写匹配 |
 | transform | 执行确定性的格式转换；第一版仅支持 datetime 来源的日期格式（`%Y %m %d %H %M %S`） |
-
-内置 mapping 同时收录中英文关键词，例如 `功能 / 需求 / feature / feat`、`缺陷 / 修复 / fix / bugfix`、`紧急修复 / hotfix`、`文档 / docs`、`重构 / refactor`、`测试 / test` 等。
 
 #### LLM Processor
 
-用于需要语义理解的处理任务，可应用于任何字段。两种描述方式：
+用于需要语义理解的处理任务，可应用于任何字段。支持预置 operation 或自定义 instruction：
 
 ```json
 { "type": "llm", "operation": "semantic-slug", "options": { "language": "en", "max_words": 10 } }
 ```
 
 ```json
+{
+  "type": "llm",
+  "operation": "enum-select",
+  "options": { "values": { "feature": "新功能与需求开发", "fix": "缺陷修复" } }
+}
+```
+
+```json
 { "type": "llm", "instruction": "根据需求内容识别核心模块，只返回简短的英文模块名称" }
 ```
+
+预置 operation：
+
+| Operation | 说明 | options |
+|---|---|---|
+| semantic-slug | 将需求提炼为简洁、准确的英文 kebab-case 标识（见第 7 节） | `language`、`max_words` |
+| enum-select | 按枚举的性质说明，将用户表达归类为枚举中的某个合法值，只返回该值本身 | `values`：对象（值→性质说明）或字符串数组 |
+
+归类示例：用户说「功能 / 需求 / 优化 / feat」时，按枚举说明归为 `feature`（GitFlow 范围）或 `feat`（Conventional 范围）；「紧急修复」在 GitFlow 范围归为 `hotfix`，在 Conventional 范围归为 `fix`。无法在枚举中找到合理归属时，先向用户确认，不猜测返回范围外的值——脚本会以 `INVALID_ENUM_VALUE` 拒绝范围外结果。
 
 第一版只实现实际使用到的处理任务，不提前实现所有可能的语义操作。
 
@@ -301,7 +318,16 @@ LLM 只负责配置中指定的语义任务：语义提炼、翻译、摘要、�
 - 不进行机械逐字翻译。
 - 输出仅包含 slug 本身，不带解释、代码块或标点。
 
-### 7.3 长度约束
+### 7.3 Enum Select
+
+按 `options.values` 声明的枚举范围归类：
+
+- 阅读每个枚举值附带的性质说明，理解用户表达后选择最贴切的一个值。
+- 输入可以是中英文近义词、口语化描述（如「做个需求」「线上出 bug 了要紧急修」），输出必须且只能是枚举中的某个 key 本身，不带解释或标点。
+- 只在枚举范围内选择；没有合理归属、或在多个值之间存在实质歧义时，先向用户确认，不返回范围外的值。
+- 枚举范围以当前生效配置为准。例如修复类需求：GitFlow 范围在 `bugfix` / `hotfix` 间区分，Conventional 范围统一归为 `fix`。
+
+### 7.4 长度约束
 
 默认最多 10 个单词，具体以配置 `options.max_words` 为准。
 
@@ -320,11 +346,11 @@ LLM 只负责配置中指定的语义任务：语义提炼、翻译、摘要、�
 确定性处理统一由 [`scripts/generate-branch-name.mjs`](./scripts/generate-branch-name.mjs) 完成：
 
 1. 根据 Source 获取字段数据。
-2. 执行 Code Processor（passthrough / mapping / transform）。
-3. 接收 LLM Processor 的处理结果（由调用方通过 `llm_values` 传入）。
+2. 执行 Code Processor（passthrough / transform）。
+3. 接收 LLM Processor 的处理结果（enum-select / semantic-slug 等，由调用方通过 `llm_values` 传入）。
 4. 对字段进行格式规范化（slug / token / none）。
 5. 根据 Template 组装完整分支名称并清洗可选字段产生的多余分隔符。
-6. 执行最终格式校验。
+6. 执行最终格式与枚举范围校验。
 
 ### 脚本契约
 
@@ -334,8 +360,8 @@ LLM 只负责配置中指定的语义任务：语义提炼、翻译、摘要、�
 {
   "preset": "default",
   "config": null,
-  "inputs": { "type": "功能", "id": "123" },
-  "llm_values": { "description": "add-user-login" },
+  "inputs": { "type": "功能", "id": "123", "description": "增加用户登录功能" },
+  "llm_values": { "type": "feature", "description": "add-user-login" },
   "now": "2026-11-02"
 }
 ```
@@ -344,8 +370,8 @@ LLM 只负责配置中指定的语义任务：语义提炼、翻译、摘要、�
 
 - `preset`：预置规范名称，缺省使用 default preset。
 - `config`：完整的自定义 Naming Configuration，提供时优先于 preset（用于用户自定义/局部覆盖后的配置）。
-- `inputs`：从用户输入提取的字段值（source 为 input 的字段）。
-- `llm_values`：LLM 已完成语义处理的字段值（processor.type 为 llm 的字段）。
+- `inputs`：从用户输入提取的字段原始值（source 为 input 的字段），如类型的原始表达、需求原文。
+- `llm_values`：LLM 已完成语义处理的字段值（processor.type 为 llm 的字段），如 enum-select 的归类结果、semantic-slug 的英文 slug。
 - `now`：可选，ISO 或 `YYYY-MM-DD`，用于确定性的日期字段，缺省为系统当前时间。
 
 成功输出：
@@ -372,9 +398,9 @@ LLM 只负责配置中指定的语义任务：语义提炼、翻译、摘要、�
 
 | code | 含义 | 调用方处理 |
 |---|---|---|
-| MISSING_REQUIRED_FIELD | 缺少必需 input 字段 | 向用户追问该字段 |
-| MISSING_LLM_VALUE | 字段需要先执行 LLM 语义处理 | 先执行 LLM 处理，再通过 llm_values 传入重试 |
-| UNMAPPED_VALUE | mapping 未命中 | 请用户确认类型，或补充配置 |
+| MISSING_REQUIRED_FIELD | 缺少必需 input 字段（用户未提供原始输入） | 向用户追问该字段 |
+| MISSING_LLM_VALUE | 已有原始输入，但字段需要先执行 LLM 语义处理 | 先执行 enum-select / semantic-slug 等处理，再通过 llm_values 传入重试 |
+| INVALID_ENUM_VALUE | LLM 归类结果不在 options.values 枚举范围内 | 交回 LLM 重新归类，或请用户确认后重试 |
 | WORD_LIMIT_EXCEEDED | 描述超过 max_words | 交回 LLM 重新提炼后重试，禁止机械截断 |
 | INVALID_CHARACTER / INVALID_SEPARATOR / TOO_LONG | 最终名称不合法或过长 | 修正对应字段后重新组装 |
 | UNKNOWN_PRESET / INVALID_CONFIG | 配置问题 | 修正配置后重试 |
@@ -382,7 +408,7 @@ LLM 只负责配置中指定的语义任务：语义提炼、翻译、摘要、�
 调用示例：
 
 ```bash
-echo '{"preset":"default","inputs":{"type":"功能","id":"123"},"llm_values":{"description":"add-user-login"}}' \
+echo '{"preset":"default","inputs":{"type":"功能","id":"123","description":"增加用户登录功能"},"llm_values":{"type":"feature","description":"add-user-login"}}' \
   | node skills/git-branch-name-generator/scripts/generate-branch-name.mjs
 ```
 
@@ -398,6 +424,7 @@ echo '{"preset":"default","inputs":{"type":"功能","id":"123"},"llm_values":{"d
 - 不存在连续 `/` 或 `-`、首尾 `/` 或 `-`、`/-`、`-/`。
 - 不包含 `..`，不以 `.` 或 `.lock` 结尾。
 - 长度不超过配置的 `max_length`（默认 64）。
+- 声明了 `options.values` 的字段，最终值必须在枚举范围内。
 - LLM 字段的单词数不超过 `options.max_words`。
 
 校验失败时，优先修正对应字段或重新执行相关处理，不直接输出无效结果。
@@ -413,9 +440,9 @@ echo '{"preset":"default","inputs":{"type":"功能","id":"123"},"llm_values":{"d
 3. 根据配置识别需要的输入字段。
 4. 提取用户已提供的信息。
 5. 对缺失的必需信息进行必要询问。
-6. 对 processor.type 为 `llm` 的字段执行语义处理；超长则重新提炼直至满足 `max_words`。
-7. 调用 `generate-branch-name.mjs`，传入 `preset` 或完整 `config`、`inputs`、`llm_values`、`now`。
-8. 若返回错误：`MISSING_REQUIRED_FIELD` 向用户追问，`MISSING_LLM_VALUE`/`WORD_LIMIT_EXCEEDED` 重新执行 LLM 步骤，其他错误修正后重试。
+6. 对 processor.type 为 `llm` 的字段执行语义处理：enum-select 字段按枚举性质归类，semantic-slug 字段提炼英文标识；超长则重新提炼直至满足 `max_words`。
+7. 调用 `generate-branch-name.mjs`，传入 `preset` 或完整 `config`、`inputs`（含原始表达）、`llm_values`（归类/提炼结果）、`now`。
+8. 若返回错误：`MISSING_REQUIRED_FIELD` 向用户追问，`MISSING_LLM_VALUE`/`INVALID_ENUM_VALUE`/`WORD_LIMIT_EXCEEDED` 重新执行对应 LLM 步骤（枚举无法归类时向用户确认），其他错误修正后重试。
 9. 校验通过后输出生成结果。
 
 ---
@@ -443,7 +470,7 @@ feature/20261102-123-add-user-login
 
 ## 13. 扩展与维护
 
-增加或修改命名规范时，优先修改 [`presets.json`](./presets.json)：字段、Source、Processor、Template、校验规则。
+增加或修改命名规范时，优先修改 [`presets.mjs`](./presets.mjs)：枚举、字段常量、Source、Processor、Template、校验规则。文件内含维护注释：新增类型值改对应枚举对象；字段统一定义为字段常量（如 `dateField`、`idField`、`descriptionField`）供各 preset 引用组合，新增 preset 复制最接近的一个、复用已有字段常量后改 fields/template，不在 preset 内重复写字段定义。
 
 需要新的确定性处理时，再修改 `generate-branch-name.mjs`；需要新的语义任务时，通过 LLM Processor 的 `operation` 或 `instruction` 描述，并在本文件补充执行说明。
 
