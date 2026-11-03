@@ -77,20 +77,20 @@ const dateField = {
   processor: { type: 'transform', format: '%Y%m%d' },
 };
 
-/** 需求/工单编号字段：原样传递，保留大小写 */
-const idField = {
+/** Git 用户名字段：原样传递，保留大小写（如 slh） */
+const userField = {
   source: 'input',
   required: true,
   processor: { type: 'passthrough' },
   normalize: 'token',
 };
 
-/** EDY 规范的仓库标识字段：固定前缀 slh */
-const edyRepoField = {
-  source: 'static',
+/** 需求/工单编号字段：原样传递，保留大小写（编号内部可含连字符，如 PRJC4RW-1000029704） */
+const idField = {
+  source: 'input',
   required: true,
-  processor: { type: 'passthrough', value: 'slh' },
-  normalize: 'none',
+  processor: { type: 'passthrough' },
+  normalize: 'token',
 };
 
 /**
@@ -159,5 +159,20 @@ export const presets = {
       description: descriptionField,
     },
     template: '{description}',
+  },
+
+  // EDY 规范：git用户名-类型-需求ID-需求名称-日期，全部以连字符连接
+  // 例：slh-feature-PRJC4RW-1000029704-remove-leading-zeros-20261029
+  edy: {
+    description: 'EDY 命名规范：git用户名-类型-需求ID-需求名称-日期',
+    max_length: 64,
+    fields: {
+      user: userField,
+      type: gitflowTypeField,
+      id: idField,
+      description: descriptionField,
+      date: dateField,
+    },
+    template: '{user}-{type}-{id}-{description}-{date}',
   },
 };
