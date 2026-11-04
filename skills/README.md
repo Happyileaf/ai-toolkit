@@ -12,6 +12,7 @@
 - `ui-prototype-restore/` - UI 原型还原端到端技能
 - `repository-documentation/` - 全量分析代码仓库并生成技术文档的技能
 - `git-branch-name-generator/` - 配置驱动生成 Git 分支名称的技能
+- `technical-content-sanitizer/` - 识别研发资料敏感信息，完成脱敏、审查与公开化重构
 
 ## 技能索引
 
