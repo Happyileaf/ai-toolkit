@@ -1,4 +1,4 @@
 interface:
   display_name: "技术内容脱敏"
-  short_description: "识别研发资料敏感信息，完成脱敏、审查与公开化重构"
+  short_description: "识别研发资料敏感信息，完成脱敏、审查与公开化重构处理"
   default_prompt: "使用 $technical-content-sanitizer 审查这批研发资料，并整理为可公开发布的技术文章。"
