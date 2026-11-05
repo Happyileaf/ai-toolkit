@@ -12,3 +12,4 @@
 | SKILL-006 | Repository Documentation | [`repository-documentation/SKILL.md`](./repository-documentation/SKILL.md) | active | 无 | 全量分析现有代码仓库，生成系统概览、架构、业务/运行流程和术语文档 |
 | SKILL-007 | Git Branch Name Generator | [`git-branch-name-generator/SKILL.md`](./git-branch-name-generator/SKILL.md) | active | 无 | 配置驱动生成 Git 分支名称，内置多套命名规范，支持自定义规范、语义提炼与最终校验，只生成不执行 |
 | SKILL-008 | Technical Content Sanitizer | [`technical-content-sanitizer/SKILL.md`](./technical-content-sanitizer/SKILL.md) | active | 无 | 审查研发资料中的敏感信息，保护技术事实，并生成脱敏文档或公开技术文章 |
+| SKILL-009 | Frontend Requirement Analysis | [`frontend-requirement-analysis/SKILL.md`](./frontend-requirement-analysis/SKILL.md) | design | 无 | 从 PRD 及相关资料重构前端需求，建立分析资料与最终文档之间的三层追溯闭环；当前完成设计文档，尚未实现完整执行流程 |
