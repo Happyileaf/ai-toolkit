@@ -1,23 +1,23 @@
-# Business Context
+# 业务上下文
 
-## Product Goal and Background
+## 产品目标与背景
 
-## Business Objects
+## 业务对象
 
-| Object | Definition | Relevant States / Attributes | Source IDs |
+| 对象 | 定义 | 相关状态/属性 | 来源 ID |
 |---|---|---|---|
 
-## Roles and Permissions
+## 角色与权限
 
-| Role | Business Meaning | Relevant Actions / Constraints | Source IDs |
+| 角色 | 业务含义 | 相关操作/约束 | 来源 ID |
 |---|---|---|---|
 
-## Core Workflows
+## 核心业务流程
 
-## Shared Business Rules and States
+## 共享业务规则与状态
 
-## Cross-module Dependencies
+## 跨模块依赖
 
-## Context Needed by Frontend
+## 前端理解所需的上下文
 
-Include backend-owned facts only when they affect frontend display, permissions, available actions, state handling, or user understanding.
+仅保留会影响前端展示、权限、可用操作、状态处理或用户理解的后端业务事实。

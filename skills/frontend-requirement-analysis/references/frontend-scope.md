@@ -1,50 +1,50 @@
-# Frontend Relevance and Scope Rules
+# 前端相关性与需求范围规则
 
-## Frontend relevance
+## 一、前端相关性
 
-| Value | Meaning | Treatment |
+| 值 | 含义 | 处理方式 |
 |---|---|---|
-| direct | Frontend directly implements the page, display, interaction, or client behavior | Include in frontend requirements |
-| collaborative | Frontend behavior depends on backend data, APIs, states, or a shared contract | Describe frontend responsibility and collaboration/dependency |
-| contextual | Not implemented by frontend, but needed to understand display, permissions, actions, or state | Preserve as business context or referenced rule |
-| irrelevant | Does not affect frontend scope, behavior, dependency, or understanding | Record exclusion and reason in analysis; normally omit from final requirements |
+| direct | 前端直接实现页面、展示、交互或客户端行为 | 纳入前端需求文档 |
+| collaborative | 前端行为依赖后端数据、接口、状态或共同约定 | 描述前端职责及协作/依赖关系 |
+| contextual | 不由前端实现，但理解展示、权限、操作或状态所必需 | 作为业务上下文保留，或通过规则引用 |
+| irrelevant | 不影响前端范围、行为、依赖或理解 | 在分析资料中记录排除原因，通常不进入最终需求文档 |
 
-Judge by impact on frontend understanding and behavior, not by whether the source describes frontend or backend technology. Backend-owned order states can be contextual; internal service implementation may be irrelevant.
+判断依据是信息对前端理解和行为的影响，而不是资料描述了前端还是后端技术。例如，后端维护的订单状态可能属于 contextual；后端服务内部实现细节通常属于 irrelevant。
 
-## Certainty
+## 二、信息确定性
 
-| Value | Meaning | Writing rule |
+| 值 | 含义 | 文档表达要求 |
 |---|---|---|
-| confirmed | Explicitly stated or supported by an authoritative, verifiable source | May be stated as a formal requirement with source references |
-| inferred | Derived from multiple known facts but not explicitly stated | Label as inference and state its basis; do not present as confirmed |
-| uncertain | Insufficient information or ambiguous wording | Mark as open question; do not fill the gap with convention |
-| conflicted | Sources disagree about the same rule or behavior | Preserve competing evidence and ask for a decision |
+| confirmed | 来源明确说明，或有权威且可验证的资料支持 | 可以作为正式需求表述，并附来源 |
+| inferred | 根据多个已知事实推导得出，但来源没有明确说明 | 必须标记为推断并说明依据，不得写成已确认 |
+| uncertain | 信息不足或表述存在歧义 | 标记为待确认，不得用惯例填补空白 |
+| conflicted | 不同来源对同一规则或行为存在不同说法 | 保留各方证据并提出确认问题 |
 
-Certainty is not priority. Plausibility does not turn an inference into a confirmed requirement.
+确定性不等于优先级。合理或常见不代表推断可以变成已确认需求。
 
-## Scope
+## 三、需求范围
 
-| Value | Meaning |
+| 值 | 含义 |
 |---|---|
-| new | The source explicitly says this capability/behavior is being added |
-| modify | The source explicitly says an existing capability/behavior changes |
-| retain | The source explicitly says existing behavior remains unchanged or is not adjusted |
-| out-of-scope | The source explicitly excludes this capability from the delivery |
-| unknown | The material does not establish the current state or delivery treatment |
+| new | 来源明确说明新增该能力或行为 |
+| modify | 来源明确说明修改现有能力或行为 |
+| retain | 来源明确说明现有行为保持不变或本次不调整 |
+| out-of-scope | 来源明确将该能力排除在本次交付范围之外 |
+| unknown | 资料无法确定当前状态或本次交付处理方式 |
 
-Rules:
-- Not mentioned does not mean nonexistent.
-- No description of current state does not mean already implemented.
-- Do not infer new, modify, retain, or out-of-scope from common product patterns.
-- Without code/repository analysis, do not claim the current implementation was verified.
-- Use unknown when evidence is insufficient and surface it when it affects planning or implementation.
+判断规则：
+- 没有提及不代表不存在。
+- 没有描述当前状态不代表已经实现。
+- 不得根据常见产品模式推断 new、modify、retain 或 out-of-scope。
+- 未分析代码仓库时，不得声称已验证当前实现状态。
+- 证据不足时使用 unknown；若影响计划或实现，应在待确认事项中说明。
 
-## Do not invent product behavior
+## 四、不得擅自创造产品行为
 
-If a source only says “submit for approval”, do not silently add loading indicators, duplicate-submit prevention, automatic navigation, modal presentation, automatic list refresh, or success/failure messaging as formal requirements. These are product decisions unless an applicable source or established design standard explicitly specifies them.
+如果来源只写了“提交审核”，不得自行将 Loading、重复提交拦截、自动跳转、弹窗展示、自动刷新列表、成功/失败提示等写成正式需求。除非适用的来源或已建立且可验证的设计规范明确规定，否则这些属于产品决策。
 
-Separate explicit product behavior, technical handling strictly necessary to implement that behavior, and unspecified product interaction that needs a decision. Only the first is a confirmed product requirement. Explain the second as implementation context. Record the third as an open question or explicitly labeled suggestion, never as a confirmed requirement.
+必须区分产品明确要求的行为、实现已确认行为所必需的技术处理，以及尚未明确且需要确认的产品交互。只有第一类是已确认的产品需求；第二类作为实现上下文说明；第三类记录为待确认问题或明确标注的建议，不能作为已确认需求。
 
-## Permission, state, and backend context
+## 五、权限、状态与后端上下文
 
-Retain backend-owned facts when they affect frontend behavior. Examples include role-to-action permission, status transition constraints, operation eligibility, server-side validation, and data ownership. Describe what frontend must display or make available, and identify the backend contract without inventing endpoint details.
+当后端负责的信息会影响前端行为时，必须保留。例如角色与操作权限、状态流转约束、操作可执行条件、服务端校验和数据归属。描述前端需要展示什么、提供什么操作，并指出相关后端约定；不要编造接口细节。

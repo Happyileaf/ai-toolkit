@@ -1,21 +1,21 @@
-# Frontend Requirements
+# 前端需求文档
 
-## Overview
+## 需求概述
 
-- Product / change scope:
-- Business goal:
-- Frontend scope summary:
-- Important business context:
+- 产品/需求变更范围：
+- 业务目标：
+- 前端工作范围概述：
+- 重要业务上下文：
 
-## Module Navigation
+## 模块导航
 
-| Module | Description | Document |
+| 模块 | 说明 | 文档 |
 |---|---|---|
 
-## Cross-module Rules and Dependencies
+## 跨模块规则与依赖
 
-## Important Open Questions
+## 重要待确认事项
 
-## Analysis and Quality Report
+## 分析资料与质量报告
 
-Link to the analysis directory and quality report. Explain any coverage limitations that affect implementation confidence.
+链接到 analysis 目录和质量报告。说明任何会影响开发判断的覆盖限制。

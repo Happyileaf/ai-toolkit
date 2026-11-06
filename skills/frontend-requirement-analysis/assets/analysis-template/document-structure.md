@@ -1,21 +1,21 @@
-# Document and Business Structure
+# 文档与业务结构
 
-## Product / Change Scope
+## 产品/需求变更范围
 
-## Source Document Structure
+## 来源文档结构
 
-| Source ID | Chapter / Unit | Topic | Business Module | Related Units |
+| 来源 ID | 章节/单元 | 主题 | 业务模块 | 关联单元 |
 |---|---|---|---|---|
 
-## Business Modules
+## 业务模块
 
-| Module ID | Module Name | Purpose | Main Roles | Related Modules | Source IDs |
+| 模块 ID | 模块名称 | 模块目标 | 主要角色 | 关联模块 | 来源 ID |
 |---|---|---|---|---|---|
 
-## Core Business Flows
+## 核心业务流程
 
-Describe the flow and link each step to source IDs and requirement IDs.
+描述流程，并为每个步骤关联来源 ID 和需求 ID。
 
-## Shared Concepts and Rules
+## 共享概念与规则
 
-## Structural Gaps / Uncertainties
+## 结构缺口与不确定信息

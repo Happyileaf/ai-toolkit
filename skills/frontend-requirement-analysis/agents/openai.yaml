@@ -1,4 +1,4 @@
 interface:
   display_name: "前端需求分析"
   short_description: "复杂产品 PRD 的前端需求重构、资料分析与全链路来源追溯"
-  default_prompt: "Use $frontend-requirement-analysis to analyze product PRDs and produce frontend requirements with traceability."
+  default_prompt: "使用 $frontend-requirement-analysis 分析产品 PRD 及相关资料，生成带有完整来源追溯的前端需求文档和配套分析资料。"

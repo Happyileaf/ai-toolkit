@@ -1,10 +1,10 @@
-# Requirement Analysis Specification
+# 需求分析规范
 
 ## 1. 文档目的
 
 本文定义 `frontend-requirement-analysis` 对输入资料进行分析、筛选、关联和前端视角重构时所遵循的规范，包括资料管理、分块策略、前端相关性、信息确定性、需求范围、需求信息模型和最终文档组织。
 
-本规范与 [Skill Design Specification](./skill-design.md) 配套；质量检查与三层追溯的验收要求见 [Quality Assurance Specification](./quality-assurance.md)。
+本规范与 [Skill 设计说明](./skill-design.md) 配套；质量检查与三层追溯的验收要求见 [质量保障规范](./quality-assurance.md)。
 
 ## 2. 分析对象与资料管理
 

@@ -1,4 +1,4 @@
-# Quality Assurance Specification
+# 质量保障规范
 
 ## 1. 文档目的
 

@@ -1,81 +1,74 @@
-# Quality Checklist and Completion Criteria
+# 质量检查清单与完成标准
 
-## Required checks
+## 一、必需检查项
 
-### Source coverage
+### 来源覆盖
+- [ ] 所有输入资料均已登记在来源索引中。
+- [ ] 每个有意义的资料单元均有覆盖状态。
+- [ ] 每个已分析单元都有提取结果或明确的排除处理结果。
+- [ ] 部分分析、失败和未分析的单元均说明受影响范围和原因。
+- [ ] 没有仅因登记或查看大纲就将来源认定为已分析。
 
-- [ ] Every input source is present in Source Index.
-- [ ] Every meaningful source unit has a coverage state.
-- [ ] Every analyzed unit has extracted information or an explicit exclusion disposition.
-- [ ] Partial, failed, and not-analyzed units identify affected scope and reason.
-- [ ] No source is considered analyzed merely because it was listed or outlined.
+### 需求覆盖
+- [ ] 需求清单中的每条记录都有输出映射。
+- [ ] included 的目标位置确实存在。
+- [ ] merged 映射保留所有参与合并的需求 ID 和条件。
+- [ ] referenced 映射指向可定位的统一共享规则。
+- [ ] excluded 记录了排除原因。
+- [ ] pending 已出现在待确认事项和质量报告中。
 
-### Requirement coverage
+### 输出依据
+- [ ] 每项正式需求都有一个或多个有效来源引用。
+- [ ] 推断说明了依据，并持续标记为 inferred。
+- [ ] 不确定和冲突内容仍然明确处于未解决状态。
+- [ ] 技术说明与产品需求分开。
+- [ ] 没有将资料未说明的交互或业务规则写成已确认需求。
 
-- [ ] Every inventory record has an output mapping.
-- [ ] Included targets exist.
-- [ ] Merged mappings preserve all contributing requirement IDs and conditions.
-- [ ] Referenced targets resolve to canonical shared rules.
-- [ ] Excluded records have reasons.
-- [ ] Pending records appear in open questions and the quality report.
+### 一致性与链接
+- [ ] ID 唯一且稳定。
+- [ ] 引用的来源 ID 和需求 ID 均存在。
+- [ ] 依赖关系能够解析，或明确标记为外部依赖。
+- [ ] 输出路径和锚点有效。
+- [ ] 需求清单与最终文档中的确定性、前端相关性、范围和映射状态一致。
+- [ ] 合并/引用后的内容没有丢失重要条件。
 
-### Output evidence
+### 文档可用性
+- [ ] 最终需求按业务模块组织。
+- [ ] 包含必要的业务上下文。
+- [ ] 页面、功能、共享规则和跨页面行为的归属合理。
+- [ ] 在来源有定义的情况下，覆盖角色、权限、状态、数据依赖和异常。
+- [ ] 待确认事项易于发现，并关联到受影响的需求。
+- [ ] 术语保持一致。
 
-- [ ] Every formal requirement has one or more valid source references.
-- [ ] Inferences identify their basis and remain labeled as inferred.
-- [ ] Uncertain and conflicted items remain visibly unresolved.
-- [ ] Technical notes are separated from product requirements.
-- [ ] No undocumented interaction or business rule was added as confirmed.
+## 二、明确的核验步骤
+1. 遍历来源索引和来源单元台账。
+2. 逐项核对覆盖记录及其处理结果。
+3. 遍历每条需求信息，核对其输出映射。
+4. 遍历最终文档中的每项正式需求，核对来源依据或显式状态。
+5. 对照需求清单和最终文档，检查状态字段是否一致。
+6. 验证所有 ID、依赖、路径和锚点。
+7. 在质量报告中记录失败项、接受的限制和未解决决策。
 
-### Consistency and links
+不得以笼统的自我评价或抽样检查代替逐项核验。如果资料规模超过当前工具/上下文能够完整核验的范围，必须披露具体未检查部分，并将覆盖状态标记为部分完成。
 
-- [ ] IDs are unique and stable.
-- [ ] Referenced source and requirement IDs exist.
-- [ ] Dependencies resolve or are explicitly external.
-- [ ] Output paths and anchors exist.
-- [ ] Certainty, frontend relevance, scope, and mapping status are consistent between inventory and final documents.
-- [ ] Merged/referenced content has not lost material conditions.
+## 三、异常严重程度
 
-### Document usability
-
-- [ ] Final requirements are organized by business module.
-- [ ] Necessary business context is present.
-- [ ] Pages, features, shared rules, and cross-page behavior are placed sensibly.
-- [ ] Roles, permissions, states, data dependencies, and exceptions are covered where sources define them.
-- [ ] Open questions are easy to find and tied to affected requirements.
-- [ ] Terminology is consistent.
-
-## Explicit verification procedure
-
-1. Walk the source index and source-unit ledger.
-2. Walk every coverage row and verify its disposition.
-3. Walk every requirement inventory record and verify its mapping.
-4. Walk every formal requirement in final documents and verify its evidence or explicit status.
-5. Compare status fields across inventory and output.
-6. Resolve all IDs, dependencies, paths, and anchors.
-7. Record failures, accepted limitations, and unresolved decisions in the quality report.
-
-Do not substitute a general self-assessment or sample review for item-by-item checks. If the source set is too large to verify fully within available tools/context, disclose the exact unchecked portion and mark coverage partial.
-
-## Severity
-
-| Severity | Meaning |
+| 级别 | 含义 |
 |---|---|
-| blocker | Critical input cannot be identified/read, preventing meaningful analysis of the target or core requirement |
-| high | Key business-rule conflict, key module not analyzed, or a formal requirement lacks evidence |
-| medium | Mapping gap, important missing context, or broken reference affecting understanding |
-| low | Non-critical locator precision, wording, or organization issue |
+| blocker | 关键输入无法识别或读取，导致无法有效分析目标或核心需求 |
+| high | 关键业务规则冲突、关键模块未分析，或正式需求缺少依据 |
+| medium | 映射缺失、重要上下文缺失或引用失效，影响需求理解 |
+| low | 非关键定位精度、措辞或组织问题 |
 
-An issue record should include issue_id, check_layer, severity, related_ids, description, impact, recommended_action, and status (open, resolved, accepted-limitation).
+异常记录应包含 issue_id、check_layer、severity、related_ids、description、impact、recommended_action 和 status（open、resolved、accepted-limitation）。
 
-## Completion status
+## 四、完成状态
+- **Completed（已完成）**：三层追溯和一致性检查均已执行，没有未披露的高风险问题。
+- **Completed with issues（存在问题但已完成）**：主要分析和检查已完成，但仍存在待确认问题、部分覆盖或其他已披露问题。
+- **Incomplete（未完成）**：关键资料无法读取、关键分析阶段未完成，或无法可靠执行必要的追溯检查。
 
-- **Completed**: all three traceability layers and consistency checks were executed; no undisclosed high-risk issue remains.
-- **Completed with issues**: main analysis and checks are complete, but unresolved questions, partial coverage, or other disclosed issues remain.
-- **Incomplete**: critical materials could not be read, a key analysis stage was not completed, or required traceability checks could not be performed reliably.
+存在问题不妨碍一次分析完成，但绝不能为了得到 Completed 而隐藏、弱化或强行解决问题。
 
-A run may complete with issues. Never hide, downgrade, or force-resolve an issue to obtain Completed.
+## 五、计数与覆盖率
 
-## Reporting counts
-
-Counts are useful when their denominator and counting rules are explicit. Avoid subjective completeness scores or unsupported percentages. If a percentage cannot be calculated from a well-defined source-unit/record set, omit it.
+只有在分母和计数规则明确时，数量统计才有意义。避免主观完整度评分或缺少依据的百分比。如果无法基于明确的资料单元/需求记录集合计算百分比，就不要报告百分比。

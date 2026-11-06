@@ -1,10 +1,10 @@
-# Requirement Information Model
+# 需求信息模型
 
-## Purpose
+## 一、模型目标
 
-Use stable, structured records so source coverage, extracted information, frontend relevance, scope, and final-document mapping can be checked independently of prose similarity.
+使用稳定、结构化的记录，使来源覆盖、提取信息、前端相关性、需求范围和最终文档映射能够独立核对，而不是仅依赖文本相似度。
 
-## Recommended record shape
+## 二、推荐记录结构
 
 ~~~yaml
 - id: FE-ORDER-001
@@ -30,45 +30,47 @@ Use stable, structured records so source coverage, extracted information, fronte
     reason: null
 ~~~
 
-Only record a page/line locator when grounded in the source. Otherwise use a verified section, page name, diagram node, or file-level locator. Never fabricate precise locations.
+只有来源中确实存在页码/行号时，才能记录对应定位。否则使用已核实的章节、页面名称、流程图节点或文件级定位。不得编造精确位置。
 
-## Required fields and allowed values
+## 三、必需字段与允许值
 
-| Field | Values / meaning |
+| 字段 | 取值/含义 |
 |---|---|
-| id | Stable unique ID, e.g. FE-ORDER-001 or FE-SHARED-001 |
-| module | Business module slug; use shared for cross-module information |
-| feature | Page/feature slug when applicable |
-| description | One atomic, traceable information item or requirement |
-| category | business-context, page, interaction, display-rule, business-rule, permission, data, dependency, exception |
-| frontend_relevance | direct, collaborative, contextual, irrelevant |
-| certainty | confirmed, inferred, uncertain, conflicted |
-| sources | One or more source IDs with grounded locators/evidence |
-| dependencies | Requirement IDs or named external dependencies; omit if none |
-| scope | new, modify, retain, out-of-scope, unknown |
-| notes | Inference basis, exclusion reason, constraints, or other explanation |
-| output_mapping | included, merged, referenced, excluded, pending, plus target(s) and reason as applicable |
+| id | 稳定且唯一的 ID，例如 FE-ORDER-001 或 FE-SHARED-001 |
+| module | 业务模块标识；跨模块信息使用 shared |
+| feature | 适用时填写页面/功能标识 |
+| description | 一条原子化、可追溯的信息或需求 |
+| category | business-context、page、interaction、display-rule、business-rule、permission、data、dependency、exception |
+| frontend_relevance | direct、collaborative、contextual、irrelevant |
+| certainty | confirmed、inferred、uncertain、conflicted |
+| sources | 一个或多个来源 ID，并提供可靠定位/证据 |
+| dependencies | 需求 ID 或明确命名的外部依赖；没有依赖时可省略 |
+| scope | new、modify、retain、out-of-scope、unknown |
+| notes | 推断依据、排除原因、约束或其他说明 |
+| output_mapping | included、merged、referenced、excluded、pending，以及适用的目标位置和原因 |
 
-## Identity and relationships
+字段名和枚举值作为机器可读标识保留英文；文档中的说明、内容和面向用户的表达默认使用中文。
 
-- IDs must be unique and stable during one analysis. Do not renumber records merely to make them appear contiguous after edits.
-- One source can produce multiple records; one record can cite multiple sources.
-- One record can map to multiple output locations.
-- Multiple records may be merged into one output passage. Preserve all source record IDs in the mapping.
-- Dependencies must point to an existing record or be explicitly named as external dependencies.
+## 四、身份标识与关联关系
 
-## Output mapping details
+- 同一次分析中的 ID 必须唯一且稳定。修改记录时，不要为了让编号连续而随意重排 ID。
+- 一个来源可以产生多条需求；一条需求可以引用多个来源。
+- 一条需求可以映射到最终文档的多个位置。
+- 多条需求可以合并为最终文档中的一段描述，映射中必须保留所有参与合并的需求 ID。
+- 依赖关系必须指向现有需求记录，或明确标记为外部依赖。
 
-| Status | Required detail |
+## 五、输出映射详情
+
+| 状态 | 必须记录的内容 |
 |---|---|
-| included | One or more output targets |
-| merged | Target plus IDs of all merged records |
-| referenced | Target of the canonical shared rule |
-| excluded | Explicit reason |
-| pending | Reason and associated open question/quality issue |
+| included | 一个或多个最终文档目标位置 |
+| merged | 合并后的目标位置，以及所有参与合并的需求 ID |
+| referenced | 统一共享规则所在的目标位置 |
+| excluded | 明确的排除原因 |
+| pending | 原因，以及关联的待确认问题/质量异常 |
 
-Do not use excluded to hide unresolved analysis. Use pending when disposition is not decided.
+不得使用 excluded 隐藏尚未完成的分析。处理结果尚未确定时，应使用 pending。
 
-## Atomicity
+## 六、原子性
 
-Split records when a single description combines independently testable rules, different certainty levels, or different sources that may conflict. Keep related conditions together when separating them would lose meaning. Avoid turning every noun or field into a separate record without a distinct frontend implication.
+当一条描述包含可独立验证的多条规则、不同确定性的信息，或可能相互冲突的不同来源时，应拆分记录。如果拆分会破坏语义，则保留相关条件在同一条记录中。不要仅为每个名词或字段都建立独立记录，只有存在明确前端影响时才拆分。

@@ -1,6 +1,6 @@
-# Cross References
+# 交叉引用与关联关系
 
-| Relation ID | From ID | Relation | To ID | Description / Impact | Source IDs |
+| 关系 ID | 起始 ID | 关系类型 | 目标 ID | 说明/影响 | 来源 ID |
 |---|---|---|---|---|---|
 
-Use this file to connect distributed requirements, shared rules, role/state dependencies, page behavior, API dependencies, and conflicts. A readable relation ledger is sufficient; a knowledge graph is not required.
+用于关联分散的需求、共享规则、角色/状态依赖、页面行为、接口依赖和资料冲突。使用易读的关系台账即可，V1 不要求知识图谱。

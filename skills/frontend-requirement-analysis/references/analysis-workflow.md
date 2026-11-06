@@ -1,44 +1,44 @@
-# Analysis Workflow and Source Handling
+# 分析流程与资料处理
 
-## Intake and source inventory
+## 一、资料接收与索引
 
-Record every supplied or explicitly in-scope source before deep analysis. Use stable SRC-NNN identifiers. Capture name/path, type, known version, modules, summary, relationships, readability, and limitations. Types may include PRD, supplement, prototype, screenshot, diagram, API, data dictionary, meeting note, review record, or other.
+在深入分析前，登记所有用户提供或明确纳入本次范围的资料。为每份资料分配稳定的 SRC-NNN 标识，并记录名称/路径、类型、已知版本、涉及模块、摘要、资料关系、可读性和限制。
 
-Model source relationships as supplements, revises, references, or conflicts. A later timestamp does not establish precedence. If the user has not established which version governs, preserve the ambiguity.
+资料关系可包括：补充、修订、引用、冲突。不能仅凭文件时间戳判断资料优先级。如果用户没有明确说明哪个版本生效，应保留这种不确定性。
 
-## Analysis units and coverage
+## 二、分析单元与覆盖状态
 
-Choose units that preserve meaning:
+选择能够保留语义的分析单元：
 
-- PRD: section/subsection, requirement group, table, or rule block.
-- Prototype: page, modal/drawer, interaction state, or scenario.
-- Diagram: node, branch, transition, or sub-flow.
-- API specification: operation, request/response field, error, or permission contract.
-- Meeting/review notes: explicit decision, unresolved question, or action that changes requirement meaning.
+- PRD：章节/小节、需求组、表格或规则段落。
+- 原型：页面、弹窗/抽屉、交互状态或业务场景。
+- 流程图：节点、分支、状态转换或子流程。
+- 接口规范：接口操作、请求/响应字段、错误和权限约定。
+- 会议/评审记录：明确决策、未解决问题，或会改变需求含义的行动项。
 
-Do not split mechanically by character count. If a unit is too large, split at semantic boundaries and retain its parent reference. Track each unit as analyzed, partially_analyzed, failed, or not_analyzed. Explain partial and failed states.
+不要按字符数机械切分。若单元过大，应按语义边界拆分，并保留父级来源关系。每个单元记录以下状态之一：analyzed、partially_analyzed、failed、not_analyzed。对部分分析和失败状态说明具体原因。
 
-## Global then module-level synthesis
+## 三、先全局理解，再按模块分析
 
-Global synthesis captures product goal, business objects, module boundaries, core workflows, roles, shared rules, cross-module dependencies, and source relationships. Module-level analysis then examines each source unit in detail. Global notes are not evidence that module details were reviewed.
+全局分析用于识别产品目标、业务对象、模块边界、核心流程、角色、共享规则、跨模块依赖和资料关系。随后必须逐个来源单元进行模块级详细分析。全局分析记录不能作为模块细节已被审阅的证明。
 
-## Long documents and context management
+## 四、长文档与上下文管理
 
-1. Inspect the complete table of contents or structural outline first.
-2. Build a source-unit ledger before extraction.
-3. Analyze units in manageable batches with source IDs and precise locators.
-4. Persist extracted records and coverage changes to files rather than relying on conversational memory.
-5. Maintain cross-reference links as each batch is processed.
-6. After all units, perform a global reconciliation pass to find duplicated, related, contradictory, or unlinked information.
+1. 先检查完整目录或文档结构大纲。
+2. 在提取信息前建立来源单元台账。
+3. 按可管理的批次分析单元，为每个单元保留来源 ID 和准确定位。
+4. 将提取结果和覆盖状态持续写入文件，不依赖对话上下文记忆。
+5. 每完成一批，就维护交叉引用关系。
+6. 所有单元处理完毕后，执行全局核对，查找重复、关联、矛盾和未建立关联的信息。
 
-Never claim full coverage when only excerpts, search snippets, or a sample of sections were reviewed.
+不能只阅读节选、搜索摘要或少量样本，就声称完成了全部资料覆盖。
 
-## Visual and partially readable materials
+## 五、视觉资料与部分可读资料
 
-Treat prototypes, screenshots, and diagrams as independent sources. Record the pages/states/nodes actually inspected. If text is too small, cropped, missing, or inaccessible, record the affected portion and its impact. Do not infer exact UI copy, dimensions, or interaction behavior from an unreadable image.
+将原型、截图和流程图作为独立来源分析，并记录实际检查过的页面、状态或节点。如果文字过小、图片裁切、内容缺失或无法访问，应记录受影响的部分及其影响。不能从不可读图片中推断精确 UI 文案、尺寸或交互行为。
 
-## Conflict handling
+## 六、冲突处理
 
-For every material conflict, capture conflict ID and affected requirement IDs; each source and its statement/locator; the difference between statements; affected module/page/state and likely frontend impact; the exact decision needed; and status (open, resolved, or accepted-limitation).
+每项实质性冲突都应记录冲突 ID 和受影响的需求 ID、各来源及其陈述/定位、不同陈述之间的具体差异、受影响的模块/页面/状态及可能的前端影响、需要明确作出的决定，以及状态（open、resolved 或 accepted-limitation）。
 
-Only mark a conflict resolved when the supplied materials or user explicitly establish the resolution. Preserve previous evidence in the analysis record.
+只有输入资料或用户明确给出解决方案后，才能将冲突标记为 resolved。应在分析记录中保留原始证据。

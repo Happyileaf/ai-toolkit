@@ -1,8 +1,8 @@
-# Skill Design Specification
+# Skill 设计说明
 
 ## 1. 文档目的
 
-本文定义 `frontend-requirement-analysis` Skill 的产品定位、目标用户、职责边界、输入输出、总体工作流程和交付结构。它是 Skill 的顶层设计依据；需求分析细则见 [Requirement Analysis Specification](./requirement-analysis.md)，质量与追溯规则见 [Quality Assurance Specification](./quality-assurance.md)。
+本文定义 `frontend-requirement-analysis` Skill 的产品定位、目标用户、职责边界、输入输出、总体工作流程和交付结构。它是 Skill 的顶层设计依据；需求分析细则见 [需求分析规范](./requirement-analysis.md)，质量与追溯规则见 [质量保障规范](./quality-assurance.md)。
 
 本文描述的是目标设计，不意味着当前 Skill 已经实现全部能力。
 
@@ -103,7 +103,7 @@ V1 采用一次性完整分析：收集本次分析范围内的资料，完成�
 4. **前端视角重构**：识别前端工作范围，将分散信息组织为模块、页面、功能和共享规则。
 5. **文档生成与质量检查**：生成分析资料和最终需求文档，执行三层追溯与覆盖检查，输出异常报告。
 
-每个阶段的详细输入、处理规则和产物由 Requirement Analysis Specification 定义。
+每个阶段的详细输入、处理规则和产物由 需求分析规范 定义。
 
 ## 8. 关键设计决策
 
@@ -186,6 +186,6 @@ frontend-requirements/
 ## 11. 文档关系与维护
 
 - 本文是 Skill 的顶层设计。
-- [Requirement Analysis Specification](./requirement-analysis.md) 定义如何分析资料、建模需求和重构输出。
-- [Quality Assurance Specification](./quality-assurance.md) 定义如何验证覆盖、依据和一致性。
+- [需求分析规范](./requirement-analysis.md) 定义如何分析资料、建模需求和重构输出。
+- [质量保障规范](./quality-assurance.md) 定义如何验证覆盖、依据和一致性。
 - 若三份文档出现冲突，应先修订设计文档并保持相互一致，再更新 Skill 执行指令。
