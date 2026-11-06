@@ -1,0 +1,21 @@
+# Copy one record per traceable information item. Keep IDs stable and unique.
+- id: FE-MODULE-001
+  module: module-slug
+  feature: feature-slug
+  description: ""
+  category: display-rule
+  frontend_relevance: direct
+  certainty: confirmed
+  sources:
+    - source_id: SRC-001
+      section: ""
+      locator: ""
+      evidence: ""
+  dependencies: []
+  scope: unknown
+  notes: null
+  output_mapping:
+    status: pending
+    targets: []
+    related_requirement_ids: []
+    reason: ""
