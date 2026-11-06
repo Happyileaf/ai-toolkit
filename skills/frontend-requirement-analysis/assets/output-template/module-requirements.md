@@ -1,34 +1,34 @@
-# <Business Module>
+# <业务模块名称>
 
-## 1. Module Overview
+## 1. 模块概述
 
-Describe purpose, boundaries, and its role in the overall business flow.
+说明模块目标、边界，以及该模块在整体业务流程中的作用。
 
-## 2. Required Business Context
+## 2. 必要业务上下文
 
-Describe only the business objects, statuses, roles, permissions, and related-module context needed to understand this module.
+说明理解本模块所需的业务对象、状态、角色、权限和关联模块。
 
-## 3. Pages and Features
+## 3. 页面与功能
 
-### 3.1 <Page / Feature>
+### 3.1 <页面/功能名称>
 
-- **Entry / availability:**
-- **Actors and permissions:**
-- **Information displayed:**
-- **User actions:**
-- **Behavior and business conditions:**
-- **State-dependent behavior:**
-- **Data / backend dependencies:**
-- **Exceptions and boundaries:**
-- **Certainty / open decisions:**
-- **Requirement IDs and sources:**
+- **入口/可用条件：**
+- **操作角色与权限：**
+- **展示信息：**
+- **用户操作：**
+- **行为与业务条件：**
+- **状态相关行为：**
+- **数据/后端依赖：**
+- **异常与边界情况：**
+- **确定性/待确认决策：**
+- **需求 ID 与来源：**
 
-Add only sections supported by source material. Do not invent unspecified behavior to fill this template.
+只添加来源资料能够支持的章节。不得为了填满模板而创造未说明的行为。
 
-## 4. Module-level Rules
+## 4. 模块级规则
 
-## 5. Dependencies
+## 5. 依赖关系
 
-## 6. Open Questions
+## 6. 待确认事项
 
-## 7. Requirement and Source Index
+## 7. 需求与来源索引

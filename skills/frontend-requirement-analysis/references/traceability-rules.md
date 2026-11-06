@@ -1,55 +1,58 @@
-# Requirement Traceability and Coverage Rules
+# 需求追溯与覆盖规则
 
-The three-layer traceability loop is mandatory for V1.
+三层追溯闭环是 V1 的强制要求。
 
-## Source → Inventory: did we miss anything?
+## 第一层：Source → Inventory（来源 → 需求清单）
 
-For every registered source and meaningful source unit:
+**检查目标：是否遗漏原始资料中的信息？**
 
-1. Record a coverage state: analyzed, partially_analyzed, failed, or not_analyzed.
-2. Record the disposition of meaningful content:
-   - retained: extracted as requirement, context, rule, or dependency;
-   - excluded: determined irrelevant to frontend, with a reason;
-   - pending: ambiguous, conflicting, or missing information requiring a decision;
-   - partial / failed: content could not be read or only partly reviewed, with affected scope.
-3. Distinguish “analyzed and excluded” from “not analyzed”.
-4. Do not mark a source unit analyzed based only on its title, outline, or a search snippet.
+对每个已登记来源及其有意义的资料单元：
+1. 记录覆盖状态：analyzed、partially_analyzed、failed 或 not_analyzed。
+2. 记录有意义内容的处理结果：
+   - retained：提取为需求、上下文、规则或依赖；
+   - excluded：判断与前端无关，并记录原因；
+   - pending：存在歧义、冲突或信息缺失，需要决策；
+   - partial / failed：无法读取或只完成部分审阅，并记录受影响范围。
+3. 明确区分“已经分析并排除”和“尚未分析”。
+4. 不能仅凭标题、目录大纲或搜索摘要就将资料单元标记为 analyzed。
 
-This layer must answer: where did the meaningful information in each source unit go?
+本层必须回答：**每个资料单元中的有意义信息最终去了哪里？**
 
-## Inventory → Output: did extracted information disappear?
+## 第二层：Inventory → Output（需求清单 → 最终文档）
 
-Every inventory item must have an output mapping:
+**检查目标：提取的信息是否在最终文档中丢失？**
 
-- included: directly represented in a final requirement document;
-- merged: combined with other records; retain all contributing IDs;
-- referenced: represented by a canonical shared rule; target must resolve;
-- excluded: omitted from final requirements with a reason;
-- pending: not yet safely resolved; surface in open questions and quality report.
+需求清单中的每条信息都必须有输出映射：
+- included：直接写入最终需求文档；
+- merged：与其他记录合并，保留所有参与合并的 ID；
+- referenced：由统一共享规则承载，引用目标必须有效；
+- excluded：不进入最终需求文档，并说明原因；
+- pending：尚不能安全确定处理方式，必须出现在待确认事项和质量报告中。
 
-Validate that each target path and anchor exists. Check that merged/referenced content preserves every material condition. Do not let an item remain unmapped.
+验证每个目标路径和锚点确实存在。检查合并/引用后的内容是否保留了所有重要条件。不能遗留没有映射的需求信息。
 
-## Output → Source: is every formal requirement supported?
+## 第三层：Output → Source（最终文档 → 来源）
 
-For every formal requirement in final documents, verify one of the following:
+**检查目标：每项正式需求是否有可靠依据？**
 
-1. One or more valid source records support it.
-2. It is explicitly marked inferred, with reasoning and supporting facts.
-3. It is explicitly marked uncertain or conflicted and presented as unresolved, not confirmed.
-4. It is a technical note strictly necessary to implement a confirmed behavior and is clearly separated from product requirements.
+逐项检查最终文档中的正式需求，必须满足以下条件之一：
+1. 有一个或多个有效来源记录支持；
+2. 明确标记为 inferred，并提供推理过程和支持事实；
+3. 明确标记为 uncertain 或 conflicted，作为未解决内容呈现，而不是已确认需求；
+4. 属于实现已确认行为所必需的技术说明，并且与产品需求明确分开。
 
-A plausible product convention is not evidence. Do not add undocumented UX behavior as a confirmed requirement.
+常见产品惯例不是来源依据。不得将资料未说明的 UX 行为添加为已确认需求。
 
-## Many-to-many links
+## 多对多关联
 
-The model must support one source to multiple requirement records, multiple sources to one requirement record, one requirement to multiple final-document locations, and multiple requirement records to one merged passage.
+信息模型必须支持一个来源关联多条需求记录、多个来源共同支持一条需求记录、一条需求映射到最终文档的多个位置，以及多条需求记录合并到最终文档中的同一段内容。
 
-Use stable source IDs, requirement IDs, and output targets. Text similarity alone is not traceability.
+使用稳定的来源 ID、需求 ID 和输出位置建立关系。仅靠文本相似度不能构成追溯。
 
-## Mapping ledger
+## 需求映射台账
 
-analysis/requirement-mapping.md should be generated from or reconciled against the inventory. For each requirement ID, list source IDs, relevance, certainty, scope, mapping status, target(s), merged/referenced IDs, and exclusion/pending reason as applicable.
+analysis/requirement-mapping.md 应从需求清单生成，或与需求清单逐项核对。每条需求 ID 都应记录来源 ID、前端相关性、确定性、范围、映射状态、目标位置、合并/引用关联 ID，以及适用的排除/待确认原因。
 
-## No false closure
+## 不得伪造闭环
 
-A loop is not closed merely because each file exists. Verify individual records and links. If a check cannot be completed due to unreadable material or unsupported output structure, record it as a limitation and reflect it in the overall quality result.
+不能因为每个文件都存在，就认为追溯闭环已经完成。必须核对具体记录和链接。如果因资料不可读或输出结构不支持而无法完成某项检查，应记录为限制，并反映在总体质量结果中。

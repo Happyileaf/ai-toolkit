@@ -1,17 +1,17 @@
-# Shared Frontend Requirements
+# 共享前端需求
 
-## 1. Purpose and Scope
+## 1. 目的与范围
 
-## 2. Global Roles and Permissions
+## 2. 全局角色与权限
 
-## 3. Shared Business States and Rules
+## 3. 共享业务状态与规则
 
-## 4. Cross-module Behavior
+## 4. 跨模块行为
 
-## 5. Common Data and Dependency Contracts
+## 5. 通用数据与依赖约定
 
-## 6. Open Questions
+## 6. 待确认事项
 
-## 7. Requirement and Source Index
+## 7. 需求与来源索引
 
-Only place genuinely shared rules here. Module documents should link to the canonical section instead of duplicating it.
+仅将真正跨模块的规则放在此文档中。模块文档应引用统一规则，不要重复描述。

@@ -1,8 +1,8 @@
-# Frontend Requirements Document Structure
+# 前端需求文档结构
 
-## Output layout
+## 一、默认交付目录
 
-Use frontend-requirements/ by default:
+默认使用 frontend-requirements/：
 
 ~~~text
 frontend-requirements/
@@ -23,36 +23,36 @@ frontend-requirements/
     └── <business-module>.md
 ~~~
 
-Adapt file splitting to project size. Small projects may combine analysis records or modules; large projects may split modules further. Do not omit traceability information.
+根据项目规模调整文件拆分。小型项目可以合并分析记录或模块文档；大型项目可以进一步拆分模块。不得省略需求追溯信息。
 
-## Top-level README
+## 二、顶层 README
 
-Include purpose and scope of the analyzed change; concise business background and goals; frontend work-scope overview; module navigation; important cross-module rules/dependencies; links to analysis and quality report; and prominent unresolved issues that affect implementation.
+应包含本次分析的目的和范围、简要业务背景与目标、前端工作范围概览、模块导航、重要跨模块规则/依赖、分析资料和质量报告链接，以及影响开发的重要未解决问题。
 
-## Module document
+## 三、模块文档
 
-Recommended sections:
+建议包含以下章节：
 
-1. **Module overview** — purpose, boundaries, and role in the overall business flow.
-2. **Required business context** — business objects, statuses, roles, permissions, and related modules.
-3. **Pages and features** — page entry, layout/data display, filters, actions, interaction behavior, permissions, state-dependent behavior, and exceptions, only where supported by evidence.
-4. **Module-level rules** — cross-page business rules, states, permissions, and data constraints.
-5. **Dependencies** — APIs, backend responsibilities, external systems, and other modules; do not invent endpoint contracts.
-6. **Open questions** — unresolved ambiguity/conflict that affects this module.
-7. **Sources** — source IDs and requirement IDs, with links to analysis records where possible.
+1. **模块概述**：模块目标、边界，以及在整体业务流程中的作用。
+2. **必要业务上下文**：业务对象、状态、角色、权限和关联模块。
+3. **页面与功能**：页面入口、布局/数据展示、筛选、操作、交互行为、权限、状态相关行为和异常情况；仅记录有依据的内容。
+4. **模块级规则**：跨页面业务规则、状态、权限和数据约束。
+5. **依赖关系**：接口、后端职责、外部系统和其他模块；不得编造接口约定。
+6. **待确认事项**：影响本模块的未解决歧义或冲突。
+7. **来源索引**：来源 ID 和需求 ID；条件允许时链接到分析记录。
 
-Organize by page when that makes behavior easier to understand. Cross-page flows and module-wide rules belong at module level. Do not force every requirement into a page.
+当按页面组织更易于理解时，模块内部按页面组织。跨页面流程和模块级规则应放在模块层级，不要强制将每条需求都归入某个页面。
 
-## Shared requirements
+## 四、共享需求
 
-Use shared-requirements.md only for genuinely cross-module rules such as common permissions, global states, shared interaction standards, or reusable data constraints. Module documents should reference the canonical rule rather than duplicate it.
+只有真正跨模块的规则才放入 shared-requirements.md，例如通用权限、全局状态、共享交互规范或可复用的数据约束。模块文档应引用统一规则，而不是重复描述。
 
-## Writing standards
+## 五、写作规范
 
-- Write for a frontend developer who did not attend product discussions.
-- Be concrete about actor, preconditions, visible state, available action, outcome, and exception when the source defines them.
-- Preserve business conditions and terminology.
-- Separate confirmed requirements, inferences, and open questions visually and semantically.
-- Keep technical implementation suggestions out of product requirement statements.
-- Avoid copying large blocks of PRD text; reconstruct information and preserve source links.
-- Do not fabricate page numbers, API names, field definitions, UI copy, or anchors.
+- 面向没有参加过产品讨论的前端开发人员。
+- 来源有定义时，应具体说明执行角色、前置条件、可见状态、可用操作、操作结果和异常情况。
+- 保留业务条件和原有术语。
+- 在结构和语义上明确区分已确认需求、推断和待确认问题。
+- 不要将技术实现建议混入产品需求陈述。
+- 避免大段复制 PRD 原文，应重构信息并保留来源链接。
+- 不得编造页码、接口名称、字段定义、UI 文案或文档锚点。

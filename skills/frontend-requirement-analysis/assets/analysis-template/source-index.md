@@ -1,16 +1,16 @@
-# Source Index
+# 来源资料索引
 
-| Source ID | Name / Path | Type | Version | Modules | Summary | Readability | Relations | Notes |
+| 来源 ID | 名称/路径 | 类型 | 版本 | 涉及模块 | 内容摘要 | 可读性 | 资料关系 | 备注 |
 |---|---|---|---|---|---|---|---|---|
 | SRC-001 |  | prd | unknown |  |  | readable |  |  |
 
-## Source Relationships
+## 来源关系
 
-| Source ID | Related Source ID | Relationship | Evidence / Notes |
+| 来源 ID | 关联来源 ID | 关系类型 | 依据/说明 |
 |---|---|---|---|
 
-Relationship values: supplements, revises, references, conflicts.
+关系类型：supplements（补充）、revises（修订）、references（引用）、conflicts（冲突）。
 
-## Readability Limitations
+## 可读性限制
 
-Record unreadable files, inaccessible pages, partially readable visuals, unsupported formats, and affected content here.
+记录无法读取的文件、无法访问的页面、部分可读的视觉资料、不支持的格式及其影响范围。

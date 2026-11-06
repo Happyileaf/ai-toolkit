@@ -1,4 +1,4 @@
-# Copy one record per traceable information item. Keep IDs stable and unique.
+# 每条可追溯信息单独建立一条记录。ID 必须稳定且唯一。
 - id: FE-MODULE-001
   module: module-slug
   feature: feature-slug

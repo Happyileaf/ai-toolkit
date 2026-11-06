@@ -1,51 +1,51 @@
-# Quality Report
+# 质量检查报告
 
-## Overall Result
+## 总体结果
 
-Choose one: Completed, Completed with issues, Incomplete.
+选择一个：Completed（已完成）、Completed with issues（存在问题但已完成）、Incomplete（未完成）。
 
-## Analysis Scope
+## 本次分析范围
 
-## Source → Inventory
+## 来源 → 需求清单
 
-- Sources registered:
-- Meaningful source units:
-- Analyzed:
-- Partially analyzed:
-- Failed:
-- Not analyzed:
-- Disposition exceptions:
+- 已登记来源数量：
+- 有意义的资料单元数量：
+- 已分析：
+- 部分分析：
+- 分析失败：
+- 尚未分析：
+- 处理结果异常：
 
-## Inventory → Output
+## 需求清单 → 最终文档
 
-- Inventory records:
-- Included:
-- Merged:
-- Referenced:
-- Excluded:
-- Pending:
-- Invalid or missing targets:
+- 需求记录数量：
+- included：
+- merged：
+- referenced：
+- excluded：
+- pending：
+- 无效或缺失的目标位置：
 
-## Output → Source
+## 最终文档 → 来源
 
-- Formal output requirements checked:
-- Requirements with valid source evidence:
-- Explicit inferences:
-- Uncertain / conflicted items:
-- Unsupported formal statements:
+- 已检查的正式需求数量：
+- 具有有效来源依据的需求：
+- 明确标记的推断：
+- 不确定/冲突项：
+- 缺少依据的正式表述：
 
-## Consistency and Link Checks
+## 一致性与链接检查
 
-- ID uniqueness and reference validity:
-- Dependency validity:
-- Output path / anchor validity:
-- Certainty, relevance, and scope consistency:
+- ID 唯一性和引用有效性：
+- 依赖关系有效性：
+- 输出路径/锚点有效性：
+- 确定性、相关性和范围的一致性：
 
-## Issues
+## 异常清单
 
-| Issue ID | Check Layer | Severity | Related IDs | Description | Impact | Recommended Action | Status |
+| 异常 ID | 检查层级 | 严重程度 | 关联 ID | 问题描述 | 影响 | 建议处理方式 | 状态 |
 |---|---|---|---|---|---|---|---|
 
-## Limitations and Conclusion
+## 限制与结论
 
-State what was not verified and why. Do not report unsupported completeness percentages.
+说明哪些内容未能核验及其原因。不要报告缺乏依据的完整率或覆盖率百分比。
