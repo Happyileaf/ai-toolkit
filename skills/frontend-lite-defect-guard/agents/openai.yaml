@@ -1,0 +1,4 @@
+interface:
+  display_name: "Frontend Lite Defect Guard"
+  short_description: "识别并安全修复前端常见小型缺陷"
+  default_prompt: "检查指定前端代码中的小型缺陷，先完整报告，再等待确认后修复。"
