@@ -14,6 +14,7 @@
 - git-branch-name-generator/ - 配置驱动生成 Git 分支名称的技能
 - technical-content-sanitizer/ - 识别研发资料敏感信息，完成脱敏、审查与公开化重构
 - frontend-requirement-analysis/ - 将复杂 PRD 重构为可追溯的前端需求文档
+- frontend-lite-defect-guard/ - 识别并安全修复前端常见小型缺陷
 
 ## 技能索引
 
