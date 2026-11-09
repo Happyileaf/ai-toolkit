@@ -13,3 +13,5 @@
 | SKILL-007 | Git Branch Name Generator | [git-branch-name-generator/SKILL.md](./git-branch-name-generator/SKILL.md) | active | 无 | 配置驱动生成 Git 分支名称，内置多套命名规范，支持自定义规范、语义提炼与最终校验，只生成不执行 |
 | SKILL-008 | Technical Content Sanitizer | [technical-content-sanitizer/SKILL.md](./technical-content-sanitizer/SKILL.md) | active | 无 | 审查研发资料中的敏感信息，保护技术事实，并生成脱敏文档或公开技术文章 |
 | SKILL-009 | 前端需求分析 | [frontend-requirement-analysis/SKILL.md](./frontend-requirement-analysis/SKILL.md) | active | 无 | 分析完整 PRD 及相关资料，重构前端需求，交付分析资料与模块化需求文档，并执行三层来源追溯和覆盖检查 |
+| SKILL-010 | Frontend Small Defect Guard | [frontend-small-defect-guard/SKILL.md](./frontend-small-defect-guard/SKILL.md) | active | 无 | 识别并安全修复前端常见小型缺陷，默认先报告再经确认修复 |
+
