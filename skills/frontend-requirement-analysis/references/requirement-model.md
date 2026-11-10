@@ -25,7 +25,7 @@
   output_mapping:
     status: included
     targets:
-      - requirements/order-management.md#order-list
+      - frontend-requirements.md#order-management-order-list
     related_requirement_ids: []
     reason: null
 ~~~
@@ -63,9 +63,9 @@
 
 | 状态 | 必须记录的内容 |
 |---|---|
-| included | 一个或多个最终文档目标位置 |
-| merged | 合并后的目标位置，以及所有参与合并的需求 ID |
-| referenced | 统一共享规则所在的目标位置 |
+| included | 主文档中的一个或多个实际章节/锚点，默认格式为 `frontend-requirements.md#<anchor>` |
+| merged | 合并后的目标位置，以及所有参与合并的需求 ID；目标优先为主文档 |
+| referenced | 主文档中的统一规则位置，或主文档明确链接的 `references/<topic>.md#<anchor>` |
 | excluded | 明确的排除原因 |
 | pending | 原因，以及关联的待确认问题/质量异常 |
 
