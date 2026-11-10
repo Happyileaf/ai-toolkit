@@ -6,7 +6,7 @@
 
 ## 二、推荐记录结构
 
-~~~yaml
+```yaml
 - id: FE-ORDER-001
   module: order-management
   feature: order-list
@@ -25,10 +25,10 @@
   output_mapping:
     status: included
     targets:
-      - requirements/order-management.md#order-list
+      - frontend-requirements.md#order-management
     related_requirement_ids: []
     reason: null
-~~~
+```
 
 只有来源中确实存在页码/行号时，才能记录对应定位。否则使用已核实的章节、页面名称、流程图节点或文件级定位。不得编造精确位置。
 
@@ -55,7 +55,7 @@
 
 - 同一次分析中的 ID 必须唯一且稳定。修改记录时，不要为了让编号连续而随意重排 ID。
 - 一个来源可以产生多条需求；一条需求可以引用多个来源。
-- 一条需求可以映射到最终文档的多个位置。
+- 一条需求可以映射到最终主文档或必要子文档中的多个位置。
 - 多条需求可以合并为最终文档中的一段描述，映射中必须保留所有参与合并的需求 ID。
 - 依赖关系必须指向现有需求记录，或明确标记为外部依赖。
 
@@ -63,11 +63,13 @@
 
 | 状态 | 必须记录的内容 |
 |---|---|
-| included | 一个或多个最终文档目标位置 |
+| included | 默认指向 `frontend-requirements.md` 的具体章节锚点 |
 | merged | 合并后的目标位置，以及所有参与合并的需求 ID |
-| referenced | 统一共享规则所在的目标位置 |
+| referenced | 主文档中的统一规则位置，或确有必要时 references 子文档中的详细内容 |
 | excluded | 明确的排除原因 |
 | pending | 原因，以及关联的待确认问题/质量异常 |
+
+目标路径优先使用 `frontend-requirements.md#<section-anchor>`。只有确有必要拆分时，才使用 `references/<topic>.md#<section-anchor>`。所有 references 子文档都必须能从主文档直接或经由清晰的章节导航到达。
 
 不得使用 excluded 隐藏尚未完成的分析。处理结果尚未确定时，应使用 pending。
 
