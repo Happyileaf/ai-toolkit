@@ -25,7 +25,7 @@
   output_mapping:
     status: included
     targets:
-      - requirements/order-management.md#order-list
+      - requirements/product-requirements-document.md#order-management
     related_requirement_ids: []
     reason: null
 ~~~
