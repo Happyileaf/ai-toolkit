@@ -14,3 +14,4 @@
 | SKILL-008 | Technical Content Sanitizer | [technical-content-sanitizer/SKILL.md](./technical-content-sanitizer/SKILL.md) | active | 无 | 审查研发资料中的敏感信息，保护技术事实，并生成脱敏文档或公开技术文章 |
 | SKILL-009 | 前端需求分析 | [frontend-requirement-analysis/SKILL.md](./frontend-requirement-analysis/SKILL.md) | active | 无 | 分析完整 PRD 及相关资料，重构前端需求，交付分析资料与模块化需求文档，并执行三层来源追溯和覆盖检查 |
 | SKILL-010 | Frontend Lite Defect Guard | [frontend-lite-defect-guard/SKILL.md](./frontend-lite-defect-guard/SKILL.md) | active | 无 | 识别并安全修复前端常见小型缺陷，默认先完成检查并报告，再经确认修复 |
+| SKILL-011 | Frontend Lite Defect Validator | [frontend-lite-defect-validator/SKILL.md](./frontend-lite-defect-validator/SKILL.md) | active | 无 | 对已有前端潜在缺陷清单进行独立、逐项核实，过滤有充分反证的误报，并输出严格一一对应的确认报告 |
