@@ -1,0 +1,4 @@
+interface:
+  display_name: "Frontend Lite Defect Validator"
+  short_description: "逐项核实前端潜在缺陷并过滤误报"
+  default_prompt: "请核实这份前端问题清单，逐项检查代码证据，并输出与输入严格一一对应的问题确认列表和详情。"
